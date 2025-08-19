@@ -1,0 +1,16 @@
+*.pyc
+__pycache__/
+.env
+*.env
+*.log
+*.sqlite3
+*.db
+*.egg-info/
+dist/
+build/
+data/ 
+frontend/node_modules/
+test/
+.venv/
+test/
+exam_questions_beautiful.pdf

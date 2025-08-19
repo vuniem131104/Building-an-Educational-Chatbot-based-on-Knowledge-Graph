@@ -1,0 +1,19 @@
+[project]
+name = "storage"
+version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
+authors = [
+    { name = "vulh-1357", email = "le.hoang.vu@sun-asterisk.com" }
+]
+requires-python = ">=3.13"
+dependencies = [
+    "minio>=7.2.16",
+]
+
+[project.scripts]
+storage = "storage:main"
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"

@@ -1,0 +1,29 @@
+FROM python:3.13-slim
+
+WORKDIR /app
+
+RUN apt-get update && apt-get install -y \
+    gcc \
+    curl \
+    && rm -rf /var/lib/apt/lists/*
+
+COPY --from=ghcr.io/astral-sh/uv:latest /uv /uvx /usr/local/bin/
+
+COPY pyproject.toml uv.lock ./
+
+COPY libs/ ./libs/
+
+COPY services/file_upload/pyproject.toml ./services/file_upload/
+COPY services/file_upload/README.md ./services/file_upload/
+RUN --mount=type=cache,target=/root/.cache/uv \
+    uv sync --no-install-project --no-dev
+RUN --mount=type=cache,target=/root/.cache/pip \
+    uv sync --no-dev --package file_upload
+
+COPY services/file_upload/src/ ./services/file_upload/src/
+
+WORKDIR /app/services/file_upload
+
+EXPOSE 8000
+
+CMD [ "uv", "run", "file-upload"]

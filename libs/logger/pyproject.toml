@@ -1,0 +1,19 @@
+[project]
+name = "logger"
+version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
+authors = [
+    { name = "vulh-1357", email = "le.hoang.vu@sun-asterisk.com" }
+]
+requires-python = ">=3.13"
+dependencies = [
+    "structlog>=25.4.0",
+]
+
+[project.scripts]
+logger = "logger:main"
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"

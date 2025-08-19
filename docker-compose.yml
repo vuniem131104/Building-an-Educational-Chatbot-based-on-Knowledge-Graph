@@ -1,0 +1,102 @@
+networks:
+  educational-chatbot:
+    driver: bridge
+
+services:
+  litellm_service:
+    image: ghcr.io/berriai/litellm:main-latest
+    ports:
+      - "9510:4000"
+    networks:
+      - educational-chatbot
+    volumes:
+      - ./config.yaml:/app/config.yaml
+    command:
+      - "--config=/app/config.yaml"
+    environment:
+      - GEMINI_API_KEY1=${GEMINI_API_KEY1}
+      - GEMINI_API_KEY2=${GEMINI_API_KEY2}
+      - GEMINI_API_KEY3=${GEMINI_API_KEY3}
+      - GEMINI_API_KEY4=${GEMINI_API_KEY4}
+      - GEMINI_API_KEY5=${GEMINI_API_KEY5}
+      - GEMINI_API_KEY6=${GEMINI_API_KEY6}
+      - GEMINI_API_KEY7=${GEMINI_API_KEY7}
+      - GEMINI_API_KEY8=${GEMINI_API_KEY8}
+      - GEMINI_API_KEY9=${GEMINI_API_KEY9}
+      - GEMINI_API_KEY10=${GEMINI_API_KEY10}
+      - LLAMA_API_KEY=${LLAMA_API_KEY}
+
+      - AZURE_SUNAI_API_KEY=${AZURE_SUNAI_API_KEY}
+      - AZURE_SUNAI_API_BASE=${AZURE_SUNAI_API_BASE}
+      - AZURE_SUNAI_API_VERSION=${AZURE_SUNAI_API_VERSION}
+
+      - AZURE_SWEDEN_API_KEY=${AZURE_SWEDEN_API_KEY}
+      - AZURE_SWEDEN_API_BASE=${AZURE_SWEDEN_API_BASE}
+      - AZURE_SWEDEN_API_VERSION=${AZURE_SWEDEN_API_VERSION}
+
+      - AZURE_WESTUS_API_KEY=${AZURE_WESTUS_API_KEY}
+      - AZURE_WESTUS_API_BASE=${AZURE_WESTUS_API_BASE}
+      - AZURE_WESTUS_API_VERSION=${AZURE_WESTUS_API_VERSION}
+
+      - AWS_CLAUDE__REGION=${AWS_CLAUDE__REGION}
+      - AWS_CLAUDE__ACCESS_KEY=${AWS_CLAUDE__ACCESS_KEY}
+      - AWS_CLAUDE__SECRET_ACCESS_KEY=${AWS_CLAUDE__SECRET_ACCESS_KEY}
+
+  minio:
+    image: minio/minio:latest
+    ports:
+      - "9000:9000"
+      - "9001:9001"
+    networks:
+      - educational-chatbot
+    environment:
+      - MINIO_ROOT_USER=${MINIO__ACCESS_KEY}
+      - MINIO_ROOT_PASSWORD=${MINIO__SECRET_KEY}
+    volumes:
+      - minio_data:/data
+    command: server /data --console-address ":9001"
+
+  file-upload:
+    build:
+      context: .
+      dockerfile: ./docker/Dockerfile.file_upload
+    ports:
+      - "8000:8000"
+    networks:
+      - educational-chatbot
+    volumes:
+      - type: bind
+        source: ./services/file_upload
+        target: /app/services/file_upload
+    depends_on:
+      - minio
+    environment:
+      - MINIO__ENDPOINT=${MINIO__ENDPOINT}
+      - MINIO__ACCESS_KEY=${MINIO__ACCESS_KEY}
+      - MINIO__SECRET_KEY=${MINIO__SECRET_KEY}
+      - MINIO__SECURE=${MINIO__SECURE}
+
+  generation:
+    build:
+      context: . 
+      dockerfile: ./docker/Dockerfile.generation 
+    ports:
+      - "3005:3005"
+    networks:
+      - educational-chatbot 
+    volumes:
+      - type: bind
+        source: ./services/generation
+        target: /app/services/generation 
+    depends_on:
+      - litellm_service
+    environment:
+      - MINIO__ENDPOINT=${MINIO__ENDPOINT}
+      - MINIO__ACCESS_KEY=${MINIO__ACCESS_KEY}
+      - MINIO__SECRET_KEY=${MINIO__SECRET_KEY}
+      - MINIO__SECURE=${MINIO__SECURE}
+      - LITELLM__URL=${LITELLM__URL}
+      - LITELLM__TOKEN=${LITELLM__TOKEN}
+
+volumes:
+  minio_data:

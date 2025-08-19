@@ -1,0 +1,29 @@
+[project]
+name = "file-upload"
+version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
+authors = [
+    { name = "vulh-1357", email = "le.hoang.vu@sun-asterisk.com" }
+]
+requires-python = ">=3.13"
+dependencies = [
+    "base",
+    "fastapi>=0.109.1",
+    "logger",
+    "python-multipart>=0.0.9",
+    "storage",
+    "uvicorn>=0.22.0",
+]
+
+[project.scripts]
+file-upload = "file_upload:main"
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[tool.uv.sources]
+base = { workspace = true }
+logger = { workspace = true }
+storage = { workspace = true }

@@ -1,0 +1,30 @@
+FROM python:3.13-slim
+
+WORKDIR /app
+
+RUN apt-get update && apt-get install -y \
+    gcc \
+    curl \
+    libreoffice \
+    && rm -rf /var/lib/apt/lists/*
+
+COPY --from=ghcr.io/astral-sh/uv:latest /uv /uvx /usr/local/bin/
+
+COPY pyproject.toml uv.lock ./
+
+COPY libs/ ./libs/
+
+COPY services/generation/pyproject.toml ./services/generation/
+COPY services/generation/README.md ./services/generation/
+RUN --mount=type=cache,target=/root/.cache/uv \
+    uv sync --no-install-project --no-dev
+RUN --mount=type=cache,target=/root/.cache/uv \
+    uv sync --no-dev --package generation
+
+COPY services/generation/src/ ./services/generation/src/
+
+WORKDIR /app/services/generation
+
+EXPOSE 3005
+
+CMD [ "uv", "run", "generation"]

@@ -1,0 +1,26 @@
+[project]
+name = "chatbot"
+version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
+authors = [
+    { name = "vulh-1357", email = "le.hoang.vu@sun-asterisk.com" }
+]
+requires-python = ">=3.13"
+dependencies = [
+    "base",
+    "langgraph>=0.6.5",
+    "lite-llm",
+    "python-dotenv>=1.1.1",
+]
+
+[project.scripts]
+chatbot = "chatbot:main"
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[tool.uv.sources]
+base = { workspace = true }
+lite-llm = { workspace = true }

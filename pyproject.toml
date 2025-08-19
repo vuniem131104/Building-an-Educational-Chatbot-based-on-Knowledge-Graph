@@ -1,0 +1,28 @@
+[project]
+name = "kltn"
+version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
+requires-python = ">=3.13"
+dependencies = []
+
+[tool.uv.workspace]
+members = [
+    "libs/lite_llm",
+    "libs/postgres_db",
+    "libs/open_search",
+    "services/chatbot",
+    "services/rag",
+    "libs/base",
+    "libs/logger",
+    "services/document",
+    "libs/storage",
+    "services/file_upload",
+    "services/generation",
+    "libs/graph_db",
+]
+
+[dependency-groups]
+dev = [
+    "pytest>=8.4.1",
+]

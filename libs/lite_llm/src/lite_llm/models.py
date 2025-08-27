@@ -35,8 +35,7 @@ class LiteLLMOutput(BaseModel):
     completion_tokens: int
     
 class LiteLLMEmbeddingInput(BaseModel):
-    model: str 
-    inputs: str
+    text: str
 
 class LiteLLMEmbeddingOutput(BaseModel):
     embedding: list[float]

@@ -146,9 +146,6 @@ Please create questions that:
 
 LEARNING_OUTCOMES_TEMPLATE = """
 The introduction of this lesson is:
-<introduction>
-{introduction}
-</introduction>
 
 Here are the specific learning outcomes that students should achieve from this lesson:
 <learning_outcomes>

@@ -34,7 +34,7 @@ class LiteLLMService(BaseService):
     def _async_client(self) -> httpx.AsyncClient:
         if not self.async_client or self.async_client.is_closed:
             self.async_client = httpx.AsyncClient(
-                timeout=httpx.Timeout(100.0, connect=15.0),
+                timeout=httpx.Timeout(150.0, connect=15.0),
                 limits=httpx.Limits(max_connections=200, max_keepalive_connections=40),
             )
         return self.async_client
@@ -43,28 +43,28 @@ class LiteLLMService(BaseService):
     def _client(self) -> httpx.Client:
         if not self.client or self.client.is_closed:
             self.client = httpx.Client(
+                timeout=httpx.Timeout(150.0, connect=15.0),
                 limits=httpx.Limits(max_connections=200, max_keepalive_connections=40),
             )
         return self.client
     
-    def _embedding_llm(
+    def embedding_llm(
         self, 
-        model: str,
-        inputs: str,
+        inputs: LiteLLMEmbeddingInput,
     ) -> LiteLLMEmbeddingOutput:
         """ Process the input and return the output.
 
         Args:
-            model (str): The model to use for processing.
-            inputs (str): The inputs to process.
+            inputs (LiteLLMEmbeddingInput): The inputs to process.
 
         Returns:
             LiteLLMEmbeddingOutput: The processed output.
         """
         
         payload = {
-            "model": model,
-            "input": inputs,
+            "model": self.litellm_setting.embedding_model,
+            "input": inputs.text,
+            "output_dimensionality": self.litellm_setting.dimension,
         }
         
         try:
@@ -83,8 +83,8 @@ class LiteLLMService(BaseService):
                     "Request failed with status code",
                     extra={
                         "status_code": response.status_code,
-                        "model": model,
-                        "inputs": inputs,
+                        "model": self.litellm_setting.embedding_model,
+                        "inputs": inputs.text,
                     }
                 )
                 return LiteLLMEmbeddingOutput(
@@ -95,36 +95,35 @@ class LiteLLMService(BaseService):
                 "An error occurred while processing the request",
                 extra={
                     "error": str(e),
-                    "inputs": inputs,
-                    "model": model,
+                    "inputs": inputs.text,
+                    "model": self.litellm_setting.embedding_model,
                 }
             )
             return LiteLLMEmbeddingOutput(
                 embedding=[],
             )
             
-    async def _embedding_llm_async(
+    async def embedding_llm_async(
         self, 
-        model: str,
-        inputs: str,
+        inputs: LiteLLMEmbeddingInput,
     ) -> LiteLLMEmbeddingOutput:
         """Asynchronously process the input and return the output.
 
         Args:
-            model (str): The model to use for processing.
-            inputs (str): The inputs to process.
+            inputs (LiteLLMEmbeddingInput): The inputs to process.
 
         Returns:
             LiteLLMEmbeddingOutput: The processed output.
         """
         
         payload = {
-            "model": model,
-            "input": inputs,
+            "model": self.litellm_setting.embedding_model,
+            "input": inputs.text,
+            "output_dimensionality": self.litellm_setting.dimension,
         }
         
         try:
-            response = self._async_client.post(
+            response = await self._async_client.post(
                 url=str(self.litellm_setting.url) + "v1/embeddings",
                 headers=self.headers,
                 json=payload,
@@ -139,8 +138,8 @@ class LiteLLMService(BaseService):
                     "Request failed with status code",
                     extra={
                         "status_code": response.status_code,
-                        "model": model,
-                        "inputs": inputs,
+                        "model": self.litellm_setting.embedding_model,
+                        "inputs": inputs.text,
                     }
                 )
                 return LiteLLMEmbeddingOutput(
@@ -151,8 +150,8 @@ class LiteLLMService(BaseService):
                 "An error occurred while processing the request",
                 extra={
                     "error": str(e),
-                    "inputs": inputs,
-                    "model": model,
+                    "inputs": inputs.text,
+                    "model": self.litellm_setting.embedding_model,
                 }
             )
             return LiteLLMEmbeddingOutput(
@@ -169,7 +168,7 @@ class LiteLLMService(BaseService):
         n: int,
         frequency_penalty: float,
         max_completion_tokens: int,
-        reasoning_effort: str | None = None,
+        reasoning_effort: str,
     ) -> LiteLLMOutput:
         """ Process the input and return the output.
 

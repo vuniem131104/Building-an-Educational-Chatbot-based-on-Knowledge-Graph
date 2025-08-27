@@ -1,4 +1,5 @@
-from __future__ import annotations 
+from __future__ import annotations
+import json 
 
 
 from storage.minio import MinioService
@@ -10,12 +11,12 @@ import os
 import io 
 from logger import get_logger
 
-from generation.domain.parser.docx import DOCXInput
-from generation.domain.parser.docx import DOCXService
 from generation.domain.parser.pdf import PDFInput
 from generation.domain.parser.pdf import PDFService
 from generation.domain.parser.pptx import PPTXInput 
 from generation.domain.parser.pptx import PPTXService
+from generation.domain.parser.concept_card_extractor import ConceptCardExtractorService
+from generation.domain.parser.concept_card_extractor import ConceptCardExtractorInput
 from generation.shared.settings import ParserSetting
 from generation.shared.models import FileType
 from generation.shared.utils import filter_files
@@ -40,13 +41,12 @@ class ParserService(BaseService):
     settings: ParserSetting
     
     @property
-    def docx_service(self) -> DOCXService:
-        """Get the DOCX service."""
-        return DOCXService(
+    def concept_card_extractor_service(self) -> ConceptCardExtractorService:
+        return ConceptCardExtractorService(
             litellm_service=self.litellm_service,
             settings=self.settings
         )
-        
+    
     @property
     def pdf_service(self) -> PDFService:
         """Get the PDF service."""
@@ -65,7 +65,6 @@ class ParserService(BaseService):
 
     async def process(self, inputs: ParserInput) -> ParserOutput:
         os.makedirs(self.settings.upload_folder_path, exist_ok=True)
-        os.makedirs(self.settings.image_folder_path, exist_ok=True)
         folder_path = f"{inputs.course_code}/tuan-{inputs.week_number}"
         os.makedirs(folder_path, exist_ok=True)
         try:
@@ -135,12 +134,7 @@ class ParserService(BaseService):
             
                 file_type = filename.split('.')[-1].lower()
             
-                if file_type == FileType.DOCX or file_type == FileType.DOC:
-                    docx_input = DOCXInput(file_path=file_path)
-                    output = await self.docx_service.process(docx_input)
-                    
-                
-                elif file_type == FileType.PDF:
+                if file_type == FileType.PDF:
                     pdf_input = PDFInput(file_path=file_path)
                     output = await self.pdf_service.process(pdf_input)
                     
@@ -161,6 +155,52 @@ class ParserService(BaseService):
                         )
                     )
                 
+            if self.minio_service.check_object_exists(
+                input=MinioInput(
+                    bucket_name=inputs.course_code,
+                    object_name=f"tuan-{inputs.week_number}/concept_cards.json"
+                )
+            ):
+                return ParserOutput(
+                    contents="\n".join(contents),
+                    course_code=inputs.course_code,
+                    week_number=inputs.week_number,
+                )
+                
+            concept_cards_output = await self.concept_card_extractor_service.process(
+                inputs=ConceptCardExtractorInput(
+                    contents="\n".join(contents),
+                    week_number=inputs.week_number,
+                    course_code=inputs.course_code
+                )
+            )
+            
+            concept_cards = concept_cards_output.concept_cards
+            
+            _ = self.minio_service.upload_data(
+                MinioInput(
+                    bucket_name=inputs.course_code,
+                    object_name=f"tuan-{inputs.week_number}/concept_cards.json",
+                    data=io.BytesIO(json.dumps([concept_card.model_dump() for concept_card in concept_cards], ensure_ascii=False).encode('utf-8'))
+                )
+            )
+            
+            _ = self.minio_service.upload_data(
+                input=MinioInput(
+                    bucket_name=inputs.course_code,
+                    object_name=f"tuan-{inputs.week_number}/summary.txt",
+                    data=io.BytesIO(concept_cards_output.lecture_summary.encode('utf-8'))
+                )
+            )
+            
+            _ = self.minio_service.upload_data(
+                input=MinioInput(
+                    bucket_name=inputs.course_code,
+                    object_name=f"tuan-{inputs.week_number}/objectives.json",
+                    data=io.BytesIO(json.dumps(concept_cards_output.outcomes, ensure_ascii=False).encode('utf-8'))
+                )
+            )
+
             return ParserOutput(
                 contents="\n".join(contents),
                 course_code=inputs.course_code,

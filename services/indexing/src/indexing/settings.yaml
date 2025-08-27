@@ -1,0 +1,15 @@
+parser:
+  upload_folder_path: app/files
+
+litellm:
+  model: "gemini-2.5-flash"
+  temperature: 0.0
+  top_p: 1.0
+  n: 1
+  frequency_penalty: 0.0
+  max_completion_tokens: 10000
+  dimension: 1536
+
+chunker:
+  max_token_per_chunk: 1000
+  min_token_per_chunk: 500

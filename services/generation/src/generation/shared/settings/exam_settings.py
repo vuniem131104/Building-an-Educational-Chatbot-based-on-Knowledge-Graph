@@ -11,3 +11,6 @@ class ExamGenerationSetting(BaseModel):
     frequency_penalty: float
     max_completion_tokens: int
     reasoning_effort: str
+    chroma_db: str 
+    collection: str
+    

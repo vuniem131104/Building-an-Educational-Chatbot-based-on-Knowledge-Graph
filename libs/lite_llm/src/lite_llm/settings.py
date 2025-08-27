@@ -14,3 +14,5 @@ class LiteLLMSetting(BaseModel):
     temperature: float
     top_p: float
     max_completion_tokens: int
+    dimension: int
+    embedding_model: str

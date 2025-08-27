@@ -20,15 +20,16 @@ def filter_files(files: list[str]) -> list[str]:
     Returns:
         list[str]: Filtered list of file names.
     """
-    valid_extensions = {'.pdf', '.docx', '.doc', '.pptx'}
+    valid_extensions = {'.pdf', '.pptx'}
     return [file for file in files if any(file.endswith(ext) for ext in valid_extensions)]
 
 
-def get_lecture_learning_outcomes(minio_service: MinioService, course_code: str) -> dict[str, Any]:
+def get_lecture_objectives(minio_service: MinioService, week_number: int, course_code: str) -> dict[str, Any]:
         """Retrieve learning outcomes for the lecture.
 
         Args:
             minio_service (MinioService): The Minio service instance.
+            week_number (int): The week number.
             course_code (str): The course code.
 
         Returns:
@@ -38,7 +39,7 @@ def get_lecture_learning_outcomes(minio_service: MinioService, course_code: str)
         is_exists = minio_service.check_object_exists(
             MinioInput(
                 bucket_name=course_code, 
-                object_name=f"{course_code}.json"
+                object_name=f"tuan-{week_number}/objectives.json"
             )
         )
         if not is_exists:
@@ -54,25 +55,10 @@ def get_lecture_learning_outcomes(minio_service: MinioService, course_code: str)
             minio_service.get_data_from_file(
                 MinioInput(
                     bucket_name=course_code, 
-                    object_name=f"{course_code}.json"
+                    object_name=f"tuan-{week_number}/objectives.json"
                 )
             )
         )
-    
-def get_week_learning_outcomes(week_number, learning_outcomes: dict[str, Any]) -> tuple[str, str]:
-    """Retrieve learning outcomes for the specific week.
-
-    Args:
-        week_number (int): The week number.
-        learning_outcomes (dict[str, Any]): The learning outcomes for the lecture.
-
-    Returns:
-        tuple[str, str]: The introduction and learning outcomes for the week.
-    """
-    lecture_infos = learning_outcomes.get('lecture_infos', [])
-    if not lecture_infos or len(lecture_infos) < week_number:
-        return "No introduction provided.", "No learning outcomes provided."
-    return lecture_infos[week_number - 1].get('introduction', ''), "\n".join(lecture_infos[week_number - 1].get('lecture_learning_outcomes', ["No learning outcomes provided."]))
 
 
 def get_previous_lectures(minio_service: MinioService, course_code: str, week_number: int) -> list[str]:

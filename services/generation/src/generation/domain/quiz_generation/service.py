@@ -1,11 +1,10 @@
 from __future__ import annotations
 
-import os 
 import shutil
 import io 
 import json
-from fastapi import UploadFile
 from base import BaseService
+from base import BaseModel
 from logger import get_logger
 from lite_llm import LiteLLMService
 from lite_llm import LiteLLMInput
@@ -18,13 +17,9 @@ from generation.domain.quiz_generation.prompts import LEARNING_OUTCOMES_TEMPLATE
 from generation.domain.quiz_generation.prompts import NUM_QUESTIONS_SECTION_TEMPLATE
 
 from generation.shared.models import GenerationType
-from generation.shared.models import GenerationBaseInput
-from generation.shared.models import GenerationBaseOutput
 from generation.shared.models import Questions
-from generation.shared.utils import filter_files
-from generation.shared.utils import get_lecture_learning_outcomes
 from generation.shared.utils import get_previous_lectures
-from generation.shared.utils import get_week_learning_outcomes
+from generation.shared.utils import get_lecture_objectives
 from generation.shared.settings import QuizGenerationSetting
 from storage.minio import MinioInput
 from storage.minio import MinioService
@@ -33,13 +28,20 @@ from storage.minio import MinioService
 logger = get_logger(__name__)
 
 
-class QuizGenerationInput(GenerationBaseInput):
+class QuizGenerationInput(BaseModel):
     week_number: int 
+    course_code: str
+    generation_type: GenerationType = GenerationType.MULTIPLE_CHOICE
+    num_questions: int
+    num_multiple_choice: int = 0
+    num_essay: int = 0
     contents: str
 
-class QuizGenerationOutput(GenerationBaseOutput):
-    week_number: int  
-    
+class QuizGenerationOutput(BaseModel):
+    week_number: int
+    course_code: str
+    questions: Questions
+
 
 class QuizGenerationService(BaseService):
     
@@ -92,20 +94,15 @@ class QuizGenerationService(BaseService):
                 week_number=inputs.week_number
             )   
             
-            course_learning_outcomes = get_lecture_learning_outcomes(
-                minio_service=self.minio_service,
-                course_code=inputs.course_code,
-            )
-            
-            introduction, week_learning_outcomes = get_week_learning_outcomes(
+            week_learning_outcomes = get_lecture_objectives(
+                self.minio_service,
                 week_number=inputs.week_number,
-                learning_outcomes=course_learning_outcomes,
+                course_code=inputs.course_code
             )
             
             logger.info(
                 'Week learning outcomes retrieved',
                 extra={
-                    'introduction': introduction,
                     'week_learning_outcomes': week_learning_outcomes,
                 }
             )
@@ -124,8 +121,7 @@ class QuizGenerationService(BaseService):
                             content=USER_PROMPT.format(
                                 content=inputs.contents,
                                 learning_outcomes_section=LEARNING_OUTCOMES_TEMPLATE.format(
-                                    introduction=introduction,
-                                    learning_outcomes=week_learning_outcomes,
+                                    learning_outcomes='\n'.join(week_learning_outcomes),
                                 ),
                                 previous_lessons_section="" if not previous_lectures else
                                 PREVIOUS_LESSONS_TEMPLATE.format(

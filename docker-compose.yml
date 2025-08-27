@@ -98,5 +98,47 @@ services:
       - LITELLM__URL=${LITELLM__URL}
       - LITELLM__TOKEN=${LITELLM__TOKEN}
 
+  neo4j:
+    image: neo4j:5.22.0-bullseye
+    ports:
+      - 17474:7474
+      - 17687:7687
+    volumes:
+      - ./data/neo4j:/data
+      - ./logs/neo4j:/logs
+      - ./conf/neo4j:/conf
+      - ./plugins/neo4j:/plugins
+    environment:
+      - NEO4J_AUTH=${NEO4J__USERNAME}/${NEO4J__PASSWORD}
+      - NEO4J_PLUGINS=["graph-data-science", "apoc"]
+      - NEO4J_dbms_memory_heap_initial__size=3g
+      - NEO4J_dbms_memory_heap_max__size=3g
+      - NEO4J_dbms_memory_pagecache_size=1g
+      - NEO4J_dbms_memory_transaction_total_max=1g
+      - NEO4J_db_transaction_timeout=60s
+      - NEO4J_db_transaction_concurrent_maximum=20
+      - NEO4J_db_transaction_bookmark__ready__timeout=10s
+    deploy:
+      resources:
+        limits:
+          memory: 6G
+        reservations:
+          memory: 2G
+    restart: always
+    networks:
+      - uet-codecamp
+
+  postgres:
+    image: postgres:17.0-alpine
+    restart: always
+    ports:
+      - 15432:5432
+    environment:
+      - POSTGRES_USER=${POSTGRES__USER}
+      - POSTGRES_PASSWORD=${POSTGRES__PASSWORD}
+      - POSTGRES_DB=${POSTGRES__DB}
+    volumes:
+      - ./data/pg_history:/var/lib/postgresql/data
+      
 volumes:
   minio_data:

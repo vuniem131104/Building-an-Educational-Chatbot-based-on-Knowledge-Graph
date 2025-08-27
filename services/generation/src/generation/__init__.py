@@ -8,7 +8,8 @@ from logger import setup_logging
 from lite_llm import LiteLLMService
 from storage.minio import MinioService
 
-from generation.api.routers import main_router
+from generation.api.routers import quiz_router
+from generation.api.routers import exam_router
 from generation.shared.utils import get_settings
 
 
@@ -37,7 +38,8 @@ app = FastAPI(
     lifespan=lifespan,
 )
 
-app.include_router(main_router)
+app.include_router(quiz_router)
+app.include_router(exam_router)
 
 def main():
     uvicorn.run(

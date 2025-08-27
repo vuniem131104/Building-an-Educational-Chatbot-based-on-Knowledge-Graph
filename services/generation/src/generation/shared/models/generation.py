@@ -27,15 +27,3 @@ class AssessmentType(str, Enum):
     QUIZ = "quiz"
     EXAM = "exam"
     
-    
-class GenerationBaseInput(BaseModel):
-    generation_type: GenerationType
-    num_questions: int
-    num_multiple_choice: int | None = None
-    num_essay: int | None = None
-    course_code: str
-    
-
-class GenerationBaseOutput(BaseModel):
-    questions: Questions
-    course_code: str

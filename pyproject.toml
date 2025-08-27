@@ -20,6 +20,7 @@ members = [
     "services/file_upload",
     "services/generation",
     "libs/graph_db",
+    "services/indexing",
 ]
 
 [dependency-groups]

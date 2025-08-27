@@ -17,11 +17,6 @@ quiz_validator:
 
 parser:
   upload_folder_path: "app/files"
-  image_folder_path: "app/images"
-  pdf_settings:
-    threshold: 1.0
-    max_concurrent_tasks: 5
-    dpi: 300
   image_descriptor:
     model: "gemini-2.5-flash"
     temperature: 0.0
@@ -29,24 +24,14 @@ parser:
     n: 1
     frequency_penalty: 0.0
     max_completion_tokens: 2048
-
-lecture_summarizer:
-  model: "gemini-2.5-flash"
-  temperature: 0.0
-  top_p: 1.0
-  n: 1
-  frequency_penalty: 0.0
-  max_completion_tokens: 2048
-  reasoning_effort: "disable"
-
-course_extractor: 
-  upload_folder_path: "app/files"
-  model: "gemini-2.5-flash"
-  temperature: 0.0
-  top_p: 1.0
-  n: 1
-  frequency_penalty: 0.0
-  max_completion_tokens: 10000
+  concept_card_extractor:
+    model: "gemini-2.5-flash"
+    temperature: 0.0
+    top_p: 1.0
+    n: 1
+    frequency_penalty: 0.0
+    max_completion_tokens: 8192
+    reasoning_effort: "disable"
 
 exam:
   max_concurrent_tasks: 5 
@@ -57,6 +42,8 @@ exam:
   frequency_penalty: 0.0
   max_completion_tokens: 50000
   reasoning_effort: "medium"
+  chroma_db: /home/vuiem/KLTN/chroma_db
+  collection: kltn_test
 
 litellm:
   model: "gemini-2.5-flash"
@@ -66,3 +53,5 @@ litellm:
   frequency_penalty: 0.0
   max_completion_tokens: 10000
   reasoning_effort: "disable"
+  dimension: 1536 
+  embedding_model: "gemini-embedding"

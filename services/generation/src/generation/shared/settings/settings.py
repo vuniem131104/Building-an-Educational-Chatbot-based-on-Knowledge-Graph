@@ -10,8 +10,6 @@ from lite_llm import LiteLLMSetting
 from storage.minio import MinioSetting
 from .quiz_settings import QuizGenerationSetting
 from .exam_settings import ExamGenerationSetting
-from .course_extractor import CourseExtractorSetting
-from .lecture_summarizer import LectureSummarizerSetting
 from .quiz_validator import QuizValidatorSetting
 from .parser import ParserSetting
 
@@ -19,14 +17,12 @@ load_dotenv()
 
 
 class Settings(BaseSettings):
-    
-    lecture_summarizer: LectureSummarizerSetting
+
     parser: ParserSetting
     quiz: QuizGenerationSetting
     exam: ExamGenerationSetting
     litellm: LiteLLMSetting
     minio: MinioSetting
-    course_extractor: CourseExtractorSetting
     
     quiz_validator: QuizValidatorSetting
 

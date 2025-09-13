@@ -1,0 +1,72 @@
+{
+  "Support Vector Machine (SVM)": [
+    "Using SVM without proper data scaling, which can cause features with larger values to dominate the distance calculations.",
+    "Selecting an inappropriate kernel function (e.g., using a linear kernel for non-linear data).",
+    "Struggling with large or noisy datasets, as it can be computationally expensive and sensitive to outliers.",
+    "Choosing the wrong values for hyperparameters like C (penalty for misclassification) and gamma (kernel width).",
+    "Misclassifying data when there's a significant class imbalance."
+  ],
+  "Decision Trees": [
+    "Overfitting the training data, leading to a complex tree that doesn't generalize well.",
+    "Not performing pruning or cross-validation to control for overfitting.",
+    "Ignoring imbalanced data, which can bias the tree towards the majority class.",
+    "Choosing the wrong splitting criterion (e.g., Gini impurity or entropy) for the given problem.",
+    "Being sensitive to small changes in the data, which can significantly alter the tree structure."
+  ],
+  "Naive Bayes": [
+    "Violating the core assumption of feature independence, which is rarely true in real-world data.",
+    "Encountering the 'zero probability problem' when a feature-class combination doesn't appear in the training data (can be addressed with smoothing).",
+    "Assuming a normal distribution for continuous features, which may not hold true (especially in Gaussian Naive Bayes).",
+    "Performing poorly with imbalanced datasets, often favoring the majority class.",
+    "Being sensitive to irrelevant features that can affect model accuracy."
+  ],
+  "K-Means Clustering": [
+    "Incorrectly selecting the number of clusters (k) without using methods like the Elbow Method or Silhouette score.",
+    "Failing to normalize or scale the data, causing features with larger scales to dominate the clustering.",
+    "Using random initialization, which can lead to suboptimal or unstable results (k-means++ helps mitigate this).",
+    "Using k-means when clusters are not spherical, equally sized, or have varying densities.",
+    "Ignoring the evaluation of clustering results, as it's an unsupervised method without ground truth."
+  ],
+  "Linear Regression": [
+    "Applying it to a non-linear relationship without transformation.",
+    "Ignoring the presence of outliers, which can heavily influence the model's coefficients.",
+    "Neglecting multicollinearity (high correlation between independent variables), leading to unstable coefficients.",
+    "Confusing correlation with causation, a fundamental statistical error.",
+    "Extrapolating too far beyond the range of the training data, leading to unreliable predictions."
+  ],
+  "Logistic Regression": [
+    "Ignoring the assumptions, such as the linearity of the log-odds.",
+    "Misinterpreting the coefficients as linear relationships instead of changes in the log-odds or odds ratios.",
+"Failing to address multicollinearity, which can result in unstable coefficients.",
+    "Not scaling features, which can lead to biased model parameters.",
+    "Using incorrect or insufficient model evaluation metrics (e.g., just accuracy on an imbalanced set)."
+  ],
+  "Random Forest": [
+    "Using a training set that is too small, which can limit the diversity of the individual decision trees.",
+    "Not tuning hyperparameters, which can lead to poor performance.",
+    "Including duplicate or highly correlated features, which can skew feature importance scores.",
+    "Using it inappropriately for certain problem types, like time-series extrapolation.",
+    "Ignoring sparse data, which can adversely affect model performance."
+  ],
+  "Neural Networks": [
+    "Choosing an inappropriate architecture (too simple or too complex), leading to underfitting or overfitting.",
+    "Ignoring data quality issues, such as unbalanced classes, missing values, and outliers.",
+    "Using the wrong or default hyperparameters (e.g., learning rate, batch size).",
+    "Not normalizing or scaling input features properly.",
+    "Failing to evaluate the model correctly on unseen data using appropriate metrics."
+  ],
+  "Ensemble Methods (General)": [
+    "Failing to select diverse and appropriate 'weak learners' for the problem.",
+    "Incurring high computational costs, especially with large datasets.",
+    "Introducing added complexity, making the model harder to interpret.",
+    "Overfitting, especially in boosting methods if hyperparameters aren't tuned correctly.",
+    "Using a high number of base classifiers without considering the trade-off with computational time."
+  ],
+  "Gradient Boosting": [
+    "Overfitting the model by building too many trees or not tuning hyperparameters like the learning rate.",
+    "Experiencing longer training times compared to methods like Random Forest due to its sequential nature.",
+    "Being sensitive to hyperparameter tuning, requiring careful selection to avoid poor performance.",
+    "Failing to handle noisy data well, which can increase the risk of overfitting.",
+    "Not using adequate regularization techniques to prevent overfitting."
+  ]
+}

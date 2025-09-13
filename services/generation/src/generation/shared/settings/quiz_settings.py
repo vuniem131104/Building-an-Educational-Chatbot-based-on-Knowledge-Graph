@@ -1,12 +1,17 @@
 from __future__ import annotations 
 
 from base import BaseModel
+from .concept_card import ConceptCardExtractorSetting
+from .topic_generator import TopicGeneratorSetting
+from .question_answer_generator import QuestionAnswerGeneratorSetting
+from .explanation import ExplanationGeneratorSetting
+from .distractors import DistractorsGeneratorSetting
 
 class QuizGenerationSetting(BaseModel):
-    model: str
-    temperature: float
-    top_p: float
-    n: int
-    frequency_penalty: float
-    max_completion_tokens: int
-    reasoning_effort: str
+    concept_card_extractor: ConceptCardExtractorSetting
+    topic_generator: TopicGeneratorSetting
+    question_answer_generator: QuestionAnswerGeneratorSetting
+    explanation_generator: ExplanationGeneratorSetting
+    distractors_generator: DistractorsGeneratorSetting
+    vector_db_path: str
+    max_concurrent_tasks: int

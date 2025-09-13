@@ -429,7 +429,8 @@ class LiteLLMService(BaseService):
         if reasoning_effort:
             payload["reasoning_effort"] = reasoning_effort
         else:
-            payload["reasoning_effort"] = "disable"
+            if model.startswith("gemini"):
+                payload["reasoning_effort"] = "disable"
 
         if response_format:
             payload["response_format"] = {
@@ -465,29 +466,63 @@ class LiteLLMService(BaseService):
         for message in messages:
             built_message: dict[str, Any] = {}
             if message.image_url:
-                built_message = {
-                "role": message.role.value,
-                "content": [
-                    {
-                        "type": "image_url",
-                        "image_url": {
-                            "url": message.image_url
-                        }
-                    }
-                ]
-            }
-            elif message.file_url:
-                built_message = {
+                if message.content:
+                    built_message = {
                     "role": message.role.value,
                     "content": [
                         {
-                            "type": "file",
-                            "file": {
-                                "file_data": message.file_url
+                            "type": "text",
+                            "text": message.content
+                        },
+                        {
+                            "type": "image_url",
+                            "image_url": {
+                                "url": message.image_url
                             }
                         }
                     ]
                 }
+                else:
+                    built_message = {
+                        "role": message.role.value,
+                        "content": [
+                            {
+                                "type": "image_url",
+                                "image_url": {
+                                    "url": message.image_url
+                                }
+                            }
+                        ]
+                    }
+            elif message.file_url:
+                if message.content:
+                    built_message = {
+                        "role": message.role.value,
+                        "content": [
+                            {
+                                "type": "text",
+                                "text": message.content
+                            },
+                            {
+                                "type": "file",
+                                "file": {
+                                    "file_data": message.file_url
+                                }
+                            }
+                        ]
+                    }
+                else:
+                    built_message = {
+                        "role": message.role.value,
+                        "content": [
+                            {
+                                "type": "file",
+                                "file": {
+                                    "file_data": message.file_url
+                                }
+                            }
+                        ]
+                    }
             else:
                 built_message = {
                     "role": message.role.value,

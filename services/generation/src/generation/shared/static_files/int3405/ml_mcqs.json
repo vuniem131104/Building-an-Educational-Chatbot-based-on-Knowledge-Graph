@@ -1,0 +1,1652 @@
+[
+    {
+        "question": "What is the primary goal of machine learning?",
+        "options": {
+            "A": "To manually program computers",
+            "B": "To enable systems to learn from data",
+            "C": "To simulate human intelligence",
+            "D": "To enhance computer hardware speed"
+        },
+        "answer": "To enable systems to learn from data",
+        "explanation": "Machine learning builds models allowing systems to learn from data and make decisions without explicit programming, improving performance over time."
+    },
+    {
+        "question": "Which type of data is used in supervised learning?",
+        "options": {
+            "A": "Unlabeled data",
+            "B": "Labeled data",
+            "C": "Both",
+            "D": "Neither"
+        },
+        "answer": "Labeled data",
+        "explanation": "Supervised learning algorithms use labeled data for training, where both input and output variables are provided for learning."
+    },
+    {
+        "question": "Which of the following is NOT a common machine learning task?",
+        "options": {
+            "A": "Classification",
+            "B": "Regression",
+            "C": "Sorting",
+            "D": "Clustering"
+        },
+        "answer": "Sorting",
+        "explanation": "Sorting is not considered a machine learning task, whereas classification, regression, and clustering are standard machine learning tasks."
+    },
+    {
+        "question": "Which algorithm is commonly used for supervised learning?",
+        "options": {
+            "A": "K-Means Clustering",
+            "B": "Linear Regression",
+            "C": "Principal Component Analysis",
+            "D": "DBSCAN"
+        },
+        "answer": "Linear Regression",
+        "explanation": "Linear Regression is a common supervised learning algorithm that uses labeled data to make predictions."
+    },
+    {
+        "question": "What is a key difference between supervised and unsupervised learning?",
+        "options": {
+            "A": "Supervised learning uses labeled data",
+            "B": "Unsupervised learning requires labeled data",
+            "C": "Supervised learning is faster",
+            "D": "Unsupervised learning predicts labels"
+        },
+        "answer": "Supervised learning uses labeled data",
+        "explanation": "The key difference is that supervised learning relies on labeled data, while unsupervised learning works with unlabeled data to find patterns."
+    },
+    {
+        "question": "What does 'overfitting' refer to in machine learning?",
+        "options": {
+            "A": "The model performs well on new data",
+            "B": "The model fits the training data too well",
+            "C": "The model has insufficient data",
+            "D": "The model uses too few features"
+        },
+        "answer": "The model fits the training data too well",
+        "explanation": "Overfitting occurs when a model learns the details of the training data too well, including noise, resulting in poor generalization to new data."
+    },
+    {
+        "question": "In which scenario would you apply machine learning?",
+        "options": {
+            "A": "To create a simple rules-based system",
+            "B": "To develop predictions from historical data",
+            "C": "To manually program every output",
+            "D": "To increase computer speed"
+        },
+        "answer": "To develop predictions from historical data",
+        "explanation": "Machine learning is commonly applied in scenarios where predictions need to be made based on patterns from historical data."
+    },
+    {
+        "question": "Which function from the sklearn library is used to split a dataset?",
+        "options": {
+            "A": "train_test_split()",
+            "B": "split_data()",
+            "C": "dataset_split()",
+            "D": "data_train_test()"
+        },
+        "answer": "train_test_split()",
+        "explanation": "The train_test_split() function in sklearn is commonly used to split a dataset into training and testing sets for model evaluation."
+    },
+    {
+        "question": "A model performs well on training data but poorly on test data. Why?",
+        "options": {
+            "A": "Underfitting",
+            "B": "Overfitting",
+            "C": "Insufficient data",
+            "D": "Testing data errors"
+        },
+        "answer": "Overfitting",
+        "explanation": "Overfitting happens when the model learns details specific to the training data, causing poor generalization to unseen test data."
+    },
+    {
+        "question": "Which of the following is an example of supervised learning?",
+        "options": {
+            "A": "K-Means Clustering",
+            "B": "Linear Regression",
+            "C": "Principal Component Analysis",
+            "D": "DBSCAN"
+        },
+        "answer": "Linear Regression",
+        "explanation": "Supervised learning models, like Linear Regression, use labeled data for training to predict outcomes based on input features."
+    },
+    {
+        "question": "What type of learning is K-Means Clustering an example of?",
+        "options": {
+            "A": "Supervised Learning",
+            "B": "Unsupervised Learning",
+            "C": "Reinforcement Learning",
+            "D": "Semi-supervised Learning"
+        },
+        "answer": "Unsupervised Learning",
+        "explanation": "K-Means is an unsupervised learning algorithm that clusters data points based on similarity without labeled data."
+    },
+    {
+        "question": "Which type of machine learning involves learning from labeled data?",
+        "options": {
+            "A": "Unsupervised Learning",
+            "B": "Supervised Learning",
+            "C": "Reinforcement Learning",
+            "D": "None of the above"
+        },
+        "answer": "Supervised Learning",
+        "explanation": "Supervised learning relies on labeled data, where both input and output variables are provided for the model to learn and make predictions."
+    },
+    {
+        "question": "Which of the following is an example of unsupervised learning?",
+        "options": {
+            "A": "Decision Trees",
+            "B": "Linear Regression",
+            "C": "Principal Component Analysis",
+            "D": "Logistic Regression"
+        },
+        "answer": "Principal Component Analysis",
+        "explanation": "Unsupervised learning algorithms, like Principal Component Analysis (PCA), work without labeled data to identify patterns or structures."
+    },
+    {
+        "question": "Which learning paradigm aims to maximize a reward signal through exploration and exploitation?",
+        "options": {
+            "A": "Supervised Learning",
+            "B": "Unsupervised Learning",
+            "C": "Reinforcement Learning",
+            "D": "Semi-supervised Learning"
+        },
+        "answer": "Reinforcement Learning",
+        "explanation": "Reinforcement learning involves training an agent to make sequences of decisions to maximize a cumulative reward, learning through trial and error."
+    },
+    {
+        "question": "What type of learning is used when a model learns from both labeled and unlabeled data?",
+        "options": {
+            "A": "Supervised Learning",
+            "B": "Unsupervised Learning",
+            "C": "Reinforcement Learning",
+            "D": "Semi-supervised Learning"
+        },
+        "answer": "Semi-supervised Learning",
+        "explanation": "Semi-supervised learning is a hybrid approach where a model learns from both labeled and unlabeled data to improve accuracy."
+    },
+    {
+        "question": "What distinguishes reinforcement learning from other learning paradigms?",
+        "options": {
+            "A": "The use of labeled data",
+            "B": "Learning from unlabeled data",
+            "C": "Learning through rewards and penalties",
+            "D": "None of the above"
+        },
+        "answer": "Learning through rewards and penalties",
+        "explanation": "Reinforcement learning is characterized by the use of rewards and penalties to guide the learning process of an agent over time."
+    },
+    {
+        "question": "Which function in Python can classify data using k-nearest neighbors (KNN)?",
+        "options": {
+            "A": "knn_classifier()",
+            "B": "KNeighborsClassifier()",
+            "C": "classify_neighbors()",
+            "D": "knn_predict()"
+        },
+        "answer": "KNeighborsClassifier()",
+        "explanation": "The KNeighborsClassifier() function from sklearn is used to classify data based on the K-nearest neighbors algorithm."
+    },
+    {
+        "question": "If a supervised learning model performs poorly on both training and testing sets, what is the likely issue?",
+        "options": {
+            "A": "Overfitting",
+            "B": "Underfitting",
+            "C": "Data errors",
+            "D": "Model complexity"
+        },
+        "answer": "Underfitting",
+        "explanation": "Underfitting occurs when a model is too simple and cannot capture the underlying structure of the data, leading to poor performance on both training and testing sets."
+    },
+    {
+        "question": "In supervised learning, what type of data is used to train the model?",
+        "options": {
+            "A": "Labeled data",
+            "B": "Unlabeled data",
+            "C": "Random data",
+            "D": "Noise data"
+        },
+        "answer": "Labeled data",
+        "explanation": "Supervised learning uses labeled data where both input and output variables are provided for training the model."
+    },
+    {
+        "question": "Which of the following is an example of a supervised learning algorithm?",
+        "options": {
+            "A": "K-Means",
+            "B": "Linear Regression",
+            "C": "PCA",
+            "D": "DBSCAN"
+        },
+        "answer": "Linear Regression",
+        "explanation": "Linear Regression is a supervised learning algorithm that makes predictions based on labeled data."
+    },
+    {
+        "question": "What is the key feature of supervised learning?",
+        "options": {
+            "A": "It uses only input data",
+            "B": "It uses labeled data",
+            "C": "It doesn't require data",
+            "D": "It uses noise data"
+        },
+        "answer": "It uses labeled data",
+        "explanation": "Supervised learning relies on labeled data to train the model, providing both input and output information."
+    },
+    {
+        "question": "What is the main goal of supervised learning?",
+        "options": {
+            "A": "To find patterns in unlabeled data",
+            "B": "To train a model using labeled data",
+            "C": "To enhance computer hardware",
+            "D": "To split data sets"
+        },
+        "answer": "To train a model using labeled data",
+        "explanation": "The goal of supervised learning is to train models using labeled data to predict outcomes based on input features."
+    },
+    {
+        "question": "Which of the following tasks is an example of classification in supervised learning?",
+        "options": {
+            "A": "Predicting house prices",
+            "B": "Identifying email spam",
+            "C": "Forecasting temperature",
+            "D": "Clustering similar items"
+        },
+        "answer": "Identifying email spam",
+        "explanation": "Classification tasks in supervised learning involve assigning data to predefined categories, such as identifying whether an email is spam or not."
+    },
+    {
+        "question": "What is the difference between classification and regression in supervised learning?",
+        "options": {
+            "A": "Classification predicts continuous values",
+            "B": "Regression predicts categorical labels",
+            "C": "Classification predicts labels",
+            "D": "Regression uses unlabeled data"
+        },
+        "answer": "Classification predicts labels",
+        "explanation": "In supervised learning, classification predicts categorical labels, while regression predicts continuous values."
+    },
+    {
+        "question": "Which function in Python is used for implementing linear regression in sklearn?",
+        "options": {
+            "A": "LinearRegression()",
+            "B": "lin_reg()",
+            "C": "linear_model()",
+            "D": "regression_fit()"
+        },
+        "answer": "LinearRegression()",
+        "explanation": "The LinearRegression() function in sklearn is used to implement linear regression, a supervised learning technique for predicting continuous values."
+    },
+    {
+        "question": "How can you calculate the accuracy of a classification model in sklearn?",
+        "options": {
+            "A": "accuracy_score()",
+            "B": "calc_accuracy()",
+            "C": "model_accuracy()",
+            "D": "predict_accuracy()"
+        },
+        "answer": "accuracy_score()",
+        "explanation": "The accuracy_score() function in sklearn is used to calculate the accuracy of a classification model by comparing predicted labels with actual labels."
+    },
+    {
+        "question": "Which method can be used to cross-validate a model in supervised learning using sklearn?",
+        "options": {
+            "A": "cross_val_score()",
+            "B": "validate_model()",
+            "C": "cross_validate()",
+            "D": "k_fold_score()"
+        },
+        "answer": "cross_val_score()",
+        "explanation": "The cross_val_score() function in sklearn is used for cross-validating a supervised learning model, helping to assess its performance on different data subsets."
+    },
+    {
+        "question": "A classification model performs well on training data but poorly on test data. What is the issue?",
+        "options": {
+            "A": "Overfitting",
+            "B": "Underfitting",
+            "C": "Data imbalance",
+            "D": "Test data errors"
+        },
+        "answer": "Overfitting",
+        "explanation": "Overfitting occurs when a model learns the training data too well, including noise, leading to poor performance on unseen test data."
+    },
+    {
+        "question": "A regression model shows very low variance but high bias. What is the likely problem?",
+        "options": {
+            "A": "Overfitting",
+            "B": "Underfitting",
+            "C": "Data imbalance",
+            "D": "High dimensionality"
+        },
+        "answer": "Underfitting",
+        "explanation": "High bias and low variance indicate underfitting, where the model is too simple to capture the underlying patterns in the data."
+    },
+    {
+        "question": "When using cross-validation, the model performs poorly on all folds. What could be the cause?",
+        "options": {
+            "A": "Overfitting",
+            "B": "Underfitting",
+            "C": "Poor model selection",
+            "D": "Insufficient data"
+        },
+        "answer": "Underfitting",
+        "explanation": "When a model performs poorly on all folds in cross-validation, it is likely underfitting, meaning it cannot capture the patterns in the training data."
+    },
+    {
+        "question": "What is the primary goal of unsupervised learning?",
+        "options": {
+            "A": "To label data",
+            "B": "To classify data",
+            "C": "To find patterns in unlabeled data",
+            "D": "To split data"
+        },
+        "answer": "To find patterns in unlabeled data",
+        "explanation": "Unsupervised learning focuses on identifying hidden patterns or structures in data without labeled outcomes."
+    },
+    {
+        "question": "Which of the following is an example of unsupervised learning?",
+        "options": {
+            "A": "Decision Trees",
+            "B": "K-Means Clustering",
+            "C": "Linear Regression",
+            "D": "Logistic Regression"
+        },
+        "answer": "K-Means Clustering",
+        "explanation": "K-Means Clustering is a common unsupervised learning algorithm used for partitioning data into clusters based on similarity."
+    },
+    {
+        "question": "What type of data does unsupervised learning work with?",
+        "options": {
+            "A": "Labeled data",
+            "B": "Unlabeled data",
+            "C": "Both labeled and unlabeled data",
+            "D": "Noise data"
+        },
+        "answer": "Unlabeled data",
+        "explanation": "Unsupervised learning works with unlabeled data, aiming to find structure or patterns without predefined outcomes."
+    },
+    {
+        "question": "Which task is commonly solved by unsupervised learning?",
+        "options": {
+            "A": "Classification",
+            "B": "Regression",
+            "C": "Clustering",
+            "D": "Time series forecasting"
+        },
+        "answer": "Clustering",
+        "explanation": "Unsupervised learning is commonly used for clustering, a task that groups data points based on similarity without prior labels."
+    },
+    {
+        "question": "Which of the following methods is used for dimensionality reduction in unsupervised learning?",
+        "options": {
+            "A": "K-Means Clustering",
+            "B": "Principal Component Analysis (PCA)",
+            "C": "Logistic Regression",
+            "D": "Support Vector Machines (SVM)"
+        },
+        "answer": "Principal Component Analysis (PCA)",
+        "explanation": "PCA is an unsupervised technique used for dimensionality reduction, helping reduce the number of features while retaining significant patterns."
+    },
+    {
+        "question": "What differentiates hierarchical clustering from K-Means clustering?",
+        "options": {
+            "A": "K-Means is faster",
+            "B": "Hierarchical clustering doesn't require the number of clusters to be specified",
+            "C": "Hierarchical clustering is always more accurate",
+            "D": "K-Means works better on large datasets"
+        },
+        "answer": "Hierarchical clustering doesn't require the number of clusters to be specified",
+        "explanation": "Hierarchical clustering does not require the number of clusters to be predefined, whereas K-Means does. Hierarchical clustering builds a tree-like structure of clusters."
+    },
+    {
+        "question": "Which function in sklearn is used to implement K-Means clustering?",
+        "options": {
+            "A": "KMeansClustering()",
+            "B": "KMeans()",
+            "C": "ClusteringK()",
+            "D": "cluster_KMeans()"
+        },
+        "answer": "KMeans()",
+        "explanation": "The KMeans() function in sklearn is used to perform K-Means clustering, which partitions data into clusters based on distance from cluster centroids."
+    },
+    {
+        "question": "Which Python library can be used to perform clustering with DBSCAN?",
+        "options": {
+            "A": "sklearn",
+            "B": "numpy",
+            "C": "pandas",
+            "D": "matplotlib"
+        },
+        "answer": "sklearn",
+        "explanation": "The sklearn library provides an implementation of the DBSCAN algorithm for clustering, a density-based unsupervised learning technique."
+    },
+    {
+        "question": "How can you visualize the clusters generated by K-Means in Python using matplotlib?",
+        "options": {
+            "A": "plot_clusters()",
+            "B": "plt.scatter()",
+            "C": "cluster_plot()",
+            "D": "plot_kmeans()"
+        },
+        "answer": "plt.scatter()",
+        "explanation": "The plt.scatter() function in matplotlib can be used to visualize the clusters formed by the K-Means algorithm by plotting the data points in a scatter plot."
+    },
+    {
+        "question": "A K-Means clustering model creates uneven-sized clusters. What might be the issue?",
+        "options": {
+            "A": "Model overfitting",
+            "B": "Data distribution",
+            "C": "Cluster initialization",
+            "D": "Lack of data"
+        },
+        "answer": "Data distribution",
+        "explanation": "Uneven cluster sizes can occur due to the natural distribution of the data. K-Means assumes clusters of similar sizes and density."
+    },
+    {
+        "question": "A DBSCAN clustering model fails to cluster some points. What could be the reason?",
+        "options": {
+            "A": "Points are too close",
+            "B": "High density parameter",
+            "C": "Noise in the data",
+            "D": "Wrong clustering algorithm"
+        },
+        "answer": "Noise in the data",
+        "explanation": "DBSCAN may fail to cluster certain points if they are considered noise, which are data points that don\u2019t fit into any cluster based on the density requirements."
+    },
+    {
+        "question": "K-Means clustering results change with different initializations. What could help resolve this?",
+        "options": {
+            "A": "Random state initialization",
+            "B": "Lower number of clusters",
+            "C": "Higher number of features",
+            "D": "Scaling the data"
+        },
+        "answer": "Random state initialization",
+        "explanation": "Random state initialization can help achieve consistent results by ensuring the initial cluster centroids are the same across different runs of the algorithm."
+    },
+    {
+        "question": "What is the primary goal of regression in machine learning?",
+        "options": {
+            "A": "To classify data",
+            "B": "To predict continuous values",
+            "C": "To cluster data",
+            "D": "To reduce dimensionality"
+        },
+        "answer": "To predict continuous values",
+        "explanation": "Regression models in machine learning are used to predict continuous values based on input data."
+    },
+    {
+        "question": "Which of the following is an example of a linear regression problem?",
+        "options": {
+            "A": "Predicting the probability of a user clicking on an ad",
+            "B": "Predicting house prices",
+            "C": "Classifying emails",
+            "D": "Detecting fraudulent transactions"
+        },
+        "answer": "Predicting house prices",
+        "explanation": "Linear regression is typically used for predicting continuous values like house prices, based on input variables."
+    },
+    {
+        "question": "What is the purpose of the cost function in linear regression?",
+        "options": {
+            "A": "To find clusters in data",
+            "B": "To minimize the error between predicted and actual values",
+            "C": "To predict categories",
+            "D": "To maximize accuracy"
+        },
+        "answer": "To minimize the error between predicted and actual values",
+        "explanation": "The cost function in linear regression calculates the error between the predicted values and the actual values, and the algorithm minimizes this error during training."
+    },
+    {
+        "question": "What is the assumption of linearity in linear regression?",
+        "options": {
+            "A": "The relationship between variables is non-linear",
+            "B": "The relationship between variables is linear",
+            "C": "The variables are dependent on each other",
+            "D": "The data is non-stationary"
+        },
+        "answer": "The relationship between variables is linear",
+        "explanation": "Linear regression assumes a linear relationship between the dependent variable and independent variables."
+    },
+    {
+        "question": "What is multicollinearity in the context of regression models?",
+        "options": {
+            "A": "When predictors are independent",
+            "B": "When predictors are highly correlated",
+            "C": "When predictors have missing values",
+            "D": "When predictors are irrelevant"
+        },
+        "answer": "When predictors are highly correlated",
+        "explanation": "Multicollinearity occurs when independent variables in a regression model are highly correlated, leading to unreliable coefficient estimates."
+    },
+    {
+        "question": "In polynomial regression, what is the degree of the polynomial?",
+        "options": {
+            "A": "The number of data points",
+            "B": "The number of features",
+            "C": "The highest power of the predictor variable",
+            "D": "The number of clusters"
+        },
+        "answer": "The highest power of the predictor variable",
+        "explanation": "In polynomial regression, the degree of the polynomial refers to the highest power of the predictor variable in the regression equation."
+    },
+    {
+        "question": "Which function in sklearn is used for implementing linear regression?",
+        "options": {
+            "A": "lin_reg()",
+            "B": "LinearRegression()",
+            "C": "regression()",
+            "D": "fit_regression()"
+        },
+        "answer": "LinearRegression()",
+        "explanation": "The LinearRegression() function in sklearn is used to implement linear regression in Python, helping predict continuous values based on input features."
+    },
+    {
+        "question": "How can you compute the Mean Squared Error (MSE) of a regression model in sklearn?",
+        "options": {
+            "A": "mean_squared_error()",
+            "B": "calculate_mse()",
+            "C": "regression_mse()",
+            "D": "mse_calc()"
+        },
+        "answer": "mean_squared_error()",
+        "explanation": "The mean_squared_error() function in sklearn computes the Mean Squared Error (MSE), a common metric used to evaluate the accuracy of regression models."
+    },
+    {
+        "question": "Which library is used for implementing Ridge regression in Python?",
+        "options": {
+            "A": "numpy",
+            "B": "pandas",
+            "C": "sklearn",
+            "D": "matplotlib"
+        },
+        "answer": "sklearn",
+        "explanation": "The sklearn library provides an implementation of Ridge regression, which is a form of regularized linear regression that helps prevent overfitting by adding a penalty term."
+    },
+    {
+        "question": "A linear regression model shows a high R-squared value but low predictive performance on test data. What could be the issue?",
+        "options": {
+            "A": "Overfitting",
+            "B": "Underfitting",
+            "C": "Data leakage",
+            "D": "Insufficient data"
+        },
+        "answer": "Overfitting",
+        "explanation": "Overfitting occurs when a model fits the training data too closely, including noise, resulting in poor generalization to test data."
+    },
+    {
+        "question": "A regression model shows a high variance but low bias. What might be the issue?",
+        "options": {
+            "A": "Overfitting",
+            "B": "Underfitting",
+            "C": "Multicollinearity",
+            "D": "High-dimensionality"
+        },
+        "answer": "Overfitting",
+        "explanation": "High variance and low bias typically indicate overfitting, where the model captures too much detail from the training data, causing it to perform poorly on unseen data."
+    },
+    {
+        "question": "A Ridge regression model gives inconsistent results. What could be the cause?",
+        "options": {
+            "A": "Incorrect regularization parameter",
+            "B": "Too many features",
+            "C": "Underfitting",
+            "D": "Wrong cost function"
+        },
+        "answer": "Incorrect regularization parameter",
+        "explanation": "Ridge regression relies on a regularization parameter that balances the trade-off between fitting the data and keeping the coefficients small. Incorrect settings can cause issues."
+    },
+    {
+        "question": "What is the goal of classification in machine learning?",
+        "options": {
+            "A": "To cluster data",
+            "B": "To predict continuous values",
+            "C": "To categorize data into predefined classes",
+            "D": "To reduce dimensionality"
+        },
+        "answer": "To categorize data into predefined classes",
+        "explanation": "Classification algorithms are used to categorize data into predefined labels or classes based on input features."
+    },
+    {
+        "question": "Which of the following is an example of a binary classification problem?",
+        "options": {
+            "A": "Predicting house prices",
+            "B": "Classifying emails as spam or not",
+            "C": "Clustering customers",
+            "D": "Predicting temperature"
+        },
+        "answer": "Classifying emails as spam or not",
+        "explanation": "Binary classification involves predicting one of two possible classes, such as classifying emails as either spam or not spam."
+    },
+    {
+        "question": "What is the purpose of a confusion matrix in classification problems?",
+        "options": {
+            "A": "To evaluate clustering results",
+            "B": "To assess classification accuracy",
+            "C": "To determine data distribution",
+            "D": "To predict continuous values"
+        },
+        "answer": "To assess classification accuracy",
+        "explanation": "A confusion matrix is used to evaluate the performance of a classification algorithm by showing the true positives, false positives, true negatives, and false negatives."
+    },
+    {
+        "question": "Which metric is most suitable for imbalanced classification datasets?",
+        "options": {
+            "A": "Accuracy",
+            "B": "Precision",
+            "C": "Recall",
+            "D": "F1-Score"
+        },
+        "answer": "F1-Score",
+        "explanation": "F1-Score combines both precision and recall, making it a more suitable metric for imbalanced datasets where one class dominates over the other."
+    },
+    {
+        "question": "What is the key difference between logistic regression and linear regression?",
+        "options": {
+            "A": "Logistic regression is used for classification",
+            "B": "Linear regression is used for classification",
+            "C": "Logistic regression predicts continuous values",
+            "D": "Linear regression uses categorical labels"
+        },
+        "answer": "Logistic regression is used for classification",
+        "explanation": "Logistic regression is used for binary or multi-class classification, while linear regression is used to predict continuous values."
+    },
+    {
+        "question": "Which of the following algorithms is commonly used for multi-class classification?",
+        "options": {
+            "A": "K-Means",
+            "B": "Naive Bayes",
+            "C": "KNN",
+            "D": "Logistic Regression"
+        },
+        "answer": "Naive Bayes",
+        "explanation": "Naive Bayes is often used for multi-class classification problems, providing probabilistic classifications."
+    },
+    {
+        "question": "Which function in sklearn is used to implement logistic regression?",
+        "options": {
+            "A": "log_regression()",
+            "B": "LogisticRegression()",
+            "C": "reg_log()",
+            "D": "log_reg()"
+        },
+        "answer": "LogisticRegression()",
+        "explanation": "The LogisticRegression() function in sklearn is used to implement logistic regression for binary or multi-class classification problems."
+    },
+    {
+        "question": "How do you calculate the precision score in a classification task using sklearn?",
+        "options": {
+            "A": "precision_score()",
+            "B": "precision()",
+            "C": "calc_precision()",
+            "D": "precision_calc()"
+        },
+        "answer": "precision_score()",
+        "explanation": "The precision_score() function in sklearn is used to calculate the precision of a classification model, which measures the accuracy of positive predictions."
+    },
+    {
+        "question": "Which library is used for implementing decision trees in Python?",
+        "options": {
+            "A": "numpy",
+            "B": "pandas",
+            "C": "sklearn",
+            "D": "matplotlib"
+        },
+        "answer": "sklearn",
+        "explanation": "The sklearn library provides an implementation of decision trees, a popular classification algorithm that makes decisions based on feature splits."
+    },
+    {
+        "question": "A classification model has high accuracy but low recall. What does this indicate?",
+        "options": {
+            "A": "Model is overfitting",
+            "B": "Model has high false negatives",
+            "C": "Model has high false positives",
+            "D": "Data is imbalanced"
+        },
+        "answer": "Model has high false negatives",
+        "explanation": "Low recall indicates that the model is missing many positive examples, resulting in high false negatives despite having overall high accuracy."
+    },
+    {
+        "question": "A logistic regression model is overfitting on training data. What can be done to mitigate this?",
+        "options": {
+            "A": "Reduce the training data size",
+            "B": "Increase the number of features",
+            "C": "Apply regularization",
+            "D": "Use higher learning rate"
+        },
+        "answer": "Apply regularization",
+        "explanation": "Regularization techniques, such as L1 or L2 regularization, can help reduce overfitting by penalizing large coefficients in logistic regression."
+    },
+    {
+        "question": "A decision tree model has a very high depth and performs poorly on test data. What could be the reason?",
+        "options": {
+            "A": "Overfitting",
+            "B": "Underfitting",
+            "C": "Insufficient training data",
+            "D": "Wrong cost function"
+        },
+        "answer": "Overfitting",
+        "explanation": "High depth in decision trees often leads to overfitting, as the model becomes too complex and captures noise in the training data, leading to poor generalization on test data."
+    },
+    {
+        "question": "What is a decision tree in machine learning?",
+        "options": {
+            "A": "A model for regression tasks",
+            "B": "A model for clustering",
+            "C": "A tree-like structure for decision making",
+            "D": "A method for dimensionality reduction"
+        },
+        "answer": "A tree-like structure for decision making",
+        "explanation": "A decision tree is a supervised learning algorithm that uses a tree-like model of decisions to predict outcomes based on input features."
+    },
+    {
+        "question": "What is the purpose of pruning in decision trees?",
+        "options": {
+            "A": "To increase the depth of the tree",
+            "B": "To reduce the size of the tree",
+            "C": "To improve training speed",
+            "D": "To prevent overfitting"
+        },
+        "answer": "To prevent overfitting",
+        "explanation": "Pruning in decision trees helps prevent overfitting by reducing the size of the tree, removing branches that do not contribute significantly to the prediction accuracy."
+    },
+    {
+        "question": "How does a decision tree split data at each node?",
+        "options": {
+            "A": "By maximizing accuracy",
+            "B": "By minimizing distance between data points",
+            "C": "By maximizing information gain",
+            "D": "By using random splits"
+        },
+        "answer": "By maximizing information gain",
+        "explanation": "A decision tree splits data at each node based on the feature that provides the maximum information gain, reducing uncertainty about the target variable."
+    },
+    {
+        "question": "What is the main advantage of using Random Forest over a single Decision Tree?",
+        "options": {
+            "A": "It reduces the complexity of the model",
+            "B": "It reduces overfitting",
+            "C": "It increases the depth of trees",
+            "D": "It uses fewer features"
+        },
+        "answer": "It reduces overfitting",
+        "explanation": "Random Forest reduces overfitting by combining the predictions of multiple decision trees, leading to more robust and accurate predictions."
+    },
+    {
+        "question": "What is the role of entropy in decision trees?",
+        "options": {
+            "A": "It measures the homogeneity of data",
+            "B": "It measures model accuracy",
+            "C": "It measures the distance between data points",
+            "D": "It calculates the tree depth"
+        },
+        "answer": "It measures the homogeneity of data",
+        "explanation": "Entropy measures the homogeneity of the data at each node, with lower entropy representing more homogeneous groups. A decision tree splits data to minimize entropy."
+    },
+    {
+        "question": "Which function in sklearn is used to implement decision trees?",
+        "options": {
+            "A": "DecisionTree()",
+            "B": "TreeDecision()",
+            "C": "DecisionTreeClassifier()",
+            "D": "ClassifierTree()"
+        },
+        "answer": "DecisionTreeClassifier()",
+        "explanation": "The DecisionTreeClassifier() function in sklearn is used to implement decision trees for classification tasks in Python."
+    },
+    {
+        "question": "How can you visualize a decision tree in Python using sklearn?",
+        "options": {
+            "A": "visualize_tree()",
+            "B": "plot_tree()",
+            "C": "draw_tree()",
+            "D": "show_tree()"
+        },
+        "answer": "plot_tree()",
+        "explanation": "The plot_tree() function in sklearn allows users to visualize the structure of a decision tree, showing how the data is split at each node."
+    },
+    {
+        "question": "Which sklearn function is used to implement a Random Forest Classifier?",
+        "options": {
+            "A": "RandomForest()",
+            "B": "ForestClassifier()",
+            "C": "RandomForestClassifier()",
+            "D": "RandomClass()"
+        },
+        "answer": "RandomForestClassifier()",
+        "explanation": "The RandomForestClassifier() function in sklearn is used to implement a Random Forest model for classification tasks."
+    },
+    {
+        "question": "How does the max_depth parameter in a decision tree model affect its performance?",
+        "options": {
+            "A": "Controls the number of features",
+            "B": "Controls the depth of the tree",
+            "C": "Controls the number of samples",
+            "D": "Controls the number of trees"
+        },
+        "answer": "Controls the depth of the tree",
+        "explanation": "The max_depth parameter controls how deep the tree can grow. A larger depth allows the tree to fit more details, but it may lead to overfitting if set too high."
+    },
+    {
+        "question": "A decision tree is overfitting the training data. What can you do to resolve this?",
+        "options": {
+            "A": "Increase the tree depth",
+            "B": "Use fewer features",
+            "C": "Prune the tree",
+            "D": "Increase the training data"
+        },
+        "answer": "Prune the tree",
+        "explanation": "Pruning the tree reduces its complexity by removing unnecessary branches, preventing the model from overfitting to the noise in the training data."
+    },
+    {
+        "question": "A Random Forest model gives inconsistent predictions across different datasets. What could be the cause?",
+        "options": {
+            "A": "Not enough trees",
+            "B": "Too many features",
+            "C": "Overfitting in individual trees",
+            "D": "No randomness in the dataset"
+        },
+        "answer": "Overfitting in individual trees",
+        "explanation": "Inconsistent predictions may occur if individual trees within the Random Forest are overfitting the data. Increasing randomness in the trees can help reduce this problem."
+    },
+    {
+        "question": "A decision tree has poor performance on test data but excellent performance on training data. What is the issue?",
+        "options": {
+            "A": "High variance",
+            "B": "Underfitting",
+            "C": "Overfitting",
+            "D": "Data imbalance"
+        },
+        "answer": "Overfitting",
+        "explanation": "Excellent performance on training data and poor performance on test data indicate overfitting, where the model captures noise in the training data and fails to generalize to new data."
+    },
+    {
+        "question": "What is the primary goal of clustering algorithms?",
+        "options": {
+            "A": "To label data",
+            "B": "To classify data",
+            "C": "To group similar data points",
+            "D": "To reduce dimensionality"
+        },
+        "answer": "To group similar data points",
+        "explanation": "Clustering algorithms aim to group similar data points based on certain criteria, without using labeled data."
+    },
+    {
+        "question": "Which of the following is an example of a density-based clustering algorithm?",
+        "options": {
+            "A": "K-Means",
+            "B": "DBSCAN",
+            "C": "Hierarchical clustering",
+            "D": "Agglomerative clustering"
+        },
+        "answer": "DBSCAN",
+        "explanation": "DBSCAN is a popular density-based clustering algorithm that groups data points based on the density of data in the feature space."
+    },
+    {
+        "question": "What is the key difference between K-Means and Hierarchical clustering?",
+        "options": {
+            "A": "K-Means requires predefined number of clusters",
+            "B": "Hierarchical clustering is faster",
+            "C": "K-Means doesn't need distance metrics",
+            "D": "Hierarchical clustering cannot be used for large datasets"
+        },
+        "answer": "K-Means requires predefined number of clusters",
+        "explanation": "K-Means requires the number of clusters to be specified beforehand, while Hierarchical clustering does not."
+    },
+    {
+        "question": "Which clustering algorithm does not require specifying the number of clusters in advance?",
+        "options": {
+            "A": "K-Means",
+            "B": "DBSCAN",
+            "C": "K-Nearest Neighbors",
+            "D": "PCA"
+        },
+        "answer": "DBSCAN",
+        "explanation": "DBSCAN does not require specifying the number of clusters in advance, as it identifies clusters based on the density of points in the dataset."
+    },
+    {
+        "question": "Which function in sklearn is used to implement K-Means clustering?",
+        "options": {
+            "A": "kmeans_clustering()",
+            "B": "KMeans()",
+            "C": "cluster_means()",
+            "D": "cluster_KMeans()"
+        },
+        "answer": "KMeans()",
+        "explanation": "The KMeans() function in sklearn is used to implement the K-Means clustering algorithm in Python."
+    },
+    {
+        "question": "How do you specify the number of clusters in K-Means clustering using sklearn?",
+        "options": {
+            "A": "num_clusters()",
+            "B": "cluster_count()",
+            "C": "n_clusters",
+            "D": "num_clust"
+        },
+        "answer": "n_clusters",
+        "explanation": "The n_clusters parameter in the KMeans() function specifies the number of clusters the algorithm should create."
+    },
+    {
+        "question": "Which function is used to implement the DBSCAN algorithm in sklearn?",
+        "options": {
+            "A": "dbscan_clustering()",
+            "B": "DBSCAN()",
+            "C": "density_cluster()",
+            "D": "cluster_density"
+        },
+        "answer": "DBSCAN()",
+        "explanation": "The DBSCAN() function in sklearn is used to implement the DBSCAN clustering algorithm, which groups data based on density."
+    },
+    {
+        "question": "In K-Means, what is the effect of using a large number of clusters (n_clusters)?",
+        "options": {
+            "A": "Increases overfitting",
+            "B": "Increases the number of iterations",
+            "C": "Increases randomness",
+            "D": "Improves accuracy"
+        },
+        "answer": "Increases overfitting",
+        "explanation": "Using a large number of clusters can lead to overfitting, as the algorithm may try to fit each cluster to specific data points, reducing generalization ability."
+    },
+    {
+        "question": "A K-Means model produces clusters of very different sizes. What could be the reason?",
+        "options": {
+            "A": "Wrong distance metric",
+            "B": "Data is not scaled",
+            "C": "Overfitting",
+            "D": "High dimensionality"
+        },
+        "answer": "Data is not scaled",
+        "explanation": "K-Means is sensitive to the scale of data, so if the data is not scaled properly, it can lead to clusters of different sizes and poor performance."
+    },
+    {
+        "question": "A DBSCAN model labels a large number of points as noise. What could be the cause?",
+        "options": {
+            "A": "High epsilon value",
+            "B": "Low min_samples value",
+            "C": "Low epsilon value",
+            "D": "High min_samples value"
+        },
+        "answer": "Low epsilon value",
+        "explanation": "A low epsilon value in DBSCAN means that points need to be very close together to form a cluster, which can lead to a large number of points being labeled as noise."
+    },
+    {
+        "question": "A hierarchical clustering algorithm produces a large number of small clusters. What could resolve this issue?",
+        "options": {
+            "A": "Increase the number of clusters",
+            "B": "Reduce the number of clusters",
+            "C": "Increase the linkage criterion",
+            "D": "Use a different distance metric"
+        },
+        "answer": "Reduce the number of clusters",
+        "explanation": "Reducing the number of clusters helps merge smaller clusters, resulting in fewer, larger clusters that may better represent the data."
+    },
+    {
+        "question": "What is the purpose of dimensionality reduction in machine learning?",
+        "options": {
+            "A": "To increase model complexity",
+            "B": "To remove redundant features",
+            "C": "To reduce model accuracy",
+            "D": "To create more features"
+        },
+        "answer": "To remove redundant features",
+        "explanation": "Dimensionality reduction helps in removing redundant or irrelevant features, improving model efficiency and performance by focusing on important features."
+    },
+    {
+        "question": "What is the main idea behind Principal Component Analysis (PCA)?",
+        "options": {
+            "A": "To maximize variance along new dimensions",
+            "B": "To minimize data loss",
+            "C": "To reduce the number of data points",
+            "D": "To classify data"
+        },
+        "answer": "To maximize variance along new dimensions",
+        "explanation": "PCA reduces the dimensionality of a dataset by finding new dimensions (principal components) that maximize the variance, capturing the most important information from the data."
+    },
+    {
+        "question": "What happens to the original features in PCA after transformation?",
+        "options": {
+            "A": "They remain the same",
+            "B": "They are transformed into orthogonal components",
+            "C": "They are multiplied by a scalar",
+            "D": "They are clustered"
+        },
+        "answer": "They are transformed into orthogonal components",
+        "explanation": "In PCA, the original features are transformed into orthogonal components, which are linear combinations of the original features, and capture the most variance in the data."
+    },
+    {
+        "question": "What is the role of the eigenvectors in PCA?",
+        "options": {
+            "A": "They represent the directions of the principal components",
+            "B": "They increase the variance",
+            "C": "They minimize the cost function",
+            "D": "They maximize the distance between clusters"
+        },
+        "answer": "They represent the directions of the principal components",
+        "explanation": "Eigenvectors in PCA represent the directions along which the data varies the most, determining the principal components that best describe the variance in the dataset."
+    },
+    {
+        "question": "Which function in sklearn is used to implement PCA?",
+        "options": {
+            "A": "pca_reduction()",
+            "B": "PrincipalComponent()",
+            "C": "PCA()",
+            "D": "ComponentAnalysis()"
+        },
+        "answer": "PCA()",
+        "explanation": "The PCA() function in sklearn is used to implement Principal Component Analysis, a popular dimensionality reduction technique."
+    },
+    {
+        "question": "How can you set the number of components to retain in PCA using sklearn?",
+        "options": {
+            "A": "num_components()",
+            "B": "n_components",
+            "C": "retain_components",
+            "D": "reduce_dimensions"
+        },
+        "answer": "n_components",
+        "explanation": "The n_components parameter in sklearn\u2019s PCA() function allows users to specify the number of principal components to retain for dimensionality reduction."
+    },
+    {
+        "question": "Which library can be used to implement t-SNE for dimensionality reduction in Python?",
+        "options": {
+            "A": "sklearn",
+            "B": "pandas",
+            "C": "numpy",
+            "D": "matplotlib"
+        },
+        "answer": "sklearn",
+        "explanation": "The sklearn library provides an implementation of t-SNE (t-distributed Stochastic Neighbor Embedding), a technique for visualizing high-dimensional data in a lower-dimensional space."
+    },
+    {
+        "question": "After applying PCA, a model's performance drops significantly. What could be the issue?",
+        "options": {
+            "A": "Too many components retained",
+            "B": "Too few components retained",
+            "C": "The model is overfitting",
+            "D": "Data was not scaled properly"
+        },
+        "answer": "Too few components retained",
+        "explanation": "Retaining too few components in PCA may result in the loss of critical information, leading to a significant drop in model performance."
+    },
+    {
+        "question": "A t-SNE model does not correctly represent the structure of high-dimensional data. What could improve it?",
+        "options": {
+            "A": "Use fewer iterations",
+            "B": "Increase perplexity",
+            "C": "Reduce the learning rate",
+            "D": "Use PCA before t-SNE"
+        },
+        "answer": "Use PCA before t-SNE",
+        "explanation": "Applying PCA before t-SNE can help capture the most important patterns in the data, reducing the noise and helping t-SNE focus on meaningful dimensions."
+    },
+    {
+        "question": "A dimensionality reduction algorithm removes important features from the data. What could prevent this?",
+        "options": {
+            "A": "Increase the number of components",
+            "B": "Use regularization",
+            "C": "Perform feature selection first",
+            "D": "Use a different distance metric"
+        },
+        "answer": "Perform feature selection first",
+        "explanation": "Performing feature selection before applying a dimensionality reduction algorithm can help retain important features that are crucial for the model's performance."
+    },
+    {
+        "question": "What is the purpose of model evaluation in machine learning?",
+        "options": {
+            "A": "To reduce the number of features",
+            "B": "To increase the accuracy",
+            "C": "To assess the performance of a model",
+            "D": "To select the best algorithm"
+        },
+        "answer": "To assess the performance of a model",
+        "explanation": "Model evaluation aims to assess how well a model generalizes to unseen data and whether it meets the performance criteria."
+    },
+    {
+        "question": "Which metric is most appropriate for evaluating classification problems?",
+        "options": {
+            "A": "Mean Squared Error",
+            "B": "Precision and Recall",
+            "C": "R-squared",
+            "D": "Mean Absolute Error"
+        },
+        "answer": "Precision and Recall",
+        "explanation": "Precision and Recall are suitable metrics for evaluating classification models, especially in cases of class imbalance."
+    },
+    {
+        "question": "What does the ROC curve represent in a classification task?",
+        "options": {
+            "A": "The trade-off between true positive and false positive rates",
+            "B": "The accuracy of the model",
+            "C": "The training time",
+            "D": "The distribution of classes"
+        },
+        "answer": "The trade-off between true positive and false positive rates",
+        "explanation": "The ROC curve shows the trade-off between the true positive rate (sensitivity) and the false positive rate, helping to evaluate the model's discrimination ability."
+    },
+    {
+        "question": "What does a high variance in a model indicate?",
+        "options": {
+            "A": "Underfitting",
+            "B": "Overfitting",
+            "C": "Balanced performance",
+            "D": "Poor training accuracy"
+        },
+        "answer": "Overfitting",
+        "explanation": "High variance indicates that the model is overfitting, as it performs well on the training set but poorly on unseen test data due to capturing noise in the training data."
+    },
+    {
+        "question": "What is the F1-Score used for in classification problems?",
+        "options": {
+            "A": "To measure the ratio of true positives",
+            "B": "To balance precision and recall",
+            "C": "To calculate accuracy",
+            "D": "To measure sensitivity"
+        },
+        "answer": "To balance precision and recall",
+        "explanation": "The F1-Score is the harmonic mean of precision and recall, providing a balance between the two when dealing with imbalanced datasets."
+    },
+    {
+        "question": "Which function in sklearn is used to calculate accuracy for classification models?",
+        "options": {
+            "A": "calc_accuracy()",
+            "B": "accuracy()",
+            "C": "accuracy_score()",
+            "D": "classification_accuracy()"
+        },
+        "answer": "accuracy_score()",
+        "explanation": "The accuracy_score() function in sklearn is used to calculate the accuracy of classification models by comparing predicted labels with true labels."
+    },
+    {
+        "question": "How can you calculate the confusion matrix in sklearn?",
+        "options": {
+            "A": "confusion_matrix()",
+            "B": "conf_matrix()",
+            "C": "calc_confusion()",
+            "D": "matrix_conf()"
+        },
+        "answer": "confusion_matrix()",
+        "explanation": "The confusion_matrix() function in sklearn calculates the confusion matrix, which helps in understanding the classification model's performance."
+    },
+    {
+        "question": "How do you implement cross-validation in Python using sklearn?",
+        "options": {
+            "A": "cross_validate()",
+            "B": "cross_val_score()",
+            "C": "validation_score()",
+            "D": "cv_validate()"
+        },
+        "answer": "cross_val_score()",
+        "explanation": "The cross_val_score() function in sklearn is used to perform cross-validation, which splits the data into training and test sets multiple times to evaluate model performance."
+    },
+    {
+        "question": "A model has a high accuracy but poor performance on new data. What is the issue?",
+        "options": {
+            "A": "Overfitting",
+            "B": "Underfitting",
+            "C": "Low variance",
+            "D": "Incorrect metric"
+        },
+        "answer": "Overfitting",
+        "explanation": "High accuracy on training data but poor performance on new data typically indicates overfitting, where the model is too complex and learns the noise in the training set."
+    },
+    {
+        "question": "A classification model has a high false positive rate. Which metric should be optimized?",
+        "options": {
+            "A": "Accuracy",
+            "B": "Recall",
+            "C": "Precision",
+            "D": "F1-Score"
+        },
+        "answer": "Precision",
+        "explanation": "Precision should be optimized when the false positive rate is high, as it measures how many predicted positive instances were actually correct."
+    },
+    {
+        "question": "A model performs well on the training set but poorly on the validation set. What could be the cause?",
+        "options": {
+            "A": "Underfitting",
+            "B": "Overfitting",
+            "C": "Balanced data",
+            "D": "High recall"
+        },
+        "answer": "Overfitting",
+        "explanation": "Poor performance on the validation set while doing well on the training set indicates overfitting, where the model is too focused on the training data and fails to generalize."
+    },
+    {
+        "question": "What is the role of the activation function in a neural network?",
+        "options": {
+            "A": "To adjust weights",
+            "B": "To control the learning rate",
+            "C": "To introduce non-linearity",
+            "D": "To increase training speed"
+        },
+        "answer": "To introduce non-linearity",
+        "explanation": "The activation function introduces non-linearity into the neural network, allowing it to learn and represent complex patterns in the data."
+    },
+    {
+        "question": "What is the vanishing gradient problem in deep learning?",
+        "options": {
+            "A": "Weights become too large",
+            "B": "Gradients stop flowing back to earlier layers",
+            "C": "Gradients become too large",
+            "D": "The model overfits"
+        },
+        "answer": "Gradients stop flowing back to earlier layers",
+        "explanation": "The vanishing gradient problem occurs when the gradients used for updating weights become too small in earlier layers, preventing the network from learning effectively."
+    },
+    {
+        "question": "What is the purpose of dropout in a neural network?",
+        "options": {
+            "A": "To prevent overfitting",
+            "B": "To increase learning rate",
+            "C": "To improve accuracy",
+            "D": "To increase data size"
+        },
+        "answer": "To prevent overfitting",
+        "explanation": "Dropout is a regularization technique used to prevent overfitting by randomly disabling neurons during training, forcing the model to generalize better."
+    },
+    {
+        "question": "How does backpropagation work in neural networks?",
+        "options": {
+            "A": "By adjusting the input data",
+            "B": "By updating weights using gradients",
+            "C": "By changing the model architecture",
+            "D": "By increasing the number of layers"
+        },
+        "answer": "By updating weights using gradients",
+        "explanation": "Backpropagation is the process of updating the weights in a neural network by calculating the gradient of the loss function with respect to each weight."
+    },
+    {
+        "question": "Which Python library is commonly used to implement neural networks?",
+        "options": {
+            "A": "numpy",
+            "B": "pandas",
+            "C": "keras",
+            "D": "matplotlib"
+        },
+        "answer": "keras",
+        "explanation": "The keras library is commonly used for building and training neural networks in Python."
+    },
+    {
+        "question": "Which function in Keras is used to compile a neural network model?",
+        "options": {
+            "A": "model.compile()",
+            "B": "network.compile()",
+            "C": "compile_nn()",
+            "D": "compile_model()"
+        },
+        "answer": "model.compile()",
+        "explanation": "The model.compile() function in Keras is used to configure the learning process, specifying the optimizer, loss function, and metrics for evaluating the model."
+    },
+    {
+        "question": "How do you add a dense layer to a neural network in Keras?",
+        "options": {
+            "A": "add_dense()",
+            "B": "model.add(Dense())",
+            "C": "add_layer()",
+            "D": "layer.add(Dense())"
+        },
+        "answer": "model.add(Dense())",
+        "explanation": "In Keras, the model.add(Dense()) function is used to add a dense (fully connected) layer to a neural network."
+    },
+    {
+        "question": "A neural network performs well on the training set but poorly on the test set. What could be the issue?",
+        "options": {
+            "A": "Underfitting",
+            "B": "Overfitting",
+            "C": "Data leakage",
+            "D": "Incorrect architecture"
+        },
+        "answer": "Overfitting",
+        "explanation": "If the neural network performs well on the training set but poorly on the test set, it is likely overfitting, meaning it is learning the noise in the training data."
+    },
+    {
+        "question": "A neural network fails to converge during training. What could be the cause?",
+        "options": {
+            "A": "Low learning rate",
+            "B": "High number of epochs",
+            "C": "Small dataset",
+            "D": "Overfitting"
+        },
+        "answer": "Low learning rate",
+        "explanation": "A low learning rate can cause a neural network to fail to converge because the weight updates are too small, preventing the model from reaching the optimal point."
+    },
+    {
+        "question": "A deep neural network suffers from the vanishing gradient problem. What can help mitigate this issue?",
+        "options": {
+            "A": "Use a larger dataset",
+            "B": "Increase learning rate",
+            "C": "Use ReLU activation function",
+            "D": "Reduce the number of layers"
+        },
+        "answer": "Use ReLU activation function",
+        "explanation": "The ReLU (Rectified Linear Unit) activation function helps mitigate the vanishing gradient problem by preventing gradients from shrinking as they propagate through layers."
+    },
+    {
+        "question": "What is the main purpose of a Support Vector Machine (SVM)?",
+        "options": {
+            "A": "To reduce the number of features",
+            "B": "To classify data points",
+            "C": "To increase data size",
+            "D": "To perform clustering"
+        },
+        "answer": "To classify data points",
+        "explanation": "SVM is primarily used for classification tasks by finding the hyperplane that best separates data points into different classes."
+    },
+    {
+        "question": "How does SVM handle non-linearly separable data?",
+        "options": {
+            "A": "By ignoring the data",
+            "B": "By using a linear kernel",
+            "C": "By applying the kernel trick",
+            "D": "By reducing the data size"
+        },
+        "answer": "By applying the kernel trick",
+        "explanation": "The kernel trick allows SVM to map non-linearly separable data into a higher-dimensional space where a linear separator can be found."
+    },
+    {
+        "question": "What is the role of the margin in SVM?",
+        "options": {
+            "A": "To separate the training and test data",
+            "B": "To measure the distance between support vectors",
+            "C": "To maximize the distance between data points and the hyperplane",
+            "D": "To reduce model complexity"
+        },
+        "answer": "To maximize the distance between data points and the hyperplane",
+        "explanation": "SVM aims to maximize the margin, which is the distance between the hyperplane and the nearest data points from each class, improving generalization."
+    },
+    {
+        "question": "What is a support vector in SVM?",
+        "options": {
+            "A": "A data point farthest from the hyperplane",
+            "B": "A data point closest to the hyperplane",
+            "C": "A misclassified data point",
+            "D": "A point used for outlier detection"
+        },
+        "answer": "A data point closest to the hyperplane",
+        "explanation": "Support vectors are the data points that are closest to the hyperplane and directly influence its position and orientation."
+    },
+    {
+        "question": "Which function in sklearn is used to implement SVM for classification?",
+        "options": {
+            "A": "SVC()",
+            "B": "SVM()",
+            "C": "svm_classifier()",
+            "D": "SupportVectorClassifier()"
+        },
+        "answer": "SVC()",
+        "explanation": "The SVC() function in sklearn is used to implement a Support Vector Machine for classification tasks in Python."
+    },
+    {
+        "question": "How do you specify the kernel type in sklearn\u2019s SVM implementation?",
+        "options": {
+            "A": "kernel()",
+            "B": "svm_kernel()",
+            "C": "set_kernel()",
+            "D": "kernel_type()"
+        },
+        "answer": "kernel()",
+        "explanation": "In sklearn's SVM implementation, the kernel parameter is used to specify the type of kernel (e.g., linear, polynomial, RBF) used to map the data to a higher-dimensional space."
+    },
+    {
+        "question": "How can you tune the regularization parameter (C) in SVM using sklearn?",
+        "options": {
+            "A": "reg_param()",
+            "B": "tune_c()",
+            "C": "C",
+            "D": "regularization()"
+        },
+        "answer": "C",
+        "explanation": "The C parameter in sklearn\u2019s SVM controls the trade-off between maximizing the margin and minimizing the classification error."
+    },
+    {
+        "question": "An SVM model performs poorly on a dataset with overlapping classes. What could improve its performance?",
+        "options": {
+            "A": "Increase the regularization parameter (C)",
+            "B": "Use a linear kernel",
+            "C": "Use a non-linear kernel",
+            "D": "Reduce the number of support vectors"
+        },
+        "answer": "Use a non-linear kernel",
+        "explanation": "Using a non-linear kernel like RBF can help SVM handle overlapping classes by mapping the data to a higher-dimensional space where classes are more easily separable."
+    },
+    {
+        "question": "An SVM model is overfitting on the training data. What should be adjusted to mitigate this?",
+        "options": {
+            "A": "Increase the value of C",
+            "B": "Decrease the value of C",
+            "C": "Increase the kernel size",
+            "D": "Use a larger dataset"
+        },
+        "answer": "Decrease the value of C",
+        "explanation": "Reducing the value of C allows for a larger margin, making the SVM less sensitive to individual data points and thus reducing overfitting."
+    },
+    {
+        "question": "What is the main advantage of ensemble learning?",
+        "options": {
+            "A": "Reduces the number of features",
+            "B": "Increases model complexity",
+            "C": "Improves model performance by combining multiple models",
+            "D": "Increases training time"
+        },
+        "answer": "Improves model performance by combining multiple models",
+        "explanation": "Ensemble learning combines the predictions of multiple models to improve overall performance and reduce the chances of overfitting or underfitting."
+    },
+    {
+        "question": "What is the key difference between bagging and boosting in ensemble learning?",
+        "options": {
+            "A": "Bagging focuses on reducing bias",
+            "B": "Boosting focuses on reducing variance",
+            "C": "Bagging trains models in parallel",
+            "D": "Boosting uses a single model"
+        },
+        "answer": "Bagging trains models in parallel",
+        "explanation": "In bagging, models are trained in parallel, while boosting trains models sequentially, focusing on reducing errors from previous models."
+    },
+    {
+        "question": "What is the role of weak learners in boosting?",
+        "options": {
+            "A": "To make accurate predictions",
+            "B": "To identify outliers",
+            "C": "To correct mistakes from previous learners",
+            "D": "To increase bias"
+        },
+        "answer": "To correct mistakes from previous learners",
+        "explanation": "In boosting, weak learners are trained sequentially to correct the errors made by previous learners, gradually improving the overall model accuracy."
+    },
+    {
+        "question": "Which function in sklearn is used to implement a Random Forest classifier?",
+        "options": {
+            "A": "RandomForestClassifier()",
+            "B": "ForestClassifier()",
+            "C": "RandomForest()",
+            "D": "ForestRandom()"
+        },
+        "answer": "RandomForestClassifier()",
+        "explanation": "The RandomForestClassifier() function in sklearn is used to implement the Random Forest algorithm, which is an ensemble learning method based on decision trees."
+    },
+    {
+        "question": "How do you implement AdaBoost in Python using sklearn?",
+        "options": {
+            "A": "BoostingAda()",
+            "B": "AdaBoostClassifier()",
+            "C": "BoostAda()",
+            "D": "Adaboost()"
+        },
+        "answer": "AdaBoostClassifier()",
+        "explanation": "The AdaBoostClassifier() function in sklearn is used to implement the AdaBoost algorithm, a boosting technique that combines weak learners to form a strong model."
+    },
+    {
+        "question": "Which hyperparameter in sklearn's Gradient Boosting Classifier controls the learning rate?",
+        "options": {
+            "A": "max_depth",
+            "B": "learning_rate",
+            "C": "n_estimators",
+            "D": "boost_size"
+        },
+        "answer": "learning_rate",
+        "explanation": "The learning_rate hyperparameter in sklearn's Gradient Boosting Classifier controls how much each weak learner contributes to the overall prediction, balancing bias and variance."
+    },
+    {
+        "question": "A Random Forest model is overfitting on the training data. What could resolve this?",
+        "options": {
+            "A": "Increase the number of estimators",
+            "B": "Reduce the number of features",
+            "C": "Increase the max_depth parameter",
+            "D": "Reduce the number of trees"
+        },
+        "answer": "Reduce the number of features",
+        "explanation": "Reducing the number of features or limiting tree depth can help prevent Random Forest models from overfitting, as fewer features reduce the chances of fitting noise in the data."
+    },
+    {
+        "question": "A Gradient Boosting model is slow to train and gives diminishing returns. What could improve training speed?",
+        "options": {
+            "A": "Reduce learning rate",
+            "B": "Increase the number of weak learners",
+            "C": "Use early stopping",
+            "D": "Increase the number of estimators"
+        },
+        "answer": "Use early stopping",
+        "explanation": "Early stopping can improve training speed by halting the training process when the model's performance on validation data stops improving, saving time and preventing overfitting."
+    },
+    {
+        "question": "What is the goal of reinforcement learning?",
+        "options": {
+            "A": "To predict continuous values",
+            "B": "To minimize error rate",
+            "C": "To maximize cumulative reward",
+            "D": "To classify data points"
+        },
+        "answer": "To maximize cumulative reward",
+        "explanation": "In reinforcement learning, the goal is to maximize cumulative reward over time by making optimal decisions in each step of an environment."
+    },
+    {
+        "question": "What is the role of the agent in reinforcement learning?",
+        "options": {
+            "A": "To gather data",
+            "B": "To provide rewards",
+            "C": "To take actions based on policy",
+            "D": "To process the environment data"
+        },
+        "answer": "To take actions based on policy",
+        "explanation": "In reinforcement learning, the agent takes actions in an environment based on a policy, aiming to maximize cumulative reward through trial and error."
+    },
+    {
+        "question": "What is the trade-off between exploration and exploitation in reinforcement learning?",
+        "options": {
+            "A": "Exploring only actions that maximize reward",
+            "B": "Exploring new actions",
+            "C": "Balancing between trying new actions and maximizing known rewards",
+            "D": "Ignoring all rewards"
+        },
+        "answer": "Balancing between trying new actions and maximizing known rewards",
+        "explanation": "In reinforcement learning, the agent must balance exploration (trying new actions to discover rewards) and exploitation (using known actions that maximize rewards)."
+    },
+    {
+        "question": "Which Python library is commonly used to implement reinforcement learning algorithms?",
+        "options": {
+            "A": "keras",
+            "B": "scikit-learn",
+            "C": "gym",
+            "D": "numpy"
+        },
+        "answer": "gym",
+        "explanation": "The gym library is widely used for developing and comparing reinforcement learning algorithms by providing various environments to test and train agents."
+    },
+    {
+        "question": "Which algorithm in reinforcement learning is used to optimize the action-value function?",
+        "options": {
+            "A": "Q-Learning",
+            "B": "Random Forest",
+            "C": "Support Vector Machine",
+            "D": "Gradient Boosting"
+        },
+        "answer": "Q-Learning",
+        "explanation": "Q-Learning is a popular algorithm in reinforcement learning that optimizes the action-value function by learning the best actions to take in various states to maximize rewards."
+    },
+    {
+        "question": "How do you update the Q-value in the Q-learning algorithm?",
+        "options": {
+            "A": "By maximizing the reward",
+            "B": "By using the Bellman equation",
+            "C": "By minimizing error",
+            "D": "By using a classifier"
+        },
+        "answer": "By using the Bellman equation",
+        "explanation": "In Q-learning, the Bellman equation is used to update the Q-values, which represents the expected cumulative reward of an action in a particular state."
+    },
+    {
+        "question": "An agent in a reinforcement learning model is not exploring enough. What could help resolve this?",
+        "options": {
+            "A": "Decrease the learning rate",
+            "B": "Increase the exploration rate (epsilon)",
+            "C": "Decrease the reward function",
+            "D": "Increase the discount factor"
+        },
+        "answer": "Increase the exploration rate (epsilon)",
+        "explanation": "Increasing the exploration rate (epsilon) encourages the agent to explore more by taking random actions, rather than sticking to known actions."
+    },
+    {
+        "question": "A reinforcement learning model is slow to converge. What could speed up the training process?",
+        "options": {
+            "A": "Use a smaller dataset",
+            "B": "Decrease the discount factor",
+            "C": "Increase the learning rate",
+            "D": "Increase the number of actions"
+        },
+        "answer": "Increase the learning rate",
+        "explanation": "Increasing the learning rate can speed up the convergence by allowing the agent to learn more quickly from each action taken and reward received."
+    },
+    {
+        "question": "What is a primary ethical concern in machine learning?",
+        "options": {
+            "A": "Data storage",
+            "B": "Model accuracy",
+            "C": "Bias and fairness",
+            "D": "Feature selection"
+        },
+        "answer": "Bias and fairness",
+        "explanation": "A key ethical concern in machine learning is ensuring that models are fair and free from biases, which can lead to unequal treatment of certain groups."
+    },
+    {
+        "question": "What does bias in machine learning models refer to?",
+        "options": {
+            "A": "The model\u2019s performance",
+            "B": "Prejudice in data or decisions",
+            "C": "Incorrect features",
+            "D": "Inefficient algorithms"
+        },
+        "answer": "Prejudice in data or decisions",
+        "explanation": "Bias refers to systematic prejudice in model predictions due to biased training data, which can lead to unfair outcomes."
+    },
+    {
+        "question": "Why is transparency important in machine learning models?",
+        "options": {
+            "A": "To improve model accuracy",
+            "B": "To ensure data security",
+            "C": "To explain model decisions",
+            "D": "To reduce model complexity"
+        },
+        "answer": "To explain model decisions",
+        "explanation": "Transparency is crucial for explaining the decisions made by machine learning models, ensuring that users and stakeholders can understand and trust the outcomes."
+    },
+    {
+        "question": "What is the main challenge with algorithmic decision-making in sensitive domains like healthcare and law enforcement?",
+        "options": {
+            "A": "Improving accuracy",
+            "B": "Ensuring fairness and accountability",
+            "C": "Reducing data size",
+            "D": "Minimizing computational cost"
+        },
+        "answer": "Ensuring fairness and accountability",
+        "explanation": "Algorithmic decision-making in sensitive domains requires careful consideration of fairness and accountability to prevent discriminatory outcomes and ensure ethical practices."
+    },
+    {
+        "question": "How can machine learning practitioners address privacy concerns when handling sensitive data?",
+        "options": {
+            "A": "Use biased data",
+            "B": "Ignore sensitive features",
+            "C": "Implement differential privacy",
+            "D": "Increase model complexity"
+        },
+        "answer": "Implement differential privacy",
+        "explanation": "Differential privacy techniques help protect sensitive data by ensuring that individual data points cannot be easily re-identified while maintaining model utility."
+    }
+]

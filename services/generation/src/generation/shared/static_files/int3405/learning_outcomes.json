@@ -1,0 +1,28 @@
+{
+    "week_1": [],
+    "week_2": [],
+    "week_3": [],
+    "week_4": [],
+    "week_5": [],
+    "week_6": [
+        "Understand the intuition behind perceptron and its relation to linear classification.",
+        "Explain the concept of margin and how SVM maximizes the margin to achieve better generalization.",
+        "Differentiate between Hard Margin SVM and Soft Margin SVM, including the role of slack variables and the regularization parameter C.",
+        "Formulate the SVM optimization problem in both primal and dual forms.",
+        "Analyze the limitations of linear SVM and motivate the use of nonlinear SVM.",
+        "Apply the kernel trick to implicitly map data into higher-dimensional feature spaces.",
+        "Compare different types of kernel functions (linear, polynomial, Gaussian/RBF) and their properties.",
+        "Evaluate the computational challenges of kernelized SVMs and explore kernel approximation methods.",
+        "Implement strategies for multi-class classification using SVM, including one-vs-rest and one-vs-one approaches.",
+        "Interpret experimental results and trade-offs in SVM parameter choices (e.g., bias-variance, C parameter)."
+    ],
+    "week_7": [],
+    "week_8": [],
+    "week_9": [],
+    "week_10": [],
+    "week_11": [],
+    "week_12": [],
+    "week_13": [],
+    "week_14": [],
+    "week_15": []
+}

@@ -2,3 +2,8 @@ from .quiz_settings import QuizGenerationSetting
 from .parser import ParserSetting
 from .exam_settings import ExamGenerationSetting
 from .settings import Settings
+from .concept_card import ConceptCardExtractorSetting
+from .topic_generator import TopicGeneratorSetting
+from .question_answer_generator import QuestionAnswerGeneratorSetting
+from .distractors import DistractorsGeneratorSetting
+from .explanation import ExplanationGeneratorSetting

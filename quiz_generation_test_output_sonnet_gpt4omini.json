@@ -1,0 +1,382 @@
+{
+  "topic": [
+    {
+      "name": "Basic Perceptron Model Components",
+      "description": "This topic tests fundamental understanding of perceptron model elements including weight vectors, bias terms, and hyperplane definition. Students should be able to identify the mathematical components of a perceptron (w, b), understand the hyperplane equation H: {x: w^T x + b = 0}, and recognize how positive and negative classifications are determined. MCQs can test recognition of correct perceptron formulae, identification of hyperplane components, and basic perceptron prediction mechanics.",
+      "difficulty_level": "Easy",
+      "estimated_right_answer_rate": 0.85,
+      "bloom_taxonomy_level": "Remember"
+    },
+    {
+      "name": "Hard Margin vs Soft Margin SVM Distinctions",
+      "description": "This topic assesses students' ability to differentiate between hard margin and soft margin SVM approaches. Students should understand when each method is applicable (linearly separable vs non-separable data), the role of slack variables (ξi), and the purpose of the regularization parameter C. MCQs can test identification of appropriate SVM type for given datasets, recognition of slack variable purposes, and understanding of when hard margin SVM fails.",
+      "difficulty_level": "Easy",
+      "estimated_right_answer_rate": 0.8,
+      "bloom_taxonomy_level": "Understand"
+    },
+    {
+      "name": "Kernel Function Types and Properties",
+      "description": "This topic tests recognition and basic understanding of common kernel functions: linear, polynomial, and Gaussian/RBF kernels. Students should identify correct kernel formulae, understand their mathematical forms, and recognize their basic properties. MCQs can test matching kernel names to correct equations, identifying polynomial kernel degree parameters, recognizing RBF kernel components (sigma, gamma), and understanding when each kernel type is most appropriate.",
+      "difficulty_level": "Easy",
+      "estimated_right_answer_rate": 0.75,
+      "bloom_taxonomy_level": "Remember"
+    },
+    {
+      "name": "Multi-class SVM Strategy Comparison",
+      "description": "This topic assesses understanding of multi-class SVM approaches: one-vs-rest and one-vs-one strategies. Students should know how many binary classifiers each method requires for k classes, understand the prediction mechanisms, and recognize computational complexity differences. MCQs can test calculation of required binary SVMs (k for one-vs-rest, k(k-1)/2 for one-vs-one), identification of prediction methods, and comparison of training efficiency between approaches.",
+      "difficulty_level": "Easy",
+      "estimated_right_answer_rate": 0.78,
+      "bloom_taxonomy_level": "Understand"
+    },
+    {
+      "name": "SVM Optimization Problem Formulation",
+      "description": "This topic tests students' ability to correctly formulate SVM optimization problems in both primal and dual forms. Students should understand the objective function components (margin maximization, regularization), constraint formulations, and the mathematical transformation between primal and dual problems. MCQs can test identification of correct objective functions, recognition of constraint formulations for hard/soft margin cases, and understanding of Lagrangian dual problem setup.",
+      "difficulty_level": "Medium",
+      "estimated_right_answer_rate": 0.65,
+      "bloom_taxonomy_level": "Apply"
+    },
+    {
+      "name": "Classification Methods Comparison Across Weeks",
+      "description": "This cross-week topic integrates classification methods from Weeks 4-6, comparing Naive Bayes, Logistic Regression, Decision Trees, and SVMs. Students should analyze strengths, weaknesses, assumptions, and appropriate use cases for each method. MCQs can test identification of best classifier for specific scenarios, recognition of key assumptions (e.g., conditional independence for Naive Bayes, linear separability for perceptron), comparison of decision boundary types, and analysis of computational complexity trade-offs between methods.",
+      "difficulty_level": "Medium",
+      "estimated_right_answer_rate": 0.6,
+      "bloom_taxonomy_level": "Analyze"
+    },
+    {
+      "name": "Kernel Trick Mechanics and Applications",
+      "description": "This topic assesses deep understanding of how the kernel trick works to handle non-linear classification by implicit feature space mapping. Students should understand the mathematical transformation from dot products to kernel functions, recognize the benefits of avoiding explicit high-dimensional computations, and apply kernel concepts to solve non-linear classification problems. MCQs can test understanding of feature space mapping concepts, recognition of when kernels enable linear separability, and application of kernel trick principles to specific datasets.",
+      "difficulty_level": "Medium",
+      "estimated_right_answer_rate": 0.58,
+      "bloom_taxonomy_level": "Apply"
+    },
+    {
+      "name": "Comprehensive ML Algorithm Selection and Integration",
+      "description": "This advanced cross-week topic synthesizes all supervised learning algorithms from Weeks 3-6 (Linear Regression, Naive Bayes, Logistic Regression, Decision Trees, SVMs) for comprehensive algorithm selection scenarios. Students must evaluate trade-offs considering data characteristics, computational requirements, interpretability needs, and performance expectations. MCQs can test complex scenario-based algorithm selection, analysis of when to combine multiple methods, evaluation of end-to-end machine learning pipeline decisions, and synthesis of mathematical foundations across different algorithmic approaches for optimal problem-solving strategies.",
+      "difficulty_level": "Hard",
+      "estimated_right_answer_rate": 0.45,
+      "bloom_taxonomy_level": "Evaluate"
+    }
+  ],
+  "concept_cards": [
+    {
+      "name": "Perceptron Model",
+      "summary": [
+        "The Perceptron model infers a weight vector 'w' and a bias 'b' to define a hyperplane that separates data into two classes.",
+        "For a linearly separable dataset, the hyperplane H completely separates positive (y=+1) and negative (y=-1) classes.",
+        "The minimum distance from a data point to the hyperplane is called the margin."
+      ],
+      "formulae": [
+        "(H): {x: w^T x + b = 0}",
+        "(+): {w^T x + b >= 0}",
+        "(-): {w^T x + b < 0}",
+        "s_i = y_i(w^T x_i + b) >= 0, for all i = 1, 2, ..., n",
+        "delta = min_{i=1 to n} |w^T x_i + b| / ||w||"
+      ],
+      "examples": [
+        "Using linear functions to represent AND, OR, and XOR functions (XOR is not linearly separable)."
+      ],
+      "page": [
+        6,
+        7,
+        8
+      ]
+    },
+    {
+      "name": "Perceptron Algorithm",
+      "summary": [
+        "An iterative algorithm to find 'w' and 'b' for a linearly separable dataset.",
+        "Initializes 'w' and 'b' to zero.",
+        "Iterates through data samples, updating 'w' and 'b' if a sample is misclassified.",
+        "Updates 'w' and 'b' in the direction that increases the score s_i for misclassified points.",
+        "Stops when all data points are correctly classified (s_i >= 0 for all i)."
+      ],
+      "formulae": [
+        "Initialize w(0) = 0, b(0) = 0, t = 0",
+        "Calculate score s_i = y_i(w(t)^T x_i + b(t))",
+        "If s_i < 0 (falsely classified): w(t+1) <- w(t) + y_i x_i, b(t+1) <- b(t) + y_i"
+      ],
+      "examples": [],
+      "page": [
+        9
+      ]
+    },
+    {
+      "name": "Hard Margin SVM",
+      "summary": [
+        "Aims to find the separating hyperplane that maximizes the margin between classes.",
+        "The margin is defined as the width the boundary could be increased before hitting a data point.",
+        "Applicable only when data is linearly separable.",
+        "Formulated as a Quadratic Programming (QP) problem."
+      ],
+      "formulae": [
+        "f(x) = sgn(w^T x + b)",
+        "Margin = 2 / ||w||",
+        "Objective: min_{w,b} (1/2) w^T w",
+        "Constraints: y_i(w^T x_i + b) >= 1, for i = 1, ..., l"
+      ],
+      "examples": [
+        "Visual representation of a hyperplane separating two classes with maximum margin, identifying support vectors."
+      ],
+      "page": [
+        16,
+        17,
+        18,
+        19
+      ]
+    },
+    {
+      "name": "Soft Margin SVM",
+      "summary": [
+        "Introduces slack variables (xi) to allow for misclassifications, making it applicable to linearly non-separable cases.",
+        "Relaxes the hard margin constraints by penalizing misclassifications.",
+        "Involves a regularization parameter 'C' that balances maximizing the margin and minimizing misclassification error.",
+        "Can be re-written as an unconstrained optimization problem using hinge loss."
+      ],
+      "formulae": [
+        "Primal Problem Objective: min_{w,b,xi} (1/2) w^T w + C sum_{i=1 to N} xi",
+        "Constraints: y_i(w^T x_i + b) >= 1 - xi, xi >= 0, for i = 1, ..., N",
+        "Hinge loss l(z) = max(0, 1 - z)"
+      ],
+      "examples": [
+        "Visual representation of a non-linearly separable dataset where some points fall within the margin or on the wrong side of the hyperplane."
+      ],
+      "page": [
+        20,
+        21,
+        22,
+        23
+      ]
+    },
+    {
+      "name": "Kernel Tricks",
+      "summary": [
+        "A technique to handle non-linear classification by implicitly mapping data into a higher-dimensional feature space where it becomes linearly separable.",
+        "Replaces the dot product in the SVM dual problem with a kernel function, avoiding explicit computation of the high-dimensional feature map.",
+        "A function is a kernel if it is symmetric and positive semi-definite (Gram matrix is PSD).",
+        "Offers benefits of efficiency (avoiding high-dimensional computations) and flexibility (choosing various kernel functions)."
+      ],
+      "formulae": [
+        "kappa(x_i, x_j) = Phi(x_i)^T Phi(x_j)",
+        "Dual Problem Objective: max_{alpha_i in [0,C]} sum alpha_i - (1/2) sum alpha_i alpha_j y_i y_j kappa(x_i, x_j)",
+        "Decision function: f(x) = sum alpha_i y_i kappa(x_i, x) + b"
+      ],
+      "examples": [
+        "Mapping a 1-dimensional non-linearly separable dataset (x) to a 2-dimensional space (x, x^2) to achieve linear separability."
+      ],
+      "page": [
+        30,
+        31,
+        32,
+        33,
+        34
+      ]
+    },
+    {
+      "name": "Common Kernel Functions",
+      "summary": [
+        "Different types of kernel functions are used to implicitly map data into higher dimensions.",
+        "Linear Kernel: Equivalent to the standard dot product, suitable for linearly separable data.",
+        "Polynomial Kernel: Introduces non-linearity by considering polynomial combinations of features.",
+        "Gaussian / RBF Kernel: Maps data into an infinite-dimensional space, effective for complex, non-linear relationships."
+      ],
+      "formulae": [
+        "Linear Kernel: kappa(x_i, x_j) = <x_i, x_j> = x_i^T x_j",
+        "Polynomial Kernel (degree d): kappa(x_i, x_j) = (x_i^T x_j / a + b)^d",
+        "Gaussian / RBF Kernel: kappa(x_i, x_j) = exp(-||x_i - x_j||^2 / (2 * sigma^2))",
+        "Gaussian / RBF Kernel (alternative form): kappa(x_i, x_j) = exp(-gamma ||x_i - x_j||^2)"
+      ],
+      "examples": [
+        "Visual examples of SVMs with Polynomial Kernel of Degree 2 and RBF-Kernel creating complex decision boundaries."
+      ],
+      "page": [
+        35,
+        36,
+        37,
+        39,
+        40
+      ]
+    },
+    {
+      "name": "Multi-class Classification with SVMs",
+      "summary": [
+        "SVMs are inherently binary classifiers, so strategies are needed for multi-class problems.",
+        "One-against-the-rest (One-vs-All): Trains 'k' binary SVMs, each separating one class from all others. Prediction is made by choosing the class with the highest decision function output.",
+        "One-against-one (One-vs-One): Trains k(k-1)/2 binary SVMs, one for each pair of classes. For testing, all binary SVMs are predicted, and the class with the most 'votes' wins.",
+        "One-against-one is generally faster for training than one-against-all, especially for large datasets."
+      ],
+      "formulae": [
+        "One-against-the-rest decision functions: (w^1)^T phi(x) + b_1, ..., (w^k)^T phi(x) + b_k",
+        "Prediction (One-against-the-rest): arg max_j (w^j)^T phi(x) + b_j",
+        "SVM optimization with size n is O(n^d)",
+        "1 vs. all: k problems, each N data, O(N^d)",
+        "1 vs. 1: k(k-1)/2 problems, each 2N/k data, O((k(k-1)/2) * (2N/k)^d)"
+      ],
+      "examples": [
+        "An example of 4 classes requiring 6 binary SVMs for one-against-one classification."
+      ],
+      "page": [
+        44,
+        45,
+        46,
+        47,
+        48
+      ]
+    }
+  ],
+  "quiz_questions": [
+    {
+      "question": "What does the hyperplane equation H: {x: w^T x + b = 0} represent in a perceptron model?",
+      "answer": "The decision boundary that separates positive and negative classifications.",
+      "distractors": [
+        "The input feature vector for a single data point.",
+        "The weighted sum of inputs before the activation function.",
+        "The output label predicted by the perceptron."
+      ],
+      "explanation": "The correct answer is **The decision boundary that separates positive and negative classifications.**\n\nIn a perceptron model, the hyperplane equation H: {x: w^T x + b = 0} defines the decision boundary. This boundary is a linear surface (a line in 2D, a plane in 3D, or a hyperplane in higher dimensions) that separates the feature space into two regions. Points on one side of this boundary are classified as positive, and points on the other side are classified as negative. The sign of the expression w^T x + b determines the classification: if w^T x + b > 0, it's typically classified as positive, and if w^T x + b < 0, it's classified as negative.\n\nLet's look at why the other options are incorrect:\n\n*   **The input feature vector for a single data point.** This is incorrect. The input feature vector is represented by 'x' in the equation, not the entire equation itself. The equation describes a relationship involving 'x' and the model parameters 'w' and 'b'.\n*   **The weighted sum of inputs before the activation function.** This is incorrect. The weighted sum of inputs *before* the activation function is w^T x + b. The hyperplane equation sets this sum equal to zero (w^T x + b = 0) to define the boundary, rather than representing the sum itself.\n*   **The output label predicted by the perceptron.** This is incorrect. The output label is typically +1 or -1 (or 0/1) and is determined by applying an activation function (like the sign function) to the weighted sum (w^T x + b). The hyperplane equation defines the boundary where this output *changes* sign, not the output label itself.",
+      "topic": {
+        "name": "Basic Perceptron Model Components",
+        "description": "This topic tests fundamental understanding of perceptron model elements including weight vectors, bias terms, and hyperplane definition. Students should be able to identify the mathematical components of a perceptron (w, b), understand the hyperplane equation H: {x: w^T x + b = 0}, and recognize how positive and negative classifications are determined. MCQs can test recognition of correct perceptron formulae, identification of hyperplane components, and basic perceptron prediction mechanics.",
+        "difficulty_level": "Easy",
+        "estimated_right_answer_rate": 0.85,
+        "bloom_taxonomy_level": "Remember"
+      },
+      "week_number": 6,
+      "course_code": "int3405"
+    },
+    {
+      "question": "When does hard margin SVM fail to find a solution?",
+      "answer": "When the data is not linearly separable",
+      "distractors": [
+        "When the number of features is too high",
+        "When the dataset is very small",
+        "When the chosen kernel function is inappropriate"
+      ],
+      "explanation": "The correct answer is **When the data is not linearly separable** because a Hard Margin Support Vector Machine (SVM) aims to find a hyperplane that perfectly separates the data points of different classes without any misclassifications. If the data points cannot be perfectly separated by a straight line (in 2D) or a hyperplane (in higher dimensions), then no such hyperplane exists, and the hard margin SVM algorithm will fail to converge or find a solution.\n\nLet's look at why the other options are incorrect:\n\n*   **When the number of features is too high**: While a high number of features can lead to computational challenges or the \"curse of dimensionality\" in many machine learning algorithms, it does not inherently prevent a hard margin SVM from finding a solution if the data is still linearly separable in that high-dimensional space. SVMs are actually quite effective in high-dimensional spaces, especially when combined with kernel tricks.\n\n*   **When the dataset is very small**: A small dataset might lead to overfitting or a less robust model, but it doesn't inherently cause a hard margin SVM to fail to find a solution if the small amount of data present is linearly separable. The algorithm will still attempt to find the optimal separating hyperplane.\n\n*   **When the chosen kernel function is inappropriate**: Kernel functions are primarily used in Soft Margin SVMs or when the data is not linearly separable in its original feature space, to transform the data into a higher-dimensional space where it might become linearly separable. Hard Margin SVMs, by definition, operate under the assumption of linear separability in the original feature space and do not typically employ kernel functions to handle non-linear data. If a kernel were used, it would be moving towards a soft margin or non-linear SVM approach, which is designed to handle non-linearly separable data. Therefore, an \"inappropriate kernel\" isn't the reason a hard margin SVM *fails* to find a solution; rather, the hard margin SVM fails because the data itself isn't linearly separable, making kernels irrelevant to its fundamental limitation.",
+      "topic": {
+        "name": "Hard Margin vs Soft Margin SVM Distinctions",
+        "description": "This topic assesses students' ability to differentiate between hard margin and soft margin SVM approaches. Students should understand when each method is applicable (linearly separable vs non-separable data), the role of slack variables (ξi), and the purpose of the regularization parameter C. MCQs can test identification of appropriate SVM type for given datasets, recognition of slack variable purposes, and understanding of when hard margin SVM fails.",
+        "difficulty_level": "Easy",
+        "estimated_right_answer_rate": 0.8,
+        "bloom_taxonomy_level": "Understand"
+      },
+      "week_number": 6,
+      "course_code": "int3405"
+    },
+    {
+      "question": "Which kernel function has the mathematical form K(xi, xj) = (xi · xj + c)^d?",
+      "answer": "Polynomial kernel",
+      "distractors": [
+        "Radial Basis Function (RBF) kernel",
+        "Linear kernel",
+        "Sigmoid kernel"
+      ],
+      "explanation": "The correct answer is the **Polynomial kernel** because its mathematical form is indeed K(xi, xj) = (xi · xj + c)^d. This formula includes a dot product of the input vectors (xi · xj), an added constant (c), and is raised to a power (d), which represents the degree of the polynomial. This structure allows the kernel to map data into a higher-dimensional feature space, enabling the identification of non-linear relationships.\n\nLet's look at why the other options are incorrect:\n\n*   **Radial Basis Function (RBF) kernel**: The RBF kernel, often referred to as the Gaussian kernel, has the mathematical form K(xi, xj) = exp(-γ ||xi - xj||^2), where γ is a positive constant and ||xi - xj||^2 is the squared Euclidean distance between the two vectors. This is clearly different from the given formula.\n\n*   **Linear kernel**: The linear kernel is the simplest kernel function, with the mathematical form K(xi, xj) = xi · xj. It essentially computes the dot product of the input vectors, without any additional constants or exponents as seen in the question's formula.\n\n*   **Sigmoid kernel**: The Sigmoid kernel, also known as the hyperbolic tangent kernel, has the mathematical form K(xi, xj) = tanh(α(xi · xj) + c), where α and c are constants. While it involves a dot product and a constant, the application of the hyperbolic tangent function makes its form distinct from the given polynomial equation.",
+      "topic": {
+        "name": "Kernel Function Types and Properties",
+        "description": "This topic tests recognition and basic understanding of common kernel functions: linear, polynomial, and Gaussian/RBF kernels. Students should identify correct kernel formulae, understand their mathematical forms, and recognize their basic properties. MCQs can test matching kernel names to correct equations, identifying polynomial kernel degree parameters, recognizing RBF kernel components (sigma, gamma), and understanding when each kernel type is most appropriate.",
+        "difficulty_level": "Easy",
+        "estimated_right_answer_rate": 0.75,
+        "bloom_taxonomy_level": "Remember"
+      },
+      "week_number": 6,
+      "course_code": "int3405"
+    },
+    {
+      "question": "Which multi-class SVM strategy requires k(k-1)/2 binary classifiers for k classes?",
+      "answer": "One-vs-one",
+      "distractors": [
+        "One-vs-rest",
+        "All-vs-all",
+        "Many-vs-one"
+      ],
+      "explanation": "The correct answer is **One-vs-one**.\n\n**One-vs-one (OVO)**, also known as all-vs-all, is a multi-class SVM strategy that constructs a binary classifier for every possible pair of classes. If there are 'k' classes, the number of unique pairs is given by the combination formula C(k, 2) = k(k-1)/2. Each classifier is trained to distinguish between two specific classes, ignoring data from all other classes. During prediction, a voting scheme is typically used, where each classifier casts a vote for one of the two classes it was trained on, and the class with the most votes is chosen as the final prediction.\n\n**One-vs-rest (OVR)**, also known as one-vs-all, is incorrect because it requires 'k' binary classifiers for 'k' classes. In this strategy, for each class 'i', a binary SVM is trained to distinguish class 'i' from all other 'k-1' classes combined. During prediction, the classifier that outputs the highest score (or confidence) determines the predicted class.\n\n**All-vs-all** is incorrect because it is another name for the One-vs-one strategy itself, not a distinct strategy that requires a different number of classifiers. The question asks for the strategy that requires k(k-1)/2 classifiers, and \"All-vs-all\" is synonymous with \"One-vs-one,\" which is the correct answer provided. If \"One-vs-one\" is an option, it's the more standard term.\n\n**Many-vs-one** is incorrect because it is not a standard or recognized multi-class SVM strategy. The primary established strategies for extending binary SVMs to multi-class problems are One-vs-rest and One-vs-one.",
+      "topic": {
+        "name": "Multi-class SVM Strategy Comparison",
+        "description": "This topic assesses understanding of multi-class SVM approaches: one-vs-rest and one-vs-one strategies. Students should know how many binary classifiers each method requires for k classes, understand the prediction mechanisms, and recognize computational complexity differences. MCQs can test calculation of required binary SVMs (k for one-vs-rest, k(k-1)/2 for one-vs-one), identification of prediction methods, and comparison of training efficiency between approaches.",
+        "difficulty_level": "Easy",
+        "estimated_right_answer_rate": 0.78,
+        "bloom_taxonomy_level": "Understand"
+      },
+      "week_number": 6,
+      "course_code": "int3405"
+    },
+    {
+      "question": "When formulating a soft margin SVM optimization problem, what additional variables are introduced to handle non-linearly separable data?",
+      "answer": "Slack variables ξᵢ",
+      "distractors": [
+        "Lagrange multipliers αᵢ",
+        "Kernel functions K(xᵢ, xⱼ)",
+        "Bias terms b"
+      ],
+      "explanation": "When formulating a soft margin SVM, **slack variables (ξᵢ)** are introduced to allow some misclassification or points to fall within the margin. These variables quantify the degree to which a data point violates the margin or lies on the wrong side of the hyperplane, enabling the SVM to handle non-linearly separable data by penalizing these violations rather than strictly enforcing a perfect separation.\n\n**Lagrange multipliers (αᵢ)** are introduced when converting the primal optimization problem into its dual form. They are associated with the constraints of the optimization problem and are used to find the optimal hyperplane parameters, but they are not the variables that directly handle non-linearly separable data in the primal soft margin formulation.\n\n**Kernel functions (K(xᵢ, xⱼ))** are used to implicitly map non-linearly separable data into a higher-dimensional feature space where it might become linearly separable. While crucial for handling non-linear data, kernel functions are part of the feature transformation strategy, not additional variables introduced into the optimization problem itself to quantify margin violations.\n\n**Bias terms (b)** are a fundamental component of the hyperplane equation (wᵀx + b = 0) in any SVM formulation (hard or soft margin). They determine the offset of the hyperplane from the origin and are part of the parameters being optimized, but they do not specifically address the issue of non-linearly separable data by allowing margin violations.",
+      "topic": {
+        "name": "SVM Optimization Problem Formulation",
+        "description": "This topic tests students' ability to correctly formulate SVM optimization problems in both primal and dual forms. Students should understand the objective function components (margin maximization, regularization), constraint formulations, and the mathematical transformation between primal and dual problems. MCQs can test identification of correct objective functions, recognition of constraint formulations for hard/soft margin cases, and understanding of Lagrangian dual problem setup.",
+        "difficulty_level": "Medium",
+        "estimated_right_answer_rate": 0.65,
+        "bloom_taxonomy_level": "Apply"
+      },
+      "week_number": 6,
+      "course_code": "int3405"
+    },
+    {
+      "question": "Which classification method would be most appropriate for a dataset with thousands of features, limited training time, and text data where features may be correlated?",
+      "answer": "Naive Bayes",
+      "distractors": [
+        "Support Vector Machine (SVM)",
+        "Logistic Regression",
+        "Decision Tree"
+      ],
+      "explanation": "Naive Bayes is the most appropriate method because it handles high-dimensional data (thousands of features) efficiently, even with limited training time, due to its simplicity and the assumption of conditional independence. This assumption, while often violated in text data where features (words) can be correlated, often works surprisingly well in practice for text classification and helps to reduce computational complexity significantly.\n\nSupport Vector Machine (SVM) would be less appropriate because while effective with high-dimensional data, its training time can be substantial, especially with a large number of features, as it involves solving a complex optimization problem. Logistic Regression, like SVM, can struggle with very high-dimensional data and correlated features without regularization, and its training can be slower than Naive Bayes for such datasets. Decision Trees are generally not ideal for datasets with thousands of features, as they can become very complex, prone to overfitting, and computationally expensive to build and prune in such high-dimensional spaces, especially when features are correlated.",
+      "topic": {
+        "name": "Classification Methods Comparison Across Weeks",
+        "description": "This cross-week topic integrates classification methods from Weeks 4-6, comparing Naive Bayes, Logistic Regression, Decision Trees, and SVMs. Students should analyze strengths, weaknesses, assumptions, and appropriate use cases for each method. MCQs can test identification of best classifier for specific scenarios, recognition of key assumptions (e.g., conditional independence for Naive Bayes, linear separability for perceptron), comparison of decision boundary types, and analysis of computational complexity trade-offs between methods.",
+        "difficulty_level": "Medium",
+        "estimated_right_answer_rate": 0.6,
+        "bloom_taxonomy_level": "Analyze"
+      },
+      "week_number": 6,
+      "course_code": "int3405"
+    },
+    {
+      "question": "You have a dataset where classes are arranged in concentric circles, making them non-linearly separable in 2D space. What does the kernel trick enable you to do with this dataset?",
+      "answer": "Transform the data to a higher-dimensional space where it becomes linearly separable",
+      "distractors": [
+        "Apply a non-linear activation function to the output layer for better separation",
+        "Directly separate the data using a complex non-linear decision boundary in the original space",
+        "Reduce the dimensionality of the data to simplify the classification task"
+      ],
+      "explanation": "The correct answer is **Transform the data to a higher-dimensional space where it becomes linearly separable**.\n\n**Why the correct answer is right:**\nThe kernel trick is a fundamental concept in machine learning, particularly with algorithms like Support Vector Machines (SVMs). When data is non-linearly separable in its original low-dimensional space (like concentric circles in 2D), the kernel trick allows us to implicitly map this data into a higher-dimensional feature space. In this new, higher-dimensional space, the data points that were previously intertwined can become linearly separable. This means a simple hyperplane can now be used to separate the classes, even though the original data required a complex, non-linear boundary. The \"trick\" is that this transformation is done without explicitly calculating the coordinates in the higher-dimensional space; instead, it uses a kernel function to compute the dot products between data points in that higher dimension, making it computationally efficient.\n\n**Why each distractor is wrong:**\n\n*   **Apply a non-linear activation function to the output layer for better separation:** While non-linear activation functions are crucial in neural networks to learn complex patterns, they are not the mechanism by which the kernel trick operates. The kernel trick is about transforming the *input feature space* itself, not about the activation function of an output layer. SVMs, which commonly use the kernel trick, typically do not have \"output layers\" in the same sense as neural networks.\n\n*   **Directly separate the data using a complex non-linear decision boundary in the original space:** This describes what you *want* to achieve (a non-linear decision boundary), but it's not *how* the kernel trick achieves it. The kernel trick doesn't directly draw a complex non-linear boundary in the original space. Instead, it transforms the data so that a *linear* boundary in the *transformed space* corresponds to a *non-linear* boundary when projected back into the original space. The kernel trick avoids the direct computation of complex non-linear boundaries in the original space by making the problem linearly separable in a higher dimension.\n\n*   **Reduce the dimensionality of the data to simplify the classification task:** Reducing dimensionality (e.g., using PCA) is typically done to simplify models, reduce noise, or speed up computation. However, for non-linearly separable data like concentric circles, reducing dimensionality would almost certainly make the separation *more* difficult, not easier, as it would likely cause further overlap or loss of critical information needed for separation. The kernel trick, conversely, *increases* the effective dimensionality to find separability.",
+      "topic": {
+        "name": "Kernel Trick Mechanics and Applications",
+        "description": "This topic assesses deep understanding of how the kernel trick works to handle non-linear classification by implicit feature space mapping. Students should understand the mathematical transformation from dot products to kernel functions, recognize the benefits of avoiding explicit high-dimensional computations, and apply kernel concepts to solve non-linear classification problems. MCQs can test understanding of feature space mapping concepts, recognition of when kernels enable linear separability, and application of kernel trick principles to specific datasets.",
+        "difficulty_level": "Medium",
+        "estimated_right_answer_rate": 0.58,
+        "bloom_taxonomy_level": "Apply"
+      },
+      "week_number": 6,
+      "course_code": "int3405"
+    },
+    {
+      "question": "A financial institution needs to develop a fraud detection system using a dataset with 1 million transactions, high-dimensional sparse features, severe class imbalance (0.1% fraud cases), and requirements for both high precision to minimize false positives and real-time inference under 10ms. When evaluating the optimal algorithmic approach for this scenario, which factor should be given highest priority in the selection process?",
+      "answer": "Minimizing false positives while maintaining real-time performance constraints",
+      "distractors": [
+        "Maximizing overall accuracy on the imbalanced dataset to identify all potential fraud cases",
+        "Selecting an algorithm that inherently handles high-dimensional sparse data without explicit feature engineering",
+        "Ensuring the model's interpretability for regulatory compliance and audit trails"
+      ],
+      "explanation": "The correct answer is **Minimizing false positives while maintaining real-time performance constraints**.\n\n**Why the correct answer is right:**\nIn a fraud detection system, false positives (legitimate transactions flagged as fraudulent) are extremely costly. They lead to customer inconvenience, lost sales, increased operational overhead for manual review, and potential reputational damage. Given the severe class imbalance (0.1% fraud cases), even a small false positive rate can result in a large number of legitimate transactions being incorrectly flagged. Therefore, minimizing false positives (i.e., achieving high precision) is paramount. Simultaneously, the requirement for real-time inference under 10ms is a strict operational constraint. Any algorithm chosen must be able to meet both these critical performance and operational requirements. This factor directly addresses the core business problem (fraud detection with minimal disruption) and the system's practical deployment needs.\n\n**Why each distractor is wrong:**\n\n*   **Maximizing overall accuracy on the imbalanced dataset to identify all potential fraud cases:** While identifying all fraud cases (high recall) is important, maximizing *overall accuracy* is a misleading metric for severely imbalanced datasets. A model that simply predicts \"not fraud\" for every transaction would achieve over 99.9% accuracy but would be useless for fraud detection. In such scenarios, metrics like precision, recall, F1-score, or AUC-PR are more appropriate. Furthermore, the question explicitly prioritizes minimizing false positives, which is a precision-focused goal, over simply maximizing overall accuracy or even recall alone.\n\n*   **Selecting an algorithm that inherently handles high-dimensional sparse data without explicit feature engineering:** While handling high-dimensional sparse data is a significant technical challenge in this scenario, it is a *technical consideration* for algorithm selection, not the *highest priority factor* for the overall system's success. Many algorithms (e.g., tree-based methods, linear models with regularization) can handle such data, and feature engineering is often a crucial step regardless. The primary goal is to solve the business problem (fraud detection with specific performance requirements), and data characteristics are secondary to the core performance and operational constraints.\n\n*   **Ensuring the model's interpretability for regulatory compliance and audit trails:** Model interpretability is indeed important for financial institutions due to regulatory compliance, audit trails, and explaining decisions to customers. However, in this specific scenario, the immediate and most critical operational requirements are high precision (minimizing false positives) and real-time performance. While interpretability should be considered, it often becomes a secondary constraint or a factor to optimize *after* the primary performance and speed requirements are met. There are techniques (e.g., LIME, SHAP) that can provide interpretability for complex models, meaning that interpretability doesn't necessarily dictate the initial algorithm choice as the highest priority over core performance.",
+      "topic": {
+        "name": "Comprehensive ML Algorithm Selection and Integration",
+        "description": "This advanced cross-week topic synthesizes all supervised learning algorithms from Weeks 3-6 (Linear Regression, Naive Bayes, Logistic Regression, Decision Trees, SVMs) for comprehensive algorithm selection scenarios. Students must evaluate trade-offs considering data characteristics, computational requirements, interpretability needs, and performance expectations. MCQs can test complex scenario-based algorithm selection, analysis of when to combine multiple methods, evaluation of end-to-end machine learning pipeline decisions, and synthesis of mathematical foundations across different algorithmic approaches for optimal problem-solving strategies.",
+        "difficulty_level": "Hard",
+        "estimated_right_answer_rate": 0.45,
+        "bloom_taxonomy_level": "Evaluate"
+      },
+      "week_number": 6,
+      "course_code": "int3405"
+    }
+  ],
+  "week_number": 6,
+  "course_code": "int3405"
+}

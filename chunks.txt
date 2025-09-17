@@ -1,0 +1,1289 @@
+Chunk 1:
+**Lecture2_General Concepts for ML.pdf**
+
+# INT3405 - Machine Learning: Bài giảng 2: Các khái niệm chung về ML
+## Mục lục
+- [Slide 1: Trang bìa](#slide-1-trang-bìa)
+- [Slide 2: Tóm tắt: Lập trình truyền thống so với Học máy](#slide-2-tóm-tắt-lập-trình-truyền-thống-so-với-học-máy)
+- [Slide 3: Tóm tắt: Học máy so với Học sâu](#slide-3-tóm-tắt-học-máy-so-với-học-sâu)
+- [Slide 4: Tóm tắt: Học máy so với Học sâu so với AI](#slide-4-tóm-tắt-học-máy-so-với-học-sâu-so-với-ai)
+- [Slide 5: Tóm tắt: Các loại Học máy](#slide-5-tóm-tắt-các-loại-học-máy)
+- [Slide 6: Đề cương](#slide-6-đề-cương)
+- [Slide 7: Đây là con vật gì?](#slide-7-đây-là-con-vật-gì)
+- [Slide 8: Trò chơi: Tung đồng xu](#slide-8-trò-chơi-tung-đồng-xu)
+- [Slide 9: Biến ngẫu nhiên (RV)](#slide-9-biến-ngẫu-nhiên-rv)
+- [Slide 10: Biến ngẫu nhiên rời rạc (DRV)](#slide-10-biến-ngẫu-nhiên-rời-rạc-drv)
+- [Slide 11: DRV - Hàm mật độ xác suất (1)](#slide-11-drv---hàm-mật-độ-xác-suất-1)
+- [Slide 12: DRV – Hàm mật độ xác suất (2)](#slide-12-drv--hàm-mật-độ-xác-suất-2)
+- [Slide 13: Biến ngẫu nhiên liên tục (CRV)](#slide-13-biến-ngẫu-nhiên-liên-tục-crv)
+- [Slide 14: CRV – Hàm mật độ xác suất (1)](#slide-14-crv--hàm-mật-độ-xác-suất-1)
+- [Slide 15: Phân phối xác suất tích lũy (1)](#slide-15-phân-phối-xác-suất-tích-lũy-1)
+- [Slide 16: Phân phối xác suất tích lũy (2)](#slide-16-phân-phối-xác-suất-tích-lũy-2)
+- [Slide 17: Phân phối xác suất tích lũy (3)](#slide-17-phân-phối-xác-suất-tích-lũy-3)
+- [Slide 18: Giá trị kỳ vọng của biến ngẫu nhiên](#slide-18-giá-trị-kỳ-vọng-của-biến-ngẫu-nhiên)
+- [Slide 19: Giá trị kỳ vọng - Thuộc tính](#slide-19-giá-trị-kỳ-vọng---thuộc-tính)
+- [Slide 20: Phương sai của biến ngẫu nhiên](#slide-20-phương-sai-của-biến-ngẫu-nhiên)
+- [Slide 21: Phương sai - Thuộc tính](#slide-21-phương-sai---thuộc-tính)
+- [Slide 22: Ba quy tắc xác suất](#slide-22-ba-quy-tắc-xác-suất)
+- [Slide 23: Xác suất đồng thời](#slide-23-xác-suất-đồng-thời)
+- [Slide 24: Xác suất biên](#slide-24-xác-suất-biên)
+
+Chunk 2:
+**Lecture2_General Concepts for ML.pdf**
+
+# INT3405 - Machine Learning: Bài giảng 2: Các khái niệm chung về ML
+## Mục lục
+- [Slide 25: Xác suất có điều kiện](#slide-25-xác-suất-có-điều-kiện)
+- [Slide 26: Xác suất hậu nghiệm, tiên nghiệm & khả năng](#slide-26-xác-suất-hậu-nghiệm-tiên-nghiệm--khả-năng)
+- [Slide 27: Độc lập & Phụ thuộc](#slide-27-độc-lập--phụ-thuộc)
+- [Slide 28: Đề cương](#slide-28-đề-cương)
+- [Slide 29: Các phân phối dữ liệu điển hình](#slide-29-các-phân-phối-dữ-liệu-điển-hình)
+- [Slide 30: Phân phối đều](#slide-30-phân-phối-đều)
+- [Slide 31: Phân phối đều – Ví dụ](#slide-31-phân-phối-đều--ví-dụ)
+- [Slide 32: Phân phối Bernoulli](#slide-32-phân-phối-bernoulli)
+- [Slide 33: Phân phối Bernoulli – Ví dụ](#slide-33-phân-phối-bernoulli--ví-dụ)
+- [Slide 34: Phân phối nhị thức](#slide-34-phân-phối-nhị-thức)
+- [Slide 35: Phân phối nhị thức – Ví dụ](#slide-35-phân-phối-nhị-thức--ví-dụ)
+- [Slide 36: Phân phối phân loại](#slide-36-phân-phối-phân-loại)
+- [Slide 37: Phân phối phân loại - Ví dụ](#slide-37-phân-phối-phân-loại---ví-dụ)
+- [Slide 38: Phân phối chuẩn đơn biến](#slide-38-phân-phối-chuẩn-đơn-biến)
+- [Slide 39: Phân phối chuẩn đơn biến - Ví dụ](#slide-39-phân-phối-chuẩn-đơn-biến---ví-dụ)
+- [Slide 40: Phân phối chuẩn đa biến](#slide-40-phân-phối-chuẩn-đa-biến)
+- [Slide 41: Phân phối mũ](#slide-41-phân-phối-mũ)
+- [Slide 42: Phân phối mũ - Ví dụ](#slide-42-phân-phối-mũ---ví-dụ)
+- [Slide 43: Đề cương](#slide-43-đề-cương)
+- [Slide 44: Đo lường điển hình - Entropy](#slide-44-đo-lường-điển-hình---entropy)
+- [Slide 45: Đo lường điển hình – Thông tin tương hỗ](#slide-45-đo-lường-điển-hình--thông-tin-tương-hỗ)
+- [Slide 46: Đo lường điển hình – Cross Entropy](#slide-46-đo-lường-điển-hình--cross-entropy)
+- [Slide 47: Đo lường điển hình – KL Divergence](#slide-47-đo-lường-điển-hình--kl-divergence)
+- [Slide 48: Câu đố](#slide-48-câu-đố)
+- [Slide 49: Câu đố](#slide-49-câu-đố)
+- [Slide 50: Đề cương](#slide-50-đề-cương)
+- [Slide 51: Học quy nạp](#slide-51-học-quy-nạp)
+- [Slide 52: Khung học thống kê](#slide-52-khung-học-thống-kê)
+- [Slide 53: Khung học thống kê](#slide-53-khung-học-thống-kê)
+- [Slide 54: Khung học thống kê](#slide-54-khung-học-thống-kê)
+
+Chunk 3:
+**Lecture2_General Concepts for ML.pdf**
+
+# INT3405 - Machine Learning: Bài giảng 2: Các khái niệm chung về ML
+## Mục lục
+- [Slide 55: Khung học thống kê](#slide-55-khung-học-thống-kê)
+- [Slide 56: Khung học thống kê](#slide-56-khung-học-thống-kê)
+- [Slide 57: Khung học thống kê](#slide-57-khung-học-thống-kê)
+- [Slide 58: Huấn luyện/Kiểm tra/Xác thực](#slide-58-huấn-luyệnkiểm-traxác-thực)
+- [Slide 59: Kiểm định chéo](#slide-59-kiểm-định-chéo)
+- [Slide 60: Lỗi tổng quát hóa & lỗi thực nghiệm](#slide-60-lỗi-tổng-quát-hóa--lỗi-thực-nghiệm)
+- [Slide 61: Quy trình học có giám sát](#slide-61-quy-trình-học-có-giám-sát)
+- [Slide 62: Quy trình học không giám sát](#slide-62-quy-trình-học-không-giám-sát)
+- [Slide 63: Tóm tắt](#slide-63-tóm-tắt)
+- [Slide 64: Tóm tắt](#slide-64-tóm-tắt)
+- [Slide 65: Bài tập về nhà: Ước lượng tham số](#slide-65-bài-tập-về-nhà-ước-lượng-tham-số)
+- [Slide 66: Bài tập về nhà: Ước lượng tham số](#slide-66-bài-tập-về-nhà-ước-lượng-tham-số)
+- [Slide 67: Bài tập về nhà: Ước lượng tham số](#slide-67-bài-tập-về-nhà-ước-lượng-tham-số)
+- [Slide 68: Bài tập về nhà: Ước lượng tham số](#slide-68-bài-tập-về-nhà-ước-lượng-tham-số)
+- [Slide 69: Cảm ơn](#slide-69-cảm-ơn)
+
+---
+
+Chunk 4:
+**Lecture2_General Concepts for ML.pdf**
+
+# Slide 1: Trang bìa
+
+Hình ảnh trên slide là logo của Đại học Công nghệ (UET), Đại học Quốc gia Hà Nội (VNU). Logo UET có hình tròn màu xanh đậm với chữ "ĐẠI HỌC CÔNG NGHỆ" và "UET" cùng dòng chữ "Since 2004" và "VNU-University of Engineering and Technology". Logo VNU có hình tròn màu xanh lá cây với chữ "ĐHQGHN" và "VNU" cùng dòng chữ "Since 1906" và "ĐẠI HỌC QUỐC GIA HÀ NỘI Vietnam National University, Hanoi".
+
+Tiêu đề chính của slide là:
+**INT3405 - Machine Learning**
+**Lecture 2: General Concepts for ML**
+
+Dưới cùng là thông tin về thời gian và địa điểm:
+**Hanoi, 02/2025**
+
+---
+
+# Slide 2: Tóm tắt: Lập trình truyền thống so với Học máy
+
+Slide này tóm tắt sự khác biệt giữa Lập trình truyền thống và Học máy thông qua hai sơ đồ.
+
+**Lập trình truyền thống:**
+Sơ đồ mô tả quy trình:
+- **Dữ liệu** và **Chương trình** được đưa vào **Máy tính**.
+- **Máy tính** xử lý và tạo ra **Đầu ra**.
+Điều này thể hiện rằng trong lập trình truyền thống, chúng ta cung cấp dữ liệu và các quy tắc (chương trình) để máy tính tạo ra kết quả.
+
+**Học máy:**
+Sơ đồ mô tả quy trình:
+- **Dữ liệu** và **Kết quả** được đưa vào **Máy tính**.
+- **Máy tính** xử lý và tạo ra **Chương trình**.
+Điều này thể hiện rằng trong học máy, chúng ta cung cấp dữ liệu và các kết quả mong muốn, và máy tính sẽ học để tạo ra một chương trình (mô hình) có thể dự đoán kết quả cho dữ liệu mới.
+
+Nguồn hình ảnh được cung cấp: `https://images.techhive.com/images/article/2017/05/traditional-programming-vs-machine-learning-100723299-large.jpg`
+
+---
+
+Chunk 5:
+**Lecture2_General Concepts for ML.pdf**
+
+# Slide 3: Tóm tắt: Học máy so với Học sâu
+
+Slide này so sánh Học máy và Học sâu thông qua hai sơ đồ quy trình.
+
+**Học máy (Machine Learning):**
+Sơ đồ mô tả các bước:
+1.  **Đầu vào (Input):** Một hình ảnh chiếc ô tô màu xanh lá cây.
+2.  **Trích xuất đặc trưng (Feature extraction):** Từ hình ảnh đầu vào, các đặc trưng được trích xuất (biểu tượng bánh răng và màn hình máy tính).
+3.  **Phân loại (Classification):** Các đặc trưng được đưa vào một mạng lưới các nút (biểu thị một mô hình học máy) để phân loại.
+4.  **Đầu ra (Output):** Kết quả phân loại là "CAR" hoặc "NOT CAR". Trong ví dụ này, đầu ra là "CAR" được đánh dấu xanh lá cây và "NOT CAR" màu đỏ.
+
+**Học sâu (Deep Learning):**
+Sơ đồ mô tả các bước:
+1.  **Đầu vào (Input):** Một hình ảnh chiếc ô tô màu xanh dương.
+2.  **Trích xuất đặc trưng + Phân loại (Feature extraction + Classification):** Trong học sâu, quá trình trích xuất đặc trưng và phân loại được tích hợp vào một mạng lưới lớn hơn (biểu thị một mạng nơ-ron sâu với nhiều lớp).
+3.  **Đầu ra (Output):** Kết quả phân loại là "CAR" hoặc "NOT CAR". Tương tự, đầu ra là "CAR" được đánh dấu xanh lá cây và "NOT CAR" màu đỏ.
+
+Điểm khác biệt chính được nhấn mạnh là trong Học máy truyền thống, trích xuất đặc trưng là một bước riêng biệt, trong khi trong Học sâu, nó được tích hợp vào quá trình học của mô hình.
+
+Nguồn hình ảnh được cung cấp: `https://www.linkedin.com/pulse/lets-understand-difference-between-machine-learning-vs-gauri-bapat`
+
+---
+
+Chunk 6:
+**Lecture2_General Concepts for ML.pdf**
+
+# Slide 4: Tóm tắt: Học máy so với Học sâu so với AI
+
+Slide này trình bày mối quan hệ phân cấp giữa Trí tuệ nhân tạo (AI), Học máy (Machine Learning) và Học sâu (Deep Learning) thông qua một biểu đồ Venn.
+
+Biểu đồ Venn bao gồm ba hình elip lồng vào nhau:
+-   **Trí tuệ nhân tạo (Artificial Intelligence):** Là tập hợp lớn nhất, bao gồm các thuật toán mô phỏng trí thông minh của con người, có khả năng giải quyết vấn đề theo cách được coi là "thông minh". Phạm vi từ các thuật toán đơn giản nhất đến phức tạp nhất.
+-   **Học máy (Machine Learning):** Nằm trong Trí tuệ nhân tạo. Bao gồm các thuật toán phân tích dữ liệu, học từ dữ liệu đó và áp dụng những gì đã học để đưa ra các quyết định có thông tin. Chúng sử dụng các đặc trưng được trích xuất bởi con người từ dữ liệu và cải thiện hiệu suất thông qua kinh nghiệm.
+-   **Học sâu (Deep Learning):** Nằm trong Học máy. Là các thuật toán Mạng nơ-ron học các đặc trưng quan trọng trong dữ liệu một cách tự động. Có khả năng tự điều chỉnh thông qua quá trình huấn luyện lặp đi lặp lại để khám phá các mẫu và hiểu biết ẩn.
+
+Nguồn hình ảnh được cung cấp: `https://www.ibm.com/blogs/systems/ai-machine-learning-and-deep-learning-whats-the-difference/`
+
+---
+
+Chunk 7:
+**Lecture2_General Concepts for ML.pdf**
+
+# Slide 5: Tóm tắt: Các loại Học máy
+
+Slide này trình bày một sơ đồ phân loại các loại Học máy và các ứng dụng của chúng. Sơ đồ có hình dạng một cây với "Machine Learning" ở trung tâm.
+
+**Machine Learning** được chia thành ba nhánh chính:
+
+1.  **Unsupervised Learning (Học không giám sát):**
+    *   **Clustering (Phân cụm):**
+        *   Targeted Marketing (Tiếp thị mục tiêu)
+        *   Customer Segmentation (Phân khúc khách hàng)
+    *   **Dimensionality Reduction (Giảm chiều dữ liệu):**
+        *   Meaningful Compression (Nén có ý nghĩa)
+        *   Big data Visualization (Trực quan hóa dữ liệu lớn)
+    *   **Structure Discovery (Khám phá cấu trúc):**
+        *   Feature Elicitation (Khơi gợi đặc trưng)
+
+2.  **Supervised Learning (Học có giám sát):**
+    *   **Classification (Phân loại):**
+        *   Image Classification (Phân loại hình ảnh)
+        *   Customer Retention (Giữ chân khách hàng)
+        *   Identity Fraud Detection (Phát hiện gian lận danh tính)
+        *   Diagnostics (Chẩn đoán)
+    *   **Regression (Hồi quy):**
+        *   Advertising Popularity Prediction (Dự đoán mức độ phổ biến quảng cáo)
+        *   Weather Forecasting (Dự báo thời tiết)
+        *   Market Forecasting (Dự báo thị trường)
+        *   Estimating life expectancy (Ước tính tuổi thọ)
+    *   **Population Growth Prediction (Dự đoán tăng trưởng dân số)**
+
+3.  **Reinforcement Learning (Học tăng cường):**
+    *   Real-time decisions (Quyết định thời gian thực)
+    *   Game AI (AI trò chơi)
+    *   Robot Navigation (Điều hướng robot)
+    *   Skill Acquisition (Thu thập kỹ năng)
+    *   Learning Tasks (Nhiệm vụ học tập)
+
+Nguồn hình ảnh được cung cấp: `https://medium.com/marketing-and-entrepreneurship/10-companies-using-machine-learning-in-cool-ways-887c25f913c3`
+
+---
+
+# Slide 6: Đề cương
+
+Slide này trình bày đề cương của bài giảng, bao gồm các chủ đề chính:
+
+*   **Thống kê - Xác suất**
+*   **Phân phối dữ liệu điển hình**
+*   **Các phép đo điển hình**
+    *   Entropy, Cross Entropy
+    *   Thông tin tương hỗ (Mutual Information)
+    *   Kullback-Leibler Divergence
+*   **Lý thuyết học**
+
+---
+
+Chunk 8:
+**Lecture2_General Concepts for ML.pdf**
+
+# Slide 7: Đây là con vật gì?
+
+Slide này hiển thị một hình ảnh và đặt câu hỏi để minh họa khái niệm về xác suất hoặc phân loại.
+
+Hình ảnh hiển thị một con mèo màu cam đang ngủ trên một chiếc chăn màu trắng hoặc kem. Con mèo nằm nghiêng, mắt nhắm, chân trước duỗi ra.
+
+Hai mũi tên chỉ từ hình ảnh ra ngoài, với các câu hỏi:
+*   **A cat?** (Một con mèo?)
+*   **or a tiger?** (hay một con hổ?)
+
+Câu hỏi này gợi ý về sự không chắc chắn trong việc phân loại và có thể dẫn đến thảo luận về xác suất hoặc các đặc điểm phân biệt.
+
+---
+
+# Slide 8: Trò chơi: Tung đồng xu
+
+Slide này hiển thị một hình ảnh minh họa cho trò chơi tung đồng xu, một ví dụ kinh điển trong xác suất.
+
+Hình ảnh là một bàn tay đang giữ một đồng xu Euro (có thể là 2 Euro) giữa ngón cái và ngón trỏ, chuẩn bị tung. Nền phía sau là một bề mặt gỗ màu nâu.
+
+---
+
+# Slide 9: Biến ngẫu nhiên (RV)
+
+Slide này định nghĩa Biến ngẫu nhiên (RV) và phân loại nó thành Biến ngẫu nhiên rời rạc và Biến ngẫu nhiên liên tục.
+
+*   **Định nghĩa:** Biến ngẫu nhiên (RV) là một biến mà các giá trị có thể có của nó là các kết quả số của một hiện tượng ngẫu nhiên.
+
+Sơ đồ phân loại Biến ngẫu nhiên:
+*   **Biến ngẫu nhiên (Random Variable)**
+    *   **Biến ngẫu nhiên rời rạc (Discrete RV):** Được minh họa bằng một biểu đồ cột, trong đó các giá trị có thể có được biểu diễn bằng các cột riêng biệt, cho thấy các giá trị rời rạc.
+    *   **Biến ngẫu nhiên liên tục (Continuous RV):** Được minh họa bằng một đường cong hình chuông (phân phối chuẩn), cho thấy các giá trị có thể có nằm trong một khoảng liên tục.
+
+---
+
+Chunk 9:
+**Lecture2_General Concepts for ML.pdf**
+
+# Slide 10: Biến ngẫu nhiên rời rạc (DRV)
+
+Slide này đưa ra hai ví dụ về Biến ngẫu nhiên rời rạc (DRV).
+
+1.  **Ví dụ 1: Tung đồng xu hai lần**
+    *   **Câu hỏi:** Tung đồng xu hai lần, và X là số lần mặt ngửa xuất hiện. X có bao nhiêu giá trị?
+    *   Hình ảnh minh họa là một đồng xu 1 cent của Mỹ, mặt sau có năm 1991.
+
+2.  **Ví dụ 2: Tung xúc xắc hai lần**
+    *   **Câu hỏi:** Tung xúc xắc hai lần, và X là tổng số nút của hai lần tung. X có bao nhiêu giá trị?
+    *   Hình ảnh minh họa là hai con xúc xắc, một con nằm trên con kia, cả hai đều hiển thị các mặt có chấm.
+
+---
+
+# Slide 11: DRV - Hàm mật độ xác suất (1)
+
+Slide này định nghĩa và trình bày các điều kiện của Hàm mật độ xác suất (Probability Density Function - PDF) cho Biến ngẫu nhiên rời rạc (DRV).
+
+*   **Định nghĩa:** Một biến ngẫu nhiên rời rạc X có các giá trị $x_1, x_2, ..., x_n$.
+*   **Hàm mật độ xác suất:** $f(x_i) = P(X = x_i)$
+*   **Ký hiệu:** $p_i = f(x_i) = P(X=x_i)$
+
+*   **Các điều kiện:**
+    *   $f(x_i) \ge 0$ (Xác suất của mỗi giá trị phải không âm)
+    *   $\sum_{i=1}^{n} f(x_i) = 1$ (Tổng xác suất của tất cả các giá trị phải bằng 1)
+
+Hình ảnh minh họa các điều kiện này:
+Một trục số với các điểm $x_1, x_2, ..., x_{n-1}, x_n$.
+Phía dưới trục số, các đoạn thẳng màu xanh dương biểu thị $f(x_1)$, $f(x_2)$, $f(x_{n-1})$, $f(x_n)$. Chiều dài của các đoạn thẳng này tương ứng với giá trị của hàm mật độ xác suất tại các điểm đó.
+Một mũi tên màu đỏ chỉ từ các đoạn thẳng này xuống một đoạn thẳng lớn hơn màu xanh dương, được đánh dấu "1", biểu thị rằng tổng các xác suất bằng 1.
+
+---
+
+Chunk 10:
+**Lecture2_General Concepts for ML.pdf**
+
+# Slide 12: DRV – Hàm mật độ xác suất (2)
+
+Slide này minh họa Hàm mật độ xác suất (PDF) cho Biến ngẫu nhiên rời rạc (DRV) bằng ví dụ tung hai đồng xu.
+
+**Ví dụ:** Tung hai đồng xu, X được ký hiệu là số lần xuất hiện mặt ngửa (head).
+
+**Các kết quả có thể có:** Có 4 kết quả có thể xảy ra:
+*   Đồng xu 1: S (Sấp), Đồng xu 2: S (Sấp) -> 0 mặt ngửa
+*   Đồng xu 1: S (Sấp), Đồng xu 2: H (Ngửa) -> 1 mặt ngửa
+*   Đồng xu 1: H (Ngửa), Đồng xu 2: S (Sấp) -> 1 mặt ngửa
+*   Đồng xu 1: H (Ngửa), Đồng xu 2: H (Ngửa) -> 2 mặt ngửa
+
+**Bảng PDF:**
+| X (Số mặt ngửa) | P(x) (Xác suất) |
+|---|---|
+| 0 | 1/4 = 0.25 |
+| 1 | 2/4 = 0.50 |
+| 2 | 1/4 = 0.25 |
+
+**Biểu đồ cột (Histogram) của xác suất:**
+Biểu đồ hiển thị trục hoành là X (0, 1, 2) và trục tung là Xác suất (Probability) với các giá trị 0.25 và 0.50.
+*   Cột tại X=0 có chiều cao 0.25.
+*   Cột tại X=1 có chiều cao 0.50.
+*   Cột tại X=2 có chiều cao 0.25.
+
+---
+
+# Slide 13: Biến ngẫu nhiên liên tục (CRV)
+
+Slide này định nghĩa Biến ngẫu nhiên liên tục (CRV) và cung cấp các ví dụ minh họa.
+
+*   **Định nghĩa:** Không gian giá trị của CRV là $\mathbb{R}$ (tập hợp số thực) hoặc một tập con của $\mathbb{R}$.
+
+**Ví dụ minh họa:**
+
+1.  **Cân nặng & Chiều cao (Weight & Height):**
+    *   Hình ảnh một chiếc cân sức khỏe màu trắng với một thước dây màu vàng quấn quanh. Các chỉ số trên cân cho thấy các giá trị liên tục.
+    *   Cân nặng và chiều cao là các đại lượng có thể nhận bất kỳ giá trị nào trong một khoảng nhất định, do đó chúng là các biến ngẫu nhiên liên tục.
+
+2.  **Thời gian hoàn thành một nhiệm vụ (Time to complete a task):**
+    *   Hình ảnh một chiếc đồng hồ báo thức với một người đàn ông đang chạy nhanh bên trong.
+    *   Thời gian là một đại lượng liên tục, có thể nhận bất kỳ giá trị nào (ví dụ: 1.5 giây, 1.51 giây, v.v.), do đó thời gian hoàn thành một nhiệm vụ là một biến ngẫu nhiên liên tục.
+
+---
+
+Chunk 11:
+**Lecture2_General Concepts for ML.pdf**
+
+# Slide 14: CRV – Hàm mật độ xác suất (1)
+
+Slide này định nghĩa và trình bày các điều kiện của Hàm mật độ xác suất (Probability Density Function - PDF) cho Biến ngẫu nhiên liên tục (CRV).
+
+*   **Định nghĩa:** $f(x)$ là hàm mật độ xác suất của một biến ngẫu nhiên liên tục X, nếu:
+
+    i) $f(x) \ge 0 \quad \forall x$ (Giá trị của hàm mật độ xác suất phải không âm với mọi x)
+
+    ii) $\int_{-\infty}^{+\infty} f(x)dx = 1$ (Tích phân của hàm mật độ xác suất trên toàn bộ không gian giá trị phải bằng 1)
+
+Hình ảnh minh họa:
+Một biểu đồ với trục hoành là x và trục tung là $f(x)$.
+Đường cong màu xanh lá cây biểu thị hàm $f(x)$, có hình dạng giống phân phối chuẩn (hình chuông).
+Một vùng được tô màu nâu dưới đường cong từ $a$ đến $b$ biểu thị xác suất $P(a \le X \le b)$ hoặc $P(a < X < b)$.
+
+Công thức tính xác suất trong một khoảng:
+$P(a < X < b) = \int_{a}^{b} f(x)dx$
+
+---
+
+# Slide 15: Phân phối xác suất tích lũy (1)
+
+Slide này định nghĩa Hàm phân phối tích lũy (Cumulative Probability Distribution - CDF) cho một biến ngẫu nhiên X.
+
+*   **Định nghĩa:** Hàm phân phối tích lũy $F(x)$ của một biến ngẫu nhiên X được định nghĩa như sau:
+    $F(x) = P(X \le x)$
+    Điều này có nghĩa là $F(x)$ là xác suất mà biến ngẫu nhiên X sẽ nhận một giá trị nhỏ hơn hoặc bằng $x$.
+
+*   **Xác suất của X trong khoảng (a,b]:**
+    Xác suất để X nằm trong khoảng $(a, b]$ (tức là $a < X \le b$) được tính bằng hiệu của các giá trị CDF tại $b$ và $a$:
+    $P(a < X \le b) = F(b) - F(a)$
+
+---
+
+Chunk 12:
+**Lecture2_General Concepts for ML.pdf**
+
+# Slide 16: Phân phối xác suất tích lũy (2)
+
+Slide này trình bày các thuộc tính quan trọng của Hàm phân phối tích lũy (Cumulative Probability Distribution - CDF).
+
+1.  **Giới hạn giá trị:** $0 \le F(x) \le 1$
+    (Giá trị của hàm phân phối tích lũy luôn nằm trong khoảng từ 0 đến 1, vì nó là một xác suất.)
+
+2.  **Tính không giảm:** $F(x)$ là một hàm không giảm. Nếu $a < b$, thì $F(a) \le F(b)$.
+    (Khi giá trị của $x$ tăng, xác suất tích lũy không bao giờ giảm.)
+
+3.  **Giới hạn tại vô cực:**
+    *   $F(-\infty) = \lim_{x \to -\infty} F(x) = 0$
+        (Khi $x$ tiến về âm vô cực, xác suất tích lũy bằng 0, vì không có giá trị nào nhỏ hơn âm vô cực.)
+    *   $F(+\infty) = \lim_{x \to +\infty} F(x) = 1$
+        (Khi $x$ tiến về dương vô cực, xác suất tích lũy bằng 1, vì tất cả các giá trị có thể có đều đã được bao gồm.)
+
+4.  **Mối quan hệ với Hàm mật độ xác suất:** Hàm mật độ xác suất $f(x)$ là đạo hàm của $F(x)$, miễn là đạo hàm tồn tại:
+    $f(x) = F'(x)$
+    (Điều này áp dụng cho biến ngẫu nhiên liên tục, cho thấy PDF là tốc độ thay đổi của CDF.)
+
+---
+
+# Slide 17: Phân phối xác suất tích lũy (3)
+
+Slide này trình bày công thức của Hàm phân phối tích lũy (Cumulative Probability Distribution - CDF) cho cả Biến ngẫu nhiên rời rạc và Biến ngẫu nhiên liên tục.
+
+*   **Biến ngẫu nhiên rời rạc (Discrete Random Variable):**
+    Đối với một biến ngẫu nhiên rời rạc, CDF tại một điểm $x_0$ được tính bằng tổng xác suất của tất cả các giá trị $x_i$ nhỏ hơn hoặc bằng $x_0$:
+    $F(x_0) = P(X \le x_0) = \sum_{x_i \le x_0} p_i$
+    Trong đó $p_i$ là xác suất của giá trị $x_i$.
+
+*   **Biến ngẫu nhiên liên tục (Continuous Random Variable):**
+    Đối với một biến ngẫu nhiên liên tục, CDF tại một điểm $x_0$ được tính bằng tích phân của hàm mật độ xác suất $f(x)$ từ $-\infty$ đến $x_0$:
+    $F(x_0) = P(X \le x_0) = \int_{-\infty}^{x_0} f(x)dx$
+
+---
+
+Chunk 13:
+**Lecture2_General Concepts for ML.pdf**
+
+# Slide 18: Giá trị kỳ vọng của biến ngẫu nhiên
+
+Slide này định nghĩa Giá trị kỳ vọng (Expected Value) của một biến ngẫu nhiên cho cả trường hợp rời rạc và liên tục.
+
+*   **Biến ngẫu nhiên rời rạc (Discrete Random Variable):**
+    Giá trị kỳ vọng $E[X]$ của một biến ngẫu nhiên rời rạc X được tính bằng tổng của tích giữa mỗi giá trị có thể có của X và xác suất tương ứng của nó:
+    $E[X] = \sum_{x} xP(X = x)$
+    Trong đó tổng được thực hiện trên tất cả các giá trị $x$ mà X có thể nhận.
+
+*   **Biến ngẫu nhiên liên tục (Continuous Random Variable):**
+    Giá trị kỳ vọng $E[X]$ của một biến ngẫu nhiên liên tục X được tính bằng tích phân của tích giữa giá trị $x$ và hàm mật độ xác suất $f(x)$ trên toàn bộ không gian giá trị:
+    $E[X] = \int_{-\infty}^{+\infty} xf(x)dx$
+
+---
+
+Chunk 14:
+**Lecture2_General Concepts for ML.pdf**
+
+# Slide 19: Giá trị kỳ vọng - Thuộc tính
+
+Slide này liệt kê các thuộc tính quan trọng của Giá trị kỳ vọng (Expected Value).
+
+1.  **Giá trị kỳ vọng của một hằng số:**
+    $E[C] = C$, với C là một hằng số.
+    (Giá trị kỳ vọng của một hằng số chính là hằng số đó.)
+
+2.  **Giá trị kỳ vọng của một hằng số nhân với biến ngẫu nhiên:**
+    $E[CX] = C \cdot E[X]$
+    (Một hằng số có thể được đưa ra ngoài giá trị kỳ vọng.)
+
+3.  **Giá trị kỳ vọng của tổng hai biến ngẫu nhiên:**
+    $E[X + Y] = E[X] + E[Y]$
+    (Giá trị kỳ vọng của tổng là tổng các giá trị kỳ vọng, luôn đúng bất kể X và Y có độc lập hay không.)
+
+4.  **Giá trị kỳ vọng của tích hai biến ngẫu nhiên độc lập:**
+    $E[XY] = E[X] \cdot E[Y]$ nếu X và Y là độc lập.
+    (Thuộc tính này chỉ đúng khi X và Y là các biến ngẫu nhiên độc lập.)
+
+5.  **Giá trị kỳ vọng của một hàm của biến ngẫu nhiên:**
+    Cho một hàm $h(x)$, giá trị kỳ vọng của $h(X)$ được tính như sau:
+    *   **Nếu X là rời rạc:**
+        $E[h(X)] = \sum_{i=1}^{n} h(x_i)p_i$
+        (Tổng của tích giữa giá trị của hàm $h$ tại mỗi $x_i$ và xác suất tương ứng $p_i$.)
+    *   **Nếu X là liên tục:**
+        $E[h(X)] = \int_{-\infty}^{+\infty} h(x)f(x)dx$
+        (Tích phân của tích giữa giá trị của hàm $h$ tại $x$ và hàm mật độ xác suất $f(x)$.)
+
+---
+
+Chunk 15:
+**Lecture2_General Concepts for ML.pdf**
+
+# Slide 20: Phương sai của biến ngẫu nhiên
+
+Slide này định nghĩa Phương sai (Variance) và Độ lệch chuẩn (Standard deviation) của một biến ngẫu nhiên, cùng với công thức tính cho cả trường hợp rời rạc và liên tục.
+
+*   **Giá trị trung bình (Mean):** $\mu = E[X]$
+    (Giá trị trung bình của biến ngẫu nhiên X chính là giá trị kỳ vọng của nó.)
+
+*   **Phương sai (Variance):** $Var[X] = E[(X - E[X])^2] = E[X^2] - (E[X])^2$
+    (Phương sai đo lường mức độ phân tán của các giá trị của biến ngẫu nhiên quanh giá trị trung bình của nó. Nó được định nghĩa là giá trị kỳ vọng của bình phương độ lệch so với giá trị trung bình.)
+
+*   **Độ lệch chuẩn (Standard deviation):** $\sigma = \sqrt{\sigma^2} = \sqrt{Var[X]}$
+    (Độ lệch chuẩn là căn bậc hai của phương sai, cung cấp một thước đo độ phân tán theo cùng đơn vị với biến ngẫu nhiên.)
+
+*   **Biến ngẫu nhiên rời rạc (Discrete random variable):**
+    Phương sai của một biến ngẫu nhiên rời rạc X được tính bằng tổng của tích giữa bình phương độ lệch của mỗi giá trị $x_i$ so với giá trị trung bình $\mu$ và xác suất tương ứng $p_i$:
+    $Var[X] = \sum_{i=1}^{n} (x_i - \mu)^2 p_i$
+
+*   **Biến ngẫu nhiên liên tục (Continuous random variable):**
+    Phương sai của một biến ngẫu nhiên liên tục X được tính bằng tích phân của tích giữa bình phương độ lệch của giá trị $x$ so với giá trị trung bình $\mu$ và hàm mật độ xác suất $f(x)$ trên toàn bộ không gian giá trị:
+    $Var[X] = \int_{-\infty}^{+\infty} (x - \mu)^2 f(x)dx$
+
+---
+
+Chunk 16:
+**Lecture2_General Concepts for ML.pdf**
+
+# Slide 21: Phương sai - Thuộc tính
+
+Slide này liệt kê các thuộc tính quan trọng của Phương sai (Variance).
+
+1.  **Phương sai của một hằng số:**
+    $Var[C] = 0$, với C là một hằng số.
+    (Một hằng số không có sự biến đổi, do đó phương sai của nó bằng 0.)
+
+2.  **Phương sai của một hằng số nhân với biến ngẫu nhiên:**
+    $Var[CX] = C^2 Var[X]$
+    (Khi một biến ngẫu nhiên được nhân với một hằng số, phương sai của nó được nhân với bình phương của hằng số đó.)
+
+    **Phương sai của một biến ngẫu nhiên cộng với một hằng số:**
+    $Var[X + C] = Var[X]$
+    (Việc cộng thêm một hằng số vào biến ngẫu nhiên chỉ làm dịch chuyển phân phối mà không làm thay đổi độ phân tán của nó, do đó phương sai không đổi.)
+
+3.  **Phương sai của tổng hai biến ngẫu nhiên độc lập:**
+    $Var[X + Y] = Var[X] + Var[Y]$ nếu X và Y là độc lập.
+    (Thuộc tính này chỉ đúng khi X và Y là các biến ngẫu nhiên độc lập. Nếu chúng không độc lập, sẽ có thêm một thành phần hiệp phương sai.)
+
+---
+
+# Slide 22: Ba quy tắc xác suất
+
+Slide này trình bày ba quy tắc cơ bản của xác suất.
+
+*   **Quy tắc cơ bản (Basic law):**
+    $p(X = x) \ge 0$, $\sum_{x=x} p(X = x) = 1$.
+    (Xác suất của bất kỳ sự kiện nào phải không âm, và tổng xác suất của tất cả các kết quả có thể có trong không gian mẫu phải bằng 1.)
+
+*   **Quy tắc tổng (Sum rule):**
+    $p(X) = \sum_{Y} p(X, Y)$.
+    (Xác suất biên của một biến ngẫu nhiên X được tính bằng cách tổng hợp xác suất đồng thời của X và Y trên tất cả các giá trị có thể có của Y.)
+
+*   **Quy tắc tích (Product rule):**
+    (Quy tắc Bayesian)
+    $p(X,Y) = p(Y|X)p(X)$.
+    (Xác suất đồng thời của X và Y bằng xác suất có điều kiện của Y khi biết X, nhân với xác suất của X. Quy tắc này là nền tảng của Định lý Bayes.)
+
+---
+
+Chunk 17:
+**Lecture2_General Concepts for ML.pdf**
+
+# Slide 23: Xác suất đồng thời
+
+Slide này trình bày các công thức tính xác suất đồng thời cho các biến ngẫu nhiên rời rạc và liên tục, cũng như trường hợp hỗn hợp.
+
+*   **Khi cả hai biến đều rời rạc (both are discrete):**
+    Tổng xác suất đồng thời của tất cả các cặp giá trị $(x, y)$ phải bằng 1:
+    $\sum_{x,y} p(x, y) = 1$
+
+*   **Khi cả hai biến đều liên tục (both are continuous):**
+    Tích phân kép của hàm mật độ xác suất đồng thời trên toàn bộ không gian giá trị phải bằng 1:
+    $\iint p(x, y)dxdy = 1$
+
+*   **Khi x là rời rạc, y là liên tục (x is discrete, y is continuous):**
+    Tổng của tích phân của hàm mật độ xác suất đồng thời trên tất cả các giá trị rời rạc của x và tất cả các giá trị liên tục của y phải bằng 1:
+    $\sum_{x} \int p(x, y)dy = 1$
+
+---
+
+# Slide 24: Xác suất biên
+
+Slide này trình bày các công thức tính Xác suất biên (Marginal Probability) cho các biến ngẫu nhiên rời rạc và liên tục.
+
+*   **Biến ngẫu nhiên rời rạc (Discrete random variable):**
+    *   Xác suất biên của X:
+        $p(x) = \sum_{y} p(x, y)$
+        (Để tìm xác suất biên của X, chúng ta tổng hợp xác suất đồng thời của X và Y trên tất cả các giá trị có thể có của Y.)
+    *   Xác suất biên của Y:
+        $p(y) = \sum_{x} p(x, y)$
+        (Tương tự, để tìm xác suất biên của Y, chúng ta tổng hợp xác suất đồng thời của X và Y trên tất cả các giá trị có thể có của X.)
+
+*   **Biến ngẫu nhiên liên tục (Continuous random variable):**
+    *   Xác suất biên của X:
+        $p(x) = \int p(x, y)dy$
+        (Để tìm hàm mật độ xác suất biên của X, chúng ta tích phân hàm mật độ xác suất đồng thời của X và Y trên tất cả các giá trị có thể có của Y.)
+    *   Xác suất biên của Y:
+        $p(y) = \int p(x, y)dx$
+        (Tương tự, để tìm hàm mật độ xác suất biên của Y, chúng ta tích phân hàm mật độ xác suất đồng thời của X và Y trên tất cả các giá trị có thể có của X.)
+
+---
+
+Chunk 18:
+**Lecture2_General Concepts for ML.pdf**
+
+# Slide 25: Xác suất có điều kiện
+
+Slide này trình bày các công thức liên quan đến Xác suất có điều kiện (Conditional Probability), bao gồm Quy tắc Bayes.
+
+*   **Quy tắc Bayes (Bayesian Rule):**
+    $p(y|x)p(x) = p(x,y)p(y)$
+    (Công thức này có vẻ là một biến thể hoặc một phần của Quy tắc Bayes, thường được viết là $p(y|x) = \frac{p(x|y)p(y)}{p(x)}$. Công thức trên có thể được hiểu là $p(y|x)p(x) = p(x|y)p(y)$, đây là một cách biểu diễn của xác suất đồng thời $p(x,y)$ theo hai cách khác nhau.)
+
+*   **Xác suất có điều kiện (Conditional Probability):**
+    $p(x|y = 9) = \frac{p(x, y = 9)}{\sum_{x} p(x, y = 9)} = \frac{p(x, y = 9)}{p(y = 9)}$
+    (Công thức này định nghĩa xác suất có điều kiện của X khi biết Y có giá trị là 9. Nó bằng xác suất đồng thời của X và Y=9, chia cho xác suất biên của Y=9. Mẫu số $\sum_{x} p(x, y = 9)$ chính là xác suất biên $p(y=9)$.)
+
+---
+
+# Slide 26: Xác suất hậu nghiệm, tiên nghiệm & khả năng
+
+Slide này giải thích các khái niệm về Xác suất hậu nghiệm (Posterior Probability), Xác suất tiên nghiệm (Prior Probability) và Khả năng (Likelihood) trong bối cảnh của Định lý Bayes.
+
+*   Một biến ngẫu nhiên X có thể được dự đoán thông qua các tham số $\theta$:
+    $p(\theta|X) = \frac{p(X|\theta)}{p(X)} p(\theta)$
+
+    Công thức này là Định lý Bayes, trong đó:
+    *   $p(\theta|X)$ là **Xác suất hậu nghiệm (Posterior probability)**: Xác suất của các tham số $\theta$ khi biết dữ liệu X. Đây là điều chúng ta muốn tìm hiểu sau khi quan sát dữ liệu.
+    *   $p(X|\theta)$ là **Khả năng (Likelihood)**: Xác suất của dữ liệu X khi biết các tham số $\theta$. Nó cho biết khả năng dữ liệu được quan sát dưới một bộ tham số nhất định.
+    *   $p(\theta)$ là **Xác suất tiên nghiệm (Prior probability)**: Xác suất của các tham số $\theta$ trước khi quan sát bất kỳ dữ liệu nào. Nó thể hiện niềm tin ban đầu của chúng ta về các tham số.
+    *   $p(X)$ là xác suất biên của dữ liệu X, thường được coi là một hằng số chuẩn hóa.
+
+*   Mối quan hệ tỷ lệ:
+    $p(\theta|X) \propto p(X|\theta) \times p(\theta)$
+    (Xác suất hậu nghiệm tỷ lệ thuận với tích của khả năng và xác suất tiên nghiệm. Điều này có nghĩa là chúng ta có thể so sánh các xác suất hậu nghiệm mà không cần tính toán hằng số chuẩn hóa $p(X)$.)
+
+---
+
+Chunk 19:
+**Lecture2_General Concepts for ML.pdf**
+
+# Slide 27: Độc lập & Phụ thuộc
+
+Slide này trình bày các định nghĩa và quy tắc liên quan đến sự độc lập và phụ thuộc của các biến ngẫu nhiên.
+
+*   **Nếu x, y là độc lập, thì:**
+    *   $p(x|y) = p(x)$
+        (Xác suất của x không bị ảnh hưởng bởi giá trị của y.)
+    *   $p(y|x) = p(y)$
+        (Xác suất của y không bị ảnh hưởng bởi giá trị của x.)
+    Điều này có nghĩa là việc biết giá trị của một biến không cung cấp thông tin gì về giá trị của biến kia.
+
+*   **Quy tắc Bayes (Bayesian Rule):**
+    $p(x, y) = p(x|y)p(y) = p(x)p(y)$
+    (Đây là một trường hợp đặc biệt của quy tắc tích khi x và y độc lập. Nếu x và y độc lập, xác suất đồng thời của chúng bằng tích các xác suất biên của chúng.)
+
+---
+
+# Slide 28: Đề cương
+
+Slide này trình bày lại đề cương của bài giảng, đánh dấu chủ đề hiện tại là "Phân phối dữ liệu điển hình" bằng màu xanh lá cây.
+
+*   **Thống kê - Xác suất**
+*   **Phân phối dữ liệu điển hình** (được đánh dấu màu xanh lá cây)
+*   **Các phép đo điển hình**
+    *   Entropy, Cross Entropy
+    *   Thông tin tương hỗ (Mutual Information)
+    *   Kullback-Leibler Divergence
+*   **Lý thuyết học**
+
+---
+
+Chunk 20:
+**Lecture2_General Concepts for ML.pdf**
+
+# Slide 29: Các phân phối dữ liệu điển hình
+
+Slide này trình bày một sơ đồ luồng (flowchart) minh họa mối quan hệ và sự chuyển đổi giữa các loại phân phối dữ liệu điển hình khác nhau.
+
+Sơ đồ bắt đầu từ các phân phối cơ bản và mở rộng ra các phân phối phức tạp hơn:
+
+*   **Uniform (Đều)**
+    *   Chuyển đổi sang **Bernoulli**
+
+*   **Bernoulli**
+    *   Chuyển đổi sang **Binomial (Nhị thức)**
+    *   Chuyển đổi sang **Geometric (Hình học)**
+
+*   **Binomial (Nhị thức)**
+    *   Chuyển đổi sang **Hypergeometric (Siêu hình học)**
+    *   Chuyển đổi sang **Poisson**
+    *   Chuyển đổi sang **Negative Binomial (Nhị thức âm)**
+
+*   **Poisson**
+    *   Chuyển đổi sang **Exponential (Mũ)**
+
+*   **Exponential (Mũ)**
+    *   Chuyển đổi sang **Weibull**
+
+*   **Normal (Gaussian) (Chuẩn/Gaussian)**
+    *   Chuyển đổi sang **Log Normal (Log-chuẩn)**
+    *   Chuyển đổi sang **Chi-Squared (Chi bình phương)**
+    *   Chuyển đổi sang **Student's t**
+
+*   **Chi-Squared (Chi bình phương)**
+    *   Chuyển đổi sang **Gamma**
+
+*   **Gamma**
+    *   Chuyển đổi sang **Beta**
+
+Sơ đồ này cho thấy cách các phân phối này có thể được suy ra hoặc liên quan đến nhau trong các điều kiện nhất định (ví dụ: Poisson là giới hạn của Binomial khi n lớn và p nhỏ).
+
+---
+
+# Slide 30: Phân phối đều
+
+Slide này định nghĩa và minh họa Phân phối đều (Uniform Distribution).
+
+**UNIFORM DISTRIBUTION**
+
+Biểu đồ hiển thị một biểu đồ cột với trục hoành là "Possible values" (Các giá trị có thể có) và trục tung là "Frequency" (Tần suất). Tất cả các cột đều có chiều cao bằng nhau, biểu thị rằng mỗi giá trị có thể có đều có tần suất (hoặc xác suất) như nhau.
+
+**Định nghĩa:**
+$P(X) = 1 / \text{tổng số kết quả có thể có}$
+
+Điều này có nghĩa là trong một phân phối đều, mỗi kết quả trong một tập hợp hữu hạn các kết quả có khả năng xảy ra như nhau.
+
+---
+
+Chunk 21:
+**Lecture2_General Concepts for ML.pdf**
+
+# Slide 31: Phân phối đều – Ví dụ
+
+Slide này cung cấp hai ví dụ minh họa cho Phân phối đều (Uniform Distribution).
+
+1.  **Ví dụ 1: Xác suất ngày tận thế là Thứ Hai**
+    *   Hình ảnh một quả địa cầu đang bùng cháy, tượng trưng cho "ngày tận thế".
+    *   **Câu hỏi:** Xác suất ngày tận thế là Thứ Hai là 1/7.
+    *   Giải thích: Có 7 ngày trong tuần, và nếu ngày tận thế có thể rơi vào bất kỳ ngày nào với xác suất bằng nhau, thì xác suất nó rơi vào Thứ Hai là 1/7. Đây là một ví dụ về phân phối đều rời rạc.
+
+2.  **Ví dụ 2: Xác suất chữ số xuất hiện trên tờ tiền 500k VNĐ**
+    *   Hình ảnh hai mặt của tờ tiền 500.000 VNĐ.
+    *   **Câu hỏi:** Xác suất một chữ số xuất hiện trên tờ tiền 500k VNĐ là 1/10.
+    *   Giải thích: Các chữ số từ 0 đến 9 có 10 giá trị. Nếu một chữ số được chọn ngẫu nhiên từ một dãy số (ví dụ: số seri) và mỗi chữ số có khả năng xuất hiện như nhau, thì xác suất một chữ số cụ thể xuất hiện là 1/10. Đây cũng là một ví dụ về phân phối đều rời rạc.
+
+---
+
+# Slide 32: Phân phối Bernoulli
+
+Slide này định nghĩa và minh họa Phân phối Bernoulli (Bernoulli Distribution).
+
+Biểu đồ hiển thị một biểu đồ cột với trục hoành là $n$ (có thể là kết quả 0 hoặc 1) và trục tung là xác suất.
+*   Cột tại 0 có chiều cao khoảng 0.4.
+*   Cột tại 1 có chiều cao khoảng 0.6.
+Điều này minh họa một phân phối Bernoulli với xác suất thành công là 0.6.
+
+**Ký hiệu:** $\Rightarrow Bern_x[0.6]$
+
+**Định nghĩa:**
+$P(x) = Bern_x[\lambda] = \lambda^x (1 - \lambda)^{1-x}$
+với $x \in \{0, 1\}$, $\lambda \in [0, 1]$
+
+*   $x=1$ (thành công) có xác suất $\lambda$.
+*   $x=0$ (thất bại) có xác suất $1-\lambda$.
+
+Phân phối Bernoulli mô tả kết quả của một thử nghiệm ngẫu nhiên duy nhất chỉ có hai kết quả có thể: thành công (1) hoặc thất bại (0).
+
+---
+
+Chunk 22:
+**Lecture2_General Concepts for ML.pdf**
+
+# Slide 33: Phân phối Bernoulli – Ví dụ
+
+Slide này cung cấp hai ví dụ minh họa cho Phân phối Bernoulli (Bernoulli Distribution).
+
+1.  **Ví dụ 1: Tung đồng xu**
+    *   Hình ảnh một bàn tay đang giữ một đồng xu, chuẩn bị tung.
+    *   **Câu hỏi:** Xác suất mặt ngửa/mặt sấp $\lambda \approx 0.5$.
+    *   Giải thích: Khi tung một đồng xu công bằng, có hai kết quả có thể xảy ra (ngửa hoặc sấp), mỗi kết quả có xác suất xấp xỉ 0.5. Đây là một ví dụ điển hình của phân phối Bernoulli.
+
+2.  **Ví dụ 2: Sinh con trai/con gái**
+    *   Hình ảnh thống kê về số ca sinh được đăng ký vào năm 2018.
+    *   **Thông tin:** Khoảng 22.983 ca sinh được đăng ký vào năm 2018.
+        *   11.691 bé trai (male)
+        *   11.292 bé gái (female)
+    *   **Câu hỏi:** Xác suất sinh con trai/con gái.
+    *   Giải thích: Việc sinh con trai hay con gái cũng là một thử nghiệm Bernoulli với hai kết quả. Dựa trên dữ liệu, xác suất sinh con trai là $11691 / 22983 \approx 0.5087$ và xác suất sinh con gái là $11292 / 22983 \approx 0.4913$.
+
+---
+
+# Slide 34: Phân phối nhị thức
+
+Slide này định nghĩa và minh họa Phân phối nhị thức (Binary Distribution, thường gọi là Binomial Distribution).
+
+Biểu đồ hiển thị ba phân phối nhị thức khác nhau, được biểu diễn bằng các điểm và đường nối:
+*   **Màu xanh dương:** $p=0.5$ và $n=20$ (phân phối đối xứng, tập trung quanh 10)
+*   **Màu xanh lá cây:** $p=0.7$ và $n=20$ (phân phối lệch phải, tập trung quanh 14)
+*   **Màu đỏ:** $p=0.5$ và $n=40$ (phân phối đối xứng, rộng hơn, tập trung quanh 20)
+
+Trục hoành biểu thị số lần thành công (k) và trục tung biểu thị xác suất.
+
+**Định nghĩa:**
+Xác suất để có $k$ lần thành công trong $n$ thử nghiệm Bernoulli độc lập, mỗi thử nghiệm có xác suất thành công $p$:
+$P(X=k) = \binom{n}{k} p^k (1-p)^{n-k}$
+với $k = 0, 1, 2, ..., n$
+
+Trong đó, $\binom{n}{k}$ là hệ số nhị thức, được tính bằng:
+$\binom{n}{k} = \frac{n!}{k!(n-k)!}$
+
+---
+
+Chunk 23:
+**Lecture2_General Concepts for ML.pdf**
+
+# Slide 35: Phân phối nhị thức – Ví dụ
+
+Slide này cung cấp một ví dụ minh họa cho Phân phối nhị thức (Binary Distribution) bằng cách tung đồng xu 10 lần.
+
+Hình ảnh một bàn tay đang giữ một đồng xu, chuẩn bị tung.
+
+**Câu hỏi:** Xác suất nhận được X lần mặt ngửa trong 10 lần tung đồng xu.
+
+Bảng hiển thị xác suất P(X) cho mỗi số lần mặt ngửa X từ 0 đến 10:
+
+| X (Số lần mặt ngửa) | P(X) (Xác suất) |
+|---|---|
+| 0 | 0.000977 |
+| 1 | 0.009766 |
+| 2 | 0.043945 |
+| 3 | 0.117188 |
+| 4 | 0.205078 |
+| 5 | 0.246094 |
+| 6 | 0.205078 |
+| 7 | 0.117188 |
+| 8 | 0.043945 |
+| 9 | 0.009766 |
+| 10 | 0.000977 |
+
+Bảng này cho thấy phân phối xác suất của số lần mặt ngửa khi tung một đồng xu công bằng 10 lần (với $p=0.5$). Xác suất cao nhất là khi X=5 (0.246094), tức là 5 lần ngửa và 5 lần sấp.
+
+---
+
+# Slide 36: Phân phối phân loại
+
+Slide này định nghĩa và minh họa Phân phối phân loại (Categorical Distribution).
+
+Biểu đồ hiển thị một biểu đồ cột với trục hoành là các danh mục (Red, Green, Blue, White) và trục tung là "Probability" (Xác suất).
+*   Cột "Red" có xác suất cao nhất.
+*   Cột "Green" có xác suất thấp hơn.
+*   Cột "Blue" có xác suất thấp hơn nữa.
+*   Cột "White" có xác suất thấp nhất.
+
+**Định nghĩa:**
+$P(x) = Cat_x[\lambda]$
+$\lambda = \{\lambda_1, ..., \lambda_{|C|}\}; \lambda_k \in [0,1]$
+
+*   Phân phối phân loại là dạng tổng quát của phân phối Bernoulli với nhiều hơn 2 kết quả có thể.
+*   Nó mô tả xác suất của một biến ngẫu nhiên rời rạc có thể nhận một trong $|C|$ giá trị khác nhau, với mỗi giá trị có một xác suất $\lambda_k$ tương ứng.
+*   Tổng của tất cả các $\lambda_k$ phải bằng 1.
+
+---
+
+Chunk 24:
+**Lecture2_General Concepts for ML.pdf**
+
+# Slide 37: Phân phối phân loại - Ví dụ
+
+Slide này cung cấp hai ví dụ minh họa cho Phân phối phân loại (Categorical Distribution) trong bối cảnh học máy.
+
+1.  **Ví dụ 1: Phân loại hình ảnh ô tô, xe tải, xe đạp**
+    *   Sơ đồ "CONVOLUTIONAL NEURAL NETWORK (CNN)" (Mạng nơ-ron tích chập).
+    *   **Đầu vào:** Một hình ảnh chiếc ô tô.
+    *   **LEARNED FEATURES (Các đặc trưng đã học):** Các đặc trưng được trích xuất từ hình ảnh.
+    *   **Đầu ra:** Mô hình dự đoán xác suất cho các loại phương tiện khác nhau:
+        *   CAR (Ô tô): 95% (được đánh dấu tích xanh)
+        *   TRUCK (Xe tải): 3% (được đánh dấu X đỏ)
+        *   BICYCLE (Xe đạp): 2% (được đánh dấu X đỏ)
+    *   Đây là một ví dụ về phân loại đa lớp, nơi mô hình gán xác suất cho mỗi lớp và chọn lớp có xác suất cao nhất.
+
+2.  **Ví dụ 2: Phân loại hình ảnh chó, mèo**
+    *   **Đầu vào:** Một hình ảnh con chó Labrador Retriever.
+    *   **Flattening:** Quá trình làm phẳng dữ liệu đầu vào.
+    *   **Mạng nơ-ron:** Dữ liệu được đưa qua một mạng nơ-ron với nhiều lớp.
+    *   **Đầu ra:** Mô hình dự đoán xác suất cho "Dog" (Chó) và "Cat" (Mèo):
+        *   Dog (Chó): 0.95
+        *   Cat (Mèo): 0.05
+    *   Tương tự, đây là một ví dụ về phân loại nhị phân (hoặc đa lớp nếu có nhiều hơn 2 loài vật), nơi mô hình đưa ra xác suất cho từng lớp.
+
+Cả hai ví dụ đều thể hiện cách phân phối phân loại được sử dụng trong các tác vụ phân loại hình ảnh, nơi mô hình học cách gán một đối tượng đầu vào vào một trong nhiều danh mục có thể có.
+
+---
+
+Chunk 25:
+**Lecture2_General Concepts for ML.pdf**
+
+# Slide 38: Phân phối chuẩn đơn biến
+
+Slide này định nghĩa và minh họa Phân phối chuẩn đơn biến (Univariate Normal Distribution), còn được gọi là Phân phối Gaussian.
+
+Biểu đồ hiển thị ba đường cong phân phối chuẩn khác nhau:
+*   **Đường màu đỏ:** $\mu = 0.5, \sigma^2 = 0.5$ (đỉnh cao, hẹp, hơi lệch phải)
+*   **Đường màu xanh dương:** $\mu = 0, \sigma^2 = 1$ (đỉnh thấp hơn, rộng hơn, đối xứng quanh 0)
+*   **Đường màu xanh lá cây:** $\mu = -1, \sigma^2 = 2$ (đỉnh thấp nhất, rộng nhất, đối xứng quanh -1)
+
+Trục hoành là $x$ và trục tung là $Pr(x)$ (xác suất).
+
+**Định nghĩa:**
+Hàm mật độ xác suất (PDF) của phân phối chuẩn đơn biến được cho bởi công thức:
+$P(X) = Norm_x[\mu, \sigma^2] = \frac{1}{\sqrt{2\pi\sigma^2}} \exp\left(-\frac{(x - \mu)^2}{2\sigma^2}\right)$
+
+Trong đó:
+*   $\mu$ là giá trị trung bình (Mean)
+*   $\sigma^2$ là phương sai (Variance)
+
+**Lưu ý:** Phân phối chuẩn còn được gọi là Phân phối Gaussian.
+
+---
+
+Chunk 26:
+**Lecture2_General Concepts for ML.pdf**
+
+# Slide 39: Phân phối chuẩn đơn biến - Ví dụ
+
+Slide này cung cấp hai ví dụ minh họa cho Phân phối chuẩn đơn biến (Univariate Normal Distribution).
+
+1.  **Ví dụ 1: Phân phối điểm thi đại học**
+    *   Biểu đồ cột hiển thị "KHỐI A1" (Khối A1) với trục hoành là các khoảng điểm và trục tung là số lượng thí sinh.
+    *   Hình dạng của biểu đồ gần giống với một đường cong hình chuông, cho thấy điểm thi của thí sinh thường tập trung quanh một giá trị trung bình và giảm dần khi xa giá trị đó.
+    *   **Mô tả:** Phân phối điểm thi đại học.
+
+2.  **Ví dụ 2: Phân phối IQ**
+    *   Biểu đồ đường cong hình chuông màu xanh dương, được chia thành các phần với tỷ lệ phần trăm và các giá trị IQ tương ứng trên trục hoành (55, 70, 85, 100, 115, 130, 145).
+    *   Các tỷ lệ phần trăm được ghi trên biểu đồ:
+        *   0.1% ở hai đầu (IQ < 55 và IQ > 145)
+        *   2.1% (IQ từ 55-70 và 130-145)
+        *   13.6% (IQ từ 70-85 và 115-130)
+        *   34.1% (IQ từ 85-100 và 100-115)
+    *   Đây là một minh họa kinh điển về phân phối chuẩn, cho thấy hầu hết dân số có IQ trung bình (quanh 100), và số lượng người có IQ rất thấp hoặc rất cao là ít hơn.
+    *   **Mô tả:** Phân phối IQ.
+
+Cả hai ví dụ đều cho thấy cách phân phối chuẩn được sử dụng để mô tả các hiện tượng tự nhiên hoặc xã hội mà dữ liệu có xu hướng tập trung quanh một giá trị trung tâm.
+
+---
+
+Chunk 27:
+**Lecture2_General Concepts for ML.pdf**
+
+# Slide 40: Phân phối chuẩn đa biến
+
+Slide này trình bày Phân phối chuẩn đa biến (Multivariate Normal Distribution), một dạng tổng quát của phân phối chuẩn đơn biến cho nhiều biến.
+
+Hình ảnh hiển thị một biểu đồ 3D của một "bivariate normal distribution" (phân phối chuẩn hai biến).
+*   Trục hoành là $x$ và trục sâu là $y$.
+*   Trục tung là $p(x, y)$ (hàm mật độ xác suất đồng thời).
+*   Bề mặt của biểu đồ có hình dạng một ngọn đồi hoặc hình chuông trong không gian 3D, với đỉnh cao nhất tại giá trị trung bình của cả x và y.
+*   Các đường đồng mức (contour lines) ở phía dưới biểu đồ là các hình elip đồng tâm, cho thấy các vùng có mật độ xác suất bằng nhau.
+
+**Định nghĩa:**
+Hàm mật độ xác suất (PDF) của phân phối chuẩn đa biến được cho bởi công thức:
+$p(\mathbf{x}) = \frac{1}{(2\pi)^{D/2}|\Sigma|^{1/2}} \exp\left(-\frac{1}{2}(\mathbf{x} - \boldsymbol{\mu})^T \Sigma^{-1}(\mathbf{x} - \boldsymbol{\mu})\right)$
+
+Trong đó:
+*   $\mathbf{x}$ là một vector cột của các biến ngẫu nhiên.
+*   $D$ là số chiều (số lượng biến).
+*   $\boldsymbol{\mu}$ là vector trung bình (mean vector).
+*   $\Sigma$ là ma trận hiệp phương sai (covariance matrix).
+*   $|\Sigma|$ là định thức của ma trận hiệp phương sai.
+*   $\Sigma^{-1}$ là ma trận nghịch đảo của ma trận hiệp phương sai.
+*   $(\mathbf{x} - \boldsymbol{\mu})^T$ là chuyển vị của vector độ lệch.
+
+Phân phối chuẩn đa biến được sử dụng để mô hình hóa các mối quan hệ giữa nhiều biến ngẫu nhiên liên tục.
+
+---
+
+Chunk 28:
+**Lecture2_General Concepts for ML.pdf**
+
+# Slide 41: Phân phối mũ
+
+Slide này định nghĩa và minh họa Phân phối mũ (Exponential Distribution).
+
+Biểu đồ hiển thị ba đường cong phân phối mũ khác nhau, mỗi đường tương ứng với một giá trị của tham số $\lambda$:
+*   **Đường màu cam:** $\lambda = 0.5$ (đường cong dốc nhất ban đầu, sau đó giảm chậm nhất)
+*   **Đường màu tím:** $\lambda = 1$ (đường cong dốc vừa phải)
+*   **Đường màu xanh nhạt:** $\lambda = 1.5$ (đường cong dốc nhất ban đầu, sau đó giảm nhanh nhất)
+
+Trục hoành là $x$ và trục tung là "probability density" (mật độ xác suất).
+
+**Định nghĩa:**
+Hàm mật độ xác suất (PDF) của phân phối mũ được cho bởi công thức:
+$P(x) = Exp(\lambda) = \lambda e^{-\lambda x}$
+với $x \ge 0$
+
+Trong đó:
+*   $\lambda$ (lambda) là tham số tốc độ (rate parameter), biểu thị số sự kiện trung bình xảy ra trong một đơn vị thời gian.
+*   $x$ là biến ngẫu nhiên, thường biểu thị thời gian chờ đợi cho một sự kiện xảy ra.
+
+Phân phối mũ thường được sử dụng để mô hình hóa thời gian giữa các sự kiện trong một quá trình Poisson, tức là các sự kiện xảy ra liên tục và độc lập với một tốc độ trung bình không đổi.
+
+---
+
+# Slide 42: Phân phối mũ - Ví dụ
+
+Slide này cung cấp một ví dụ minh họa cho Phân phối mũ (Exponential Distribution).
+
+Hình ảnh hiển thị một biểu đồ tần suất (histogram) của "distribution of call durations over 15 minutes" (phân phối thời lượng cuộc gọi trên 15 phút).
+*   Trục hoành là "duration (hours)" (thời lượng tính bằng giờ), từ 1 đến 4.
+*   Trục tung là tần suất hoặc mật độ.
+*   Biểu đồ cho thấy tần suất cao nhất ở thời lượng ngắn và giảm dần khi thời lượng cuộc gọi tăng lên, đặc trưng của phân phối mũ.
+
+**Mô tả:**
+Phân phối thời gian cuộc gọi trên 15 phút trong một công ty viễn thông.
+
+Ví dụ này minh họa cách phân phối mũ có thể được sử dụng để mô hình hóa thời gian chờ đợi hoặc thời lượng của các sự kiện, chẳng hạn như thời gian giữa các cuộc gọi điện thoại hoặc thời gian phục vụ khách hàng.
+
+---
+
+Chunk 29:
+**Lecture2_General Concepts for ML.pdf**
+
+# Slide 43: Đề cương
+
+Slide này trình bày lại đề cương của bài giảng, đánh dấu chủ đề hiện tại là "Các phép đo điển hình" bằng màu xanh lá cây.
+
+*   **Thống kê - Xác suất**
+*   **Phân phối dữ liệu điển hình**
+*   **Các phép đo điển hình** (được đánh dấu màu xanh lá cây)
+    *   Entropy, Cross Entropy
+    *   Thông tin tương hỗ (Mutual Information)
+    *   Kullback-Leibler Divergence
+*   **Lý thuyết học**
+
+---
+
+# Slide 44: Đo lường điển hình - Entropy
+
+Slide này định nghĩa Entropy, một phép đo điển hình trong lý thuyết thông tin, cho cả biến ngẫu nhiên rời rạc và liên tục.
+
+*   **Định nghĩa:** Entropy đo lường 'sự không chắc chắn' (uncertainty) hoặc 'sự bất ngờ' (surprise) trong dữ liệu. Entropy càng cao, dữ liệu càng không chắc chắn hoặc bất ngờ.
+
+*   **Biến ngẫu nhiên rời rạc (Discrete random variable):**
+    Entropy $H(X)$ của một biến ngẫu nhiên rời rạc X được tính bằng công thức:
+    $H(X) = -\sum_{i=1}^{n} P(x_i) \log P(x_i)$
+    Trong đó $P(x_i)$ là xác suất của mỗi giá trị $x_i$. Dấu trừ được sử dụng vì $\log P(x_i)$ sẽ là một số âm (do $P(x_i) \le 1$).
+
+*   **Biến ngẫu nhiên liên tục (Continuous random variable):**
+    Entropy $h(X)$ (còn gọi là differential entropy) của một biến ngẫu nhiên liên tục X được tính bằng công thức:
+    $h(X) = -\int_{X} f(x) \log f(x) dx$
+    Trong đó $f(x)$ là hàm mật độ xác suất của X.
+
+Entropy là một khái niệm cơ bản trong học máy, đặc biệt trong các thuật toán cây quyết định và trong việc đánh giá độ phức tạp của dữ liệu.
+
+---
+
+Chunk 30:
+**Lecture2_General Concepts for ML.pdf**
+
+# Slide 45: Đo lường điển hình – Thông tin tương hỗ
+
+Slide này định nghĩa Thông tin tương hỗ (Mutual Information - MI), một phép đo điển hình trong lý thuyết thông tin, dùng để đo lường sự phụ thuộc lẫn nhau giữa hai biến ngẫu nhiên.
+
+*   **Định nghĩa:** Thông tin tương hỗ đo lường sự phụ thuộc lẫn nhau giữa hai biến ngẫu nhiên. Nó định lượng lượng thông tin về một biến có thể thu được bằng cách quan sát biến kia.
+
+Công thức tính Thông tin tương hỗ $I(X; Y)$:
+$I(X; Y) = H(X) - H(X|Y)$
+(Thông tin tương hỗ bằng Entropy của X trừ đi Entropy có điều kiện của X khi biết Y. Điều này có nghĩa là lượng thông tin mà Y cung cấp về X.)
+
+Các công thức tương đương khác:
+$= H(Y) - H(Y|X)$
+(Tương tự, lượng thông tin mà X cung cấp về Y.)
+
+$= H(X) + H(Y) - H(X, Y)$
+(Tổng Entropy của X và Y trừ đi Entropy đồng thời của X và Y.)
+
+$= H(X, Y) - H(X|Y) - H(Y|X)$
+(Entropy đồng thời của X và Y trừ đi tổng Entropy có điều kiện của X khi biết Y và Entropy có điều kiện của Y khi biết X.)
+
+Thông tin tương hỗ là một khái niệm quan trọng trong lựa chọn đặc trưng, phân tích dữ liệu và các mô hình đồ họa.
+
+---
+
+Chunk 31:
+**Lecture2_General Concepts for ML.pdf**
+
+# Slide 46: Đo lường điển hình – Cross Entropy
+
+Slide này định nghĩa Cross Entropy (Entropy chéo), một phép đo điển hình trong học máy, dùng để đo lường sự khác biệt giữa hai phân phối xác suất.
+
+*   **Định nghĩa:** Cross Entropy đo lường sự khác biệt giữa hai phân phối. Nó thường được sử dụng làm hàm mất mát trong các mô hình phân loại.
+
+*   **Biến ngẫu nhiên rời rạc (Discrete random variable):**
+    Cross Entropy $H(p, q)$ giữa phân phối thực $p(x)$ và phân phối dự đoán $q(x)$ được tính bằng công thức:
+    $H(p,q) = -\sum_{x \in X} p(x) \log q(x)$
+    Trong đó $p(x)$ là xác suất thực của sự kiện $x$, và $q(x)$ là xác suất dự đoán của sự kiện $x$.
+
+*   **Biến ngẫu nhiên liên tục (Continuous random variable):**
+    Cross Entropy $H(p, q)$ giữa hàm mật độ xác suất thực $P(x)$ và hàm mật độ xác suất dự đoán $Q(x)$ được tính bằng công thức:
+    $H(p,q) = -\int_{X} P(x) \log Q(x) dr(x)$
+    Trong đó $dr(x)$ là một yếu tố đo lường.
+
+Cross Entropy thường được sử dụng để đánh giá hiệu suất của các mô hình phân loại, đặc biệt là trong mạng nơ-ron, nơi mục tiêu là làm cho phân phối dự đoán $q(x)$ càng gần với phân phối thực $p(x)$ càng tốt.
+
+---
+
+Chunk 32:
+**Lecture2_General Concepts for ML.pdf**
+
+# Slide 47: Đo lường điển hình – KL Divergence
+
+Slide này định nghĩa KL Divergence (Kullback-Leibler Divergence), một phép đo điển hình trong học máy, dùng để định lượng sự khác biệt giữa hai phân phối xác suất.
+
+*   **Định nghĩa:** KL Divergence đo lường sự khác biệt giữa hai phân phối. Nó cho biết mức độ "khác biệt" của một phân phối so với một phân phối khác.
+
+*   **Biến ngẫu nhiên rời rạc (Discrete random variable):**
+    KL Divergence $D_{KL}(P || Q)$ từ phân phối $Q$ đến phân phối $P$ được tính bằng công thức:
+    $D_{KL}(P || Q) = -\sum_{x \in X} P(x) \log \left(\frac{Q(x)}{P(x)}\right)$
+    Công thức này cũng có thể được viết là $D_{KL}(P || Q) = \sum_{x \in X} P(x) \log \left(\frac{P(x)}{Q(x)}\right)$.
+    Nó đo lường lượng thông tin bị mất khi $Q$ được sử dụng để xấp xỉ $P$.
+
+*   **Biến ngẫu nhiên liên tục (Continuous random variable):**
+    KL Divergence $D_{KL}(P || Q)$ từ hàm mật độ xác suất $Q(x)$ đến $P(x)$ được tính bằng công thức:
+    $D_{KL}(P || Q) = \int_{-\infty}^{\infty} p(x) \log \left(\frac{p(x)}{q(x)}\right) dx$
+    Trong đó $p(x)$ và $q(x)$ là các hàm mật độ xác suất.
+
+KL Divergence không đối xứng ($D_{KL}(P || Q) \ne D_{KL}(Q || P)$) và không thỏa mãn bất đẳng thức tam giác, do đó nó không phải là một metric khoảng cách thực sự. Tuy nhiên, nó là một công cụ quan trọng trong tối ưu hóa mô hình, đặc biệt trong các mô hình tạo sinh và học tăng cường.
+
+---
+
+Chunk 33:
+**Lecture2_General Concepts for ML.pdf**
+
+# Slide 48: Câu đố
+
+Slide này đưa ra hai câu hỏi về xác suất để kiểm tra kiến thức.
+
+1.  **Câu hỏi 1:** Xác suất để tổng của hai con xúc xắc lớn hơn 9, biết rằng con xúc xắc đầu tiên là 5?
+
+    *   **Phân tích:**
+        *   Không gian mẫu khi tung hai con xúc xắc là 36 cặp kết quả (6x6).
+        *   Điều kiện: Con xúc xắc đầu tiên là 5. Các cặp có thể là (5,1), (5,2), (5,3), (5,4), (5,5), (5,6). Có 6 kết quả.
+        *   Yêu cầu: Tổng của hai con xúc xắc lớn hơn 9.
+        *   Trong các cặp có con xúc xắc đầu tiên là 5, các cặp có tổng lớn hơn 9 là:
+            *   (5,5) -> tổng 10 (>9)
+            *   (5,6) -> tổng 11 (>9)
+        *   Có 2 kết quả thỏa mãn điều kiện và yêu cầu.
+        *   Xác suất = (Số kết quả thỏa mãn) / (Số kết quả thỏa mãn điều kiện) = 2/6 = 1/3.
+
+2.  **Câu hỏi 2:** Giả sử có một trường học có 60% học sinh nam và 40% học sinh nữ. Học sinh nữ mặc quần hoặc váy với số lượng bằng nhau; tất cả học sinh nam đều mặc quần. Một người quan sát nhìn thấy một học sinh (ngẫu nhiên) từ xa; tất cả những gì người quan sát có thể thấy là học sinh này đang mặc quần. Xác suất học sinh này là nữ là bao nhiêu?
+
+    *   **Phân tích (sử dụng Định lý Bayes):**
+        *   Gọi B là sự kiện học sinh là nam (Boy), G là sự kiện học sinh là nữ (Girl).
+        *   Gọi T là sự kiện học sinh mặc quần (Trousers).
+        *   Chúng ta có:
+            *   P(B) = 0.60 (60% nam)
+            *   P(G) = 0.40 (40% nữ)
+            *   P(T|B) = 1 (Tất cả nam mặc quần)
+            *   P(T|G) = 0.5 (Nữ mặc quần hoặc váy với số lượng bằng nhau, nên 50% nữ mặc quần)
+        *   Chúng ta cần tìm P(G|T) (Xác suất học sinh là nữ khi biết họ mặc quần).
+        *   Theo Định lý Bayes: P(G|T) = [P(T|G) * P(G)] / P(T)
+        *   Tính P(T) (xác suất một học sinh bất kỳ mặc quần):
+            P(T) = P(T|B)P(B) + P(T|G)P(G)
+            P(T) = (1 * 0.60) + (0.5 * 0.40) = 0.60 + 0.20 = 0.80
+        *   Tính P(G|T):
+            P(G|T) = (0.5 * 0.40) / 0.80 = 0.20 / 0.80 = 1/4 = 0.25.
+        *   Vậy, xác suất học sinh đó là nữ khi biết họ mặc quần là 25%.
+
+---
+
+Chunk 34:
+**Lecture2_General Concepts for ML.pdf**
+
+# Slide 49: Câu đố
+
+Slide này đưa ra ba câu hỏi nữa về các khái niệm phân phối và độ đo trong học máy.
+
+3.  **Câu hỏi 3:** Giả sử chúng ta muốn dự đoán ngày mai trời mưa hay nắng. Chúng ta có thể mô hình hóa phân phối mục tiêu bằng phân phối nào?
+
+    *   **Gợi ý:** Đây là một bài toán phân loại nhị phân (hai kết quả có thể: Mưa hoặc Nắng).
+    *   **Trả lời:** Phân phối Bernoulli hoặc Phân phối nhị thức (nếu dự đoán cho nhiều ngày). Phân phối Bernoulli là phù hợp nhất cho một thử nghiệm duy nhất (một ngày).
+
+4.  **Câu hỏi 4:** Giả sử chúng ta muốn dự đoán điểm trung bình (GPA) của một sinh viên UET, phân phối nào có thể được sử dụng để mô hình hóa GPA?
+
+    *   **Gợi ý:** GPA là một giá trị liên tục (ví dụ: từ 0.0 đến 4.0 hoặc 5.0).
+    *   **Trả lời:** Phân phối chuẩn (Normal Distribution) hoặc Phân phối Beta (Beta Distribution) thường được sử dụng để mô hình hóa các biến liên tục có giới hạn trên và dưới (như tỷ lệ hoặc điểm số). Phân phối chuẩn là một lựa chọn phổ biến nếu dữ liệu GPA có hình dạng chuông.
+
+5.  **Câu hỏi 5:** Điều gì xảy ra với độ phân kỳ KL (KL divergence) $D_{KL}(P||Q)$ nếu miền hỗ trợ (support) của P và Q không chồng lấn?
+
+    *   **Gợi ý:** Miền hỗ trợ là tập hợp các giá trị mà một biến ngẫu nhiên có xác suất khác 0. Nếu chúng không chồng lấn, có nghĩa là có những giá trị mà P có xác suất khác 0 nhưng Q có xác suất bằng 0 (hoặc ngược lại).
+    *   **Trả lời:** Nếu miền hỗ trợ của P và Q không chồng lấn, tức là tồn tại $x$ sao cho $P(x) > 0$ nhưng $Q(x) = 0$. Trong công thức KL Divergence $D_{KL}(P || Q) = \sum P(x) \log \left(\frac{P(x)}{Q(x)}\right)$, khi $Q(x) = 0$, thì $\frac{P(x)}{Q(x)}$ sẽ tiến tới vô cùng, và $\log(\infty)$ cũng là vô cùng. Do đó, $D_{KL}(P||Q)$ sẽ là **vô cùng (infinity)**. Điều này có nghĩa là hai phân phối hoàn toàn khác biệt và không thể xấp xỉ lẫn nhau.
+
+---
+
+Chunk 35:
+**Lecture2_General Concepts for ML.pdf**
+
+# Slide 50: Đề cương
+
+Slide này trình bày lại đề cương của bài giảng, đánh dấu chủ đề hiện tại là "Lý thuyết học" bằng màu xanh lá cây.
+
+*   **Thống kê - Xác suất**
+*   **Phân phối dữ liệu điển hình**
+*   **Các phép đo điển hình**
+    *   Entropy, Cross Entropy
+    *   Thông tin tương hỗ (Mutual Information)
+    *   Kullback-Leibler Divergence
+*   **Lý thuyết học** (được đánh dấu màu xanh lá cây)
+
+---
+
+# Slide 51: Học quy nạp
+
+Slide này trình bày một sơ đồ quy trình của Học quy nạp (Inductive Learning), một phương pháp học máy.
+
+Sơ đồ bao gồm các thành phần và luồng dữ liệu chính:
+
+1.  **Dữ liệu (Data):** Là nguồn dữ liệu ban đầu.
+2.  **Dữ liệu huấn luyện (Training Data):** Một phần của dữ liệu được sử dụng để huấn luyện mô hình.
+3.  **Mô hình (Model):** Đại diện cho cấu trúc hoặc thuật toán học.
+4.  **Học (Learning):** Quá trình mô hình được huấn luyện trên dữ liệu huấn luyện.
+5.  **Mô hình đã huấn luyện (Trained Model):** Kết quả của quá trình học.
+6.  **Dữ liệu kiểm tra (Test Data):** Một phần khác của dữ liệu, không được sử dụng trong quá trình huấn luyện, dùng để đánh giá mô hình.
+7.  **Đánh giá (Evaluation):** Quá trình đánh giá hiệu suất của mô hình đã huấn luyện trên dữ liệu kiểm tra.
+
+**Luồng quy trình:**
+*   Dữ liệu được chia thành Dữ liệu huấn luyện và Dữ liệu kiểm tra.
+*   Dữ liệu huấn luyện được đưa vào Mô hình thông qua quá trình Học để tạo ra Mô hình đã huấn luyện.
+*   Mô hình đã huấn luyện được sử dụng để dự đoán trên Dữ liệu kiểm tra.
+*   Kết quả dự đoán được so sánh với nhãn thực của Dữ liệu kiểm tra trong quá trình Đánh giá.
+
+Học quy nạp là quá trình suy luận một quy tắc tổng quát từ các ví dụ cụ thể. Trong học máy, điều này có nghĩa là học một mô hình từ dữ liệu để có thể đưa ra dự đoán trên dữ liệu mới.
+
+---
+
+Chunk 36:
+**Lecture2_General Concepts for ML.pdf**
+
+# Slide 52: Khung học thống kê
+
+Slide này trình bày định nghĩa chính thức về đầu vào của người học trong Khung học thống kê (Statistical Learning Framework).
+
+**Định nghĩa chính thức về đầu vào của người học:**
+
+*   **Tập miền (Domain Set) $\mathcal{X}$:**
+    *   Là một tập hợp tùy ý.
+    *   $\mathcal{X}$ đại diện cho không gian chứa các đối tượng mà chúng ta muốn học.
+    *   Ví dụ: Nếu chúng ta đang phân loại hình ảnh, $\mathcal{X}$ có thể là không gian của tất cả các hình ảnh có thể có.
+
+*   **Tập nhãn (Label Set) $\mathcal{Y}$:**
+    *   Là một tập hợp các định nghĩa được định nghĩa trên $\mathcal{X}$.
+    *   Trong trường hợp nhị phân, $\mathcal{Y}$ có thể là $\{0, 1\}$ hoặc $\{-1, 1\}$.
+    *   Trong trường hợp phân loại đa lớp, $\mathcal{Y}$ có thể là $\{class_1, class_2, class_3\}$.
+    *   Nếu nhiệm vụ là hồi quy (regression), $\mathcal{Y}$ có thể là một Giá trị thực (Real Value).
+    *   $\mathcal{Y}$ có thể được mở rộng thành $n$ lớp.
+
+*   **Dữ liệu huấn luyện (Training data) $S$:**
+    *   Là một chuỗi các cặp $(x_i, y_i)$: $S = \{(x_1, y_1), ..., (x_m, y_m)\}$
+    *   Các cặp này nằm trong miền $\mathcal{X} \times \mathcal{Y}$.
+    *   $x_i$ là một đối tượng từ tập miền, và $y_i$ là nhãn tương ứng của nó.
+    *   $m$ là số lượng mẫu trong dữ liệu huấn luyện.
+
+**Tổng quát:** $S$ là định nghĩa cụ thể của kinh nghiệm $E$ trong phân loại có giám sát.
+
+---
+
+Chunk 37:
+**Lecture2_General Concepts for ML.pdf**
+
+# Slide 53: Khung học thống kê
+
+Slide này trình bày định nghĩa chính thức về đầu ra của người học trong Khung học thống kê (Statistical Learning Framework).
+
+**Định nghĩa chính thức về đầu ra của người học:**
+
+*   **Quy tắc dự đoán (A prediction rule) $h$:**
+    $h: \mathcal{X} \to \mathcal{Y} \quad (1)$
+    *   $h$ là một bộ phân loại (classifier), bộ dự đoán (predictor), giả thuyết (hypothesis) hoặc hàm ánh xạ (mapping function).
+    *   Ví dụ: $h$ có thể là hàm tuyến tính với ngưỡng (thresholding) như đã học trong bài trước.
+
+*   **Thuật toán học (Learning algorithm) $A$:**
+    *   Cho một thuật toán $A$, chúng ta ký hiệu $A(S)$ là tập hợp các bộ phân loại/giả thuyết được tạo ra bằng cách áp dụng $A$ trên tập dữ liệu $S$.
+    *   $h$ có thể tổng quát hơn định nghĩa của một hàm.
+    *   Một ví dụ là $h$ là hàm ngẫu nhiên (stochastic function).
+
+---
+
+# Slide 54: Khung học thống kê
+
+Slide này mô tả một quy trình tạo dữ liệu đơn giản trong Khung học thống kê (Statistical Learning Framework) và các ghi chú quan trọng.
+
+**Quy trình tạo dữ liệu đơn giản:**
+
+*   **Giả định 1:** Chúng ta có một phân phối xác suất $D$ trên $\mathcal{X}$.
+*   **Giả định 2:** Cho $D$, chúng ta lấy một mẫu $x_i \sim D$.
+*   **Giả định 3:** Chúng ta có một hàm nhãn "đúng" (correct label function) $c$:
+    $c: \mathcal{X} \to \mathcal{Y} \quad (2)$
+    Sao cho $y_i = c(x_i)$, và tập dữ liệu $S = \{(x_1, y_1), ..., (x_m, y_m)\}$.
+
+**Ghi chú:**
+
+1.  $c$ là hàm mà chúng ta muốn khôi phục. Tuy nhiên, chúng ta không biết $D$ và $c$. Thuật toán học $
+

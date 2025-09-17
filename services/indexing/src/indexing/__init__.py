@@ -9,8 +9,6 @@ from indexing.api.main import router
 from indexing.shared.utils import get_settings
 
 
-
-
 @asynccontextmanager
 async def lifespan(app: FastAPI):
     app.state.settings = get_settings()
@@ -23,7 +21,6 @@ async def lifespan(app: FastAPI):
     app.state.neo4j_service = Neo4jService(
         settings=app.state.settings.neo4j
     )
-    
     
     yield 
 

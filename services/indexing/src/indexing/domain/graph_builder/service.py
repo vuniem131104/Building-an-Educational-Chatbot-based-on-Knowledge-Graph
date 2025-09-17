@@ -9,7 +9,7 @@ from typing import List, Dict
 from base import BaseModel
 from base import BaseService
 from logger import get_logger
-from lite_llm import LiteLLMService, LiteLLMInput, CompletionMessage, Role
+from lite_llm import LiteLLMService, LiteLLMInput, CompletionMessage, Role, LiteLLMEmbeddingInput
 from graph_db import Neo4jService
 from indexing.domain.graph_builder.prompts import GRAPH_EXTRACTION_PROMPT
 
@@ -92,9 +92,9 @@ class BuilderService(BaseService):
             entities = []
             relationships = []
             
-            # Regex để tìm entities: ("entity"|name|type|description)
-            entity_pattern = r'\("entity"\|([^|]+)\|([^|]+)\|([^)]+)\)'
-            entity_matches = re.findall(entity_pattern, extracted_text)
+            # Regex để tìm entities: [ENTITY]<|>name<|>type<|>description[/ENTITY]
+            entity_pattern = r'\[ENTITY\]<\|>([^<|>]+)<\|>([^<|>]+)<\|>([^<|>]+?)\[/ENTITY\]'
+            entity_matches = re.findall(entity_pattern, extracted_text, re.DOTALL)
             
             for match in entity_matches:
                 entities.append({
@@ -104,9 +104,9 @@ class BuilderService(BaseService):
                     'entity_description': match[2].strip()
                 })
             
-            # Regex để tìm relationships: ("relationship"|source|target|relation|description)
-            rel_pattern = r'\("relationship"\|([^|]+)\|([^|]+)\|([^|]+)\|([^)]+)\)'
-            rel_matches = re.findall(rel_pattern, extracted_text)
+            # Regex để tìm relationships: [RELATIONSHIP]<|>source<|>target<|>relation<|>description[/RELATIONSHIP]
+            rel_pattern = r'\[RELATIONSHIP\]<\|>([^<|>]+)<\|>([^<|>]+)<\|>([^<|>]+)<\|>([^<|>]+?)\[/RELATIONSHIP\]'
+            rel_matches = re.findall(rel_pattern, extracted_text, re.DOTALL)
             
             for match in rel_matches:
                 relationships.append({
@@ -167,8 +167,9 @@ class BuilderService(BaseService):
             
             # Tạo embedding cho chunk text
             embedding_result = await self.llm_service.embedding_llm_async(
-                model="gemini-embedding",
-                inputs=chunk_text
+                inputs=LiteLLMEmbeddingInput(
+                    text=chunk_text,
+                )
             )
             chunk_embeddings[chunk_id] = embedding_result.embedding
         
@@ -193,8 +194,9 @@ class BuilderService(BaseService):
 
                 # Tạo embedding cho entity description
                 desc_embedding_result = await self.llm_service.embedding_llm_async(
-                    model="gemini-embedding",
-                    inputs=entity['entity_description']
+                    inputs=LiteLLMEmbeddingInput(
+                        text=entity['entity_description'],
+                    )
                 )
                 desc_embedding = desc_embedding_result.embedding
 
@@ -223,11 +225,11 @@ class BuilderService(BaseService):
                 // Tạo relationships theo schema
                 MERGE (doc)-[:CONTAINED]->(chunk)
                 MERGE (chunk)-[:MENTIONED]->(entity)
-                MERGE (entity)-[:DESCRIBED]->(desc)
+                MERGE (entity)-[:DESCRIBED]->(desc)      
                 """
-                
+
                 result = await self.neo4j_service.execute_query(cypher)
-                
+
                 if result.success:
                     created_count += 1
                     logger.debug(f"Tạo entity với schema: {name} (type: {entity_type})")
@@ -264,8 +266,9 @@ class BuilderService(BaseService):
                 
                 # Tạo embedding cho relationship description
                 desc_embedding_result = await self.llm_service.embedding_llm_async(
-                    model="gemini-embedding",
-                    inputs=rel['relationship_description']
+                    inputs=LiteLLMEmbeddingInput(
+                        text=rel['relationship_description'],
+                    )
                 )
                 desc_embedding = desc_embedding_result.embedding
                 
@@ -316,6 +319,7 @@ async def test_service():
     from lite_llm import LiteLLMService, LiteLLMSetting
     from graph_db import Neo4jSetting, Neo4jService
     from pydantic import SecretStr, HttpUrl
+    from uuid import uuid4
     
     # Tạo LiteLLM service
     litellm = LiteLLMService(
@@ -329,6 +333,7 @@ async def test_service():
             top_p=1.0,
             max_completion_tokens=10000,
             dimension=1536,
+            embedding_model="gemini-embedding"
         )
     )
     
@@ -347,11 +352,45 @@ async def test_service():
     )
     
     test_input = BuilderInput(
-        document_file_name="thutuc_canconc_congdan.txt",
+        document_file_name="Lecture2_General Concepts for ML.pdf",
         chunks=[
             {
-                "chunk_id": "chunk_001",
-                "chunk_text": "Ủy ban nhân dân phường Đống Đa cấp căn cước công dân cho công dân từ đủ 14 tuổi. Phí dịch vụ là 20.000 đồng và thời gian xử lý là 15 ngày làm việc."
+                "chunk_id": str(uuid4()),
+                "chunk_text": """**Lecture2_General Concepts for ML.pdf**
+
+# Slide 53: Khung học thống kê
+
+Slide này trình bày định nghĩa chính thức về đầu ra của người học trong Khung học thống kê (Statistical Learning Framework).
+
+**Định nghĩa chính thức về đầu ra của người học:**
+
+*   **Quy tắc dự đoán (A prediction rule) $h$:**
+    $h: \mathcal{X} \to \mathcal{Y} \quad (1)$
+    *   $h$ là một bộ phân loại (classifier), bộ dự đoán (predictor), giả thuyết (hypothesis) hoặc hàm ánh xạ (mapping function).
+    *   Ví dụ: $h$ có thể là hàm tuyến tính với ngưỡng (thresholding) như đã học trong bài trước.
+
+*   **Thuật toán học (Learning algorithm) $A$:**
+    *   Cho một thuật toán $A$, chúng ta ký hiệu $A(S)$ là tập hợp các bộ phân loại/giả thuyết được tạo ra bằng cách áp dụng $A$ trên tập dữ liệu $S$.
+    *   $h$ có thể tổng quát hơn định nghĩa của một hàm.
+    *   Một ví dụ là $h$ là hàm ngẫu nhiên (stochastic function).
+
+---
+
+# Slide 54: Khung học thống kê
+
+Slide này mô tả một quy trình tạo dữ liệu đơn giản trong Khung học thống kê (Statistical Learning Framework) và các ghi chú quan trọng.
+
+**Quy trình tạo dữ liệu đơn giản:**
+
+*   **Giả định 1:** Chúng ta có một phân phối xác suất $D$ trên $\mathcal{X}$.
+*   **Giả định 2:** Cho $D$, chúng ta lấy một mẫu $x_i \sim D$.
+*   **Giả định 3:** Chúng ta có một hàm nhãn "đúng" (correct label function) $c$:
+    $c: \mathcal{X} \to \mathcal{Y} \quad (2)$
+    Sao cho $y_i = c(x_i)$, và tập dữ liệu $S = \{(x_1, y_1), ..., (x_m, y_m)\}$.
+
+**Ghi chú:**
+
+1.  $c$ là hàm mà chúng ta muốn khôi phục. Tuy nhiên, chúng ta không biết $D$ và $c$. Thuật toán học $"""
             }
         ]
     )

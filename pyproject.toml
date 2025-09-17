@@ -15,7 +15,6 @@ members = [
     "services/rag",
     "libs/base",
     "libs/logger",
-    "services/document",
     "libs/storage",
     "services/file_upload",
     "services/generation",

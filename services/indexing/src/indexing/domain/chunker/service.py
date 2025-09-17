@@ -174,18 +174,18 @@ class ChunkerService(BaseService):
         return chunks
 
 
-# if __name__ == "__main__":
-#     # Example usage
-#     service = ChunkerService(chunker_setting=ChunkerSetting(
-#         max_token_per_chunk=1000,
-#         min_token_per_chunk=500,
-#     ))
-#     with open("/home/vuiem/UET_CodeCamp_2025/test.txt", "r") as file:
-#         contents = file.read()
-#         input_data = ChunkerInput(contents=contents, file_name="test.txt")
-        
-#     output_data = service.process(input_data)
-#     with open('chunks.txt', 'w') as f:
-#         for i, chunk in enumerate(output_data.chunks):
-#             f.write(f"Chunk {i + 1}:\n")
-#             f.write(chunk + '\n\n')
+if __name__ == "__main__":
+    # Example usage
+    service = ChunkerService(chunker_setting=ChunkerSetting(
+        max_token_per_chunk=1000,
+        min_token_per_chunk=500,
+    ))
+    with open("/home/vuiem/KLTN/test/parser/Lecture2_General Concepts for ML_parser.txt", "r") as file:
+        contents = file.read()
+        input_data = ChunkerInput(contents=contents, file_name="Lecture2_General Concepts for ML.pdf")
+
+    output_data = service.process(input_data)
+    with open('chunks.txt', 'w') as f:
+        for i, chunk in enumerate(output_data.chunks):
+            f.write(f"Chunk {i + 1}:\n")
+            f.write(chunk + '\n\n')

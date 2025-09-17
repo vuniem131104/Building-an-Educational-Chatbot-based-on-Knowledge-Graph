@@ -14,7 +14,7 @@ from storage.minio import MinioInput
 from generation.domain.quiz_generation.prompts import CONCEPT_CARDS_SYSTEM_PROMPT
 from generation.domain.quiz_generation.prompts import CONCEPT_CARDS_USER_PROMPT
 from generation.shared.settings import ConceptCardExtractorSetting
-from generation.domain.parser.pptx.utils import convert_pptx_to_pdf
+from generation.shared.utils import convert_pptx_to_pdf
 from generation.shared.models import FileType
 from generation.shared.utils import filter_files
 from generation.shared.utils import get_previous_lectures
@@ -282,56 +282,56 @@ class ConceptCardExtractorService(BaseService):
             )
             raise e
     
-if __name__ == "__main__":
-    from lite_llm import LiteLLMSetting
-    from storage.minio import MinioSetting
-    import asyncio
-    from pydantic import HttpUrl, SecretStr
+# if __name__ == "__main__":
+#     from lite_llm import LiteLLMSetting
+#     from storage.minio import MinioSetting
+#     import asyncio
+#     from pydantic import HttpUrl, SecretStr
 
-    litellm_setting=LiteLLMSetting(
-        url=HttpUrl("http://localhost:9510"),
-        token=SecretStr("abc123"),
-        model="gemini-2.5-flash",
-        frequency_penalty=0.0,
-        n=1,
-        temperature=0.0,
-        top_p=1.0,
-        max_completion_tokens=10000,
-        dimension=1536,
-        embedding_model="gemini-embedding"
-    )
+#     litellm_setting=LiteLLMSetting(
+#         url=HttpUrl("http://localhost:9510"),
+#         token=SecretStr("abc123"),
+#         model="gemini-2.5-flash",
+#         frequency_penalty=0.0,
+#         n=1,
+#         temperature=0.0,
+#         top_p=1.0,
+#         max_completion_tokens=10000,
+#         dimension=1536,
+#         embedding_model="gemini-embedding"
+#     )
     
-    minio_setting = MinioSetting(
-        endpoint="localhost:9000",
-        access_key="minioadmin",
-        secret_key="minioadmin123",
-        secure=False,
-    )
+#     minio_setting = MinioSetting(
+#         endpoint="localhost:9000",
+#         access_key="minioadmin",
+#         secret_key="minioadmin123",
+#         secure=False,
+#     )
     
-    settings = ConceptCardExtractorSetting(
-        model="gemini-2.5-flash",
-        temperature=0.0,
-        top_p=1.0,
-        n=1,
-        frequency_penalty=0.0,
-        max_completion_tokens=10000,
-    )
+#     settings = ConceptCardExtractorSetting(
+#         model="gemini-2.5-flash",
+#         temperature=0.0,
+#         top_p=1.0,
+#         n=1,
+#         frequency_penalty=0.0,
+#         max_completion_tokens=10000,
+#     )
 
-    litellm_service = LiteLLMService(litellm_setting=litellm_setting)
-    minio_service = MinioService(settings=minio_setting)
-    concept_card_extractor_service = ConceptCardExtractorService(
-        litellm_service=litellm_service,
-        minio_service=minio_service,
-        settings=settings
-    )
+#     litellm_service = LiteLLMService(litellm_setting=litellm_setting)
+#     minio_service = MinioService(settings=minio_setting)
+#     concept_card_extractor_service = ConceptCardExtractorService(
+#         litellm_service=litellm_service,
+#         minio_service=minio_service,
+#         settings=settings
+#     )
 
-    async def test():
-        output = await concept_card_extractor_service.process(
-            inputs=ConceptCardExtractorInput(
-                week_number=6,
-                course_code="int3405"
-            )
-        )
-        print(output)
+#     async def test():
+#         output = await concept_card_extractor_service.process(
+#             inputs=ConceptCardExtractorInput(
+#                 week_number=6,
+#                 course_code="int3405"
+#             )
+#         )
+#         print(output)
 
-    asyncio.run(test())
+#     asyncio.run(test())

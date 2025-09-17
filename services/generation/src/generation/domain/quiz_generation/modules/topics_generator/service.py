@@ -10,16 +10,10 @@ from generation.domain.quiz_generation.prompts import TOPIC_GENERATOR_SYSTEM_PRO
 from generation.domain.quiz_generation.prompts import TOPIC_GENERATOR_USER_PROMPT
 from generation.domain.quiz_generation.modules.concept_card_extractor import ConceptCard
 from generation.shared.settings import TopicGeneratorSetting
+from generation.shared.models import Topic
 from logger import get_logger
 
 logger = get_logger(__name__)
-
-class Topic(BaseModel):
-    name: str = Field(..., description="The name of the topic")
-    description: str = Field(..., description="A brief description of the topic")
-    difficulty_level: str = Field(..., description="The difficulty level of the topic")
-    estimated_right_answer_rate: float = Field(..., description="Estimated right answer rate for the topic")
-    bloom_taxonomy_level: str = Field(..., description="Bloom's taxonomy level for the topic")
 
 
 class Topics(BaseModel):

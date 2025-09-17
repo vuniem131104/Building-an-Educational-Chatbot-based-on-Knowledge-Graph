@@ -1,9 +1,9 @@
-from pydantic import BaseModel, Field
+# from generation.domain.quiz_generation import QuizQuestion
+# import json 
 
-class Item(BaseModel):
-    name: str
-    description: str 
-    price: float
-    tax: float | None
+# with open('h.json', 'r', encoding='utf-8') as f:
+#     data = json.load(f)
     
-print(Item.model_json_schema())
+# quiz_question = QuizQuestion(**data)
+
+# print(quiz_question)

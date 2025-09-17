@@ -8,3 +8,11 @@ from .distractors_generator import DISTRACTORS_SYSTEM_PROMPT
 from .distractors_generator import DISTRACTORS_USER_PROMPT
 from .explanation_generator import EXPLANATION_SYSTEM_PROMPT
 from .explanation_generator import EXPLANATION_USER_PROMPT
+from .quiz_correction import QUIZ_CORRECTION_SYSTEM_PROMPT
+from .quiz_correction import QUIZ_CORRECTION_USER_PROMPT
+from .factual import FACTUAL_SYSTEM_PROMPT
+from .factual import FACTUAL_USER_PROMPT
+from .pedagogical import PEDAGOGICAL_SYSTEM_PROMPT
+from .pedagogical import PEDAGOGICAL_USER_PROMPT
+from .psychometric import PSYCHOMETRIC_SYSTEM_PROMPT
+from .psychometric import PSYCHOMETRIC_USER_PROMPT

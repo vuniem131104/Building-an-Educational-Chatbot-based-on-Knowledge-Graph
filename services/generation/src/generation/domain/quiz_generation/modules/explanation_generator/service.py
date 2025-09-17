@@ -1,4 +1,4 @@
-from generation.domain.quiz_generation.modules.topics_generator import Topic
+from generation.shared.models import Topic
 from generation.domain.quiz_generation.prompts import EXPLANATION_SYSTEM_PROMPT
 from generation.domain.quiz_generation.prompts import EXPLANATION_USER_PROMPT
 from generation.shared.settings import ExplanationGeneratorSetting
@@ -18,18 +18,6 @@ from logger import get_logger
 logger = get_logger(__name__)
 
 
-class DistractorExplanation(BaseModel):
-    distractor: str = Field(..., description="The distractor text")
-    explanation: str = Field(..., description="Explanation for the distractor")
-
-
-class Explanation(BaseModel):
-    correct_answer_explanation: str = Field(..., description="Explanation for the correct answer")
-    distractors_explanation: list[DistractorExplanation]
-    conceptual_summary: str = Field(..., description="Conceptual summary of the topic")
-    learning_tips: str = Field(..., description="Learning tips related to the topic")
-
-
 class ExplanationGeneratorInput(BaseModel):
     question_answer: QuestionAnswer
     distractors: list[str]
@@ -39,7 +27,7 @@ class ExplanationGeneratorInput(BaseModel):
     
 
 class ExplanationGeneratorOutput(BaseModel):
-    explanation: Explanation
+    explanation: str
     week_number: int
     course_code: str
     
@@ -75,7 +63,6 @@ class ExplanationGeneratorService(BaseService):
                             )
                         )
                     ],
-                    response_format=Explanation,
                     temperature=self.settings.temperature,
                     top_p=self.settings.top_p,
                     n=self.settings.n,
@@ -111,17 +98,17 @@ class ExplanationGeneratorService(BaseService):
 #     from pydantic import HttpUrl, SecretStr
 
 #     mock_topic = Topic(
-#         name="Kernel Trick and Dimensionality (Week 1 & 6)",
-#         description="This cross-week topic (integrating Week 1 and Week 6) connects the 'Curse of Dimensionality' from Week 1 with the 'Kernel Trick' from Week 6. Students should analyze how the kernel trick implicitly maps data to higher-dimensional feature spaces to achieve linear separability, and how this process, while beneficial for non-linear problems, relates to the computational challenges and potential pitfalls associated with high-dimensional spaces if not managed implicitly. MCQs can explore the trade-offs or the conceptual connection between these two ideas.",
-#         difficulty_level="Hard",
-#         estimated_right_answer_rate=0.35,
-#         bloom_taxonomy_level="Analyze"
+#         name="Perceptron Model Core Concepts",
+#         description="This topic covers the fundamental definition of a perceptron, its role in linear classification, and the mathematical representation of decision boundaries in machine learning.",
+#         difficulty_level="Easy",
+#         estimated_right_answer_rate=0.85,
+#         bloom_taxonomy_level="Remember"
 #     )
 
 #     litellm_setting = LiteLLMSetting(
 #         url=HttpUrl("http://localhost:9510"),
 #         token=SecretStr("abc123"),
-#         model="gemini-2.5-flash",
+#         model="claude-sonnet-4-20250514",
 #         frequency_penalty=0.0,
 #         n=1,
 #         temperature=0.0,
@@ -132,13 +119,13 @@ class ExplanationGeneratorService(BaseService):
 #     )
 
 #     settings = ExplanationGeneratorSetting(
-#         model="gemini-2.5-flash",
-#         temperature=0.0,
+#         model="gpt-4o-mini",
+#         temperature=0.2,
 #         top_p=1.0,
 #         n=1,
 #         frequency_penalty=0.0,
 #         max_completion_tokens=10000,
-#         reasoning_effort="medium"
+#         # reasoning_effort="medium"
 #     )
 
 #     litellm_service = LiteLLMService(litellm_setting=litellm_setting)
@@ -152,13 +139,13 @@ class ExplanationGeneratorService(BaseService):
 #             inputs=ExplanationGeneratorInput(
 #                 topic=mock_topic,
 #                 distractors=[
-#                     "The kernel trick explicitly maps each data point to its corresponding high-dimensional feature vector, but it uses a highly optimized mathematical function to perform this mapping very quickly, making the process computationally feasible.", 
-#                     "The kernel trick combats the curse of dimensionality by projecting the sparse high-dimensional data onto a lower-dimensional manifold where it becomes denser and less prone to overfitting, simplifying classification.", 
-#                     "The kernel trick effectively eliminates the 'Curse of Dimensionality' by creating a new feature space where data points are always more spread out and linearly separable, ensuring that any classification algorithm will perform optimally without increased computational burden."
+#                     "Decision line", 
+#                     "Activation function", 
+#                     "Weight vector"
 #                 ],
 #                 question_answer=QuestionAnswer(
-#                     question="The 'Curse of Dimensionality' describes the exponential increase in computational complexity and data sparsity as the number of features grows. Considering this, how does the 'Kernel Trick' enable classification in implicitly higher-dimensional spaces without explicitly incurring the severe computational costs typically associated with such high dimensions?",
-#                     answer="The kernel trick computes the dot product of feature vectors in the original, lower-dimensional space, which is equivalent to the dot product in the higher-dimensional space, thus avoiding the explicit transformation and computation of coordinates in the high-dimensional feature space."
+#                     question="In the context of a perceptron model, what is the term for the decision boundary that separates different classes of data?",
+#                     answer="Separating hyperplane"
 #                 ),
 #                 week_number=6,
 #                 course_code="int3405"

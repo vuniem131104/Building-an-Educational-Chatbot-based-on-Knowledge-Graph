@@ -126,7 +126,7 @@ services:
           memory: 2G
     restart: always
     networks:
-      - uet-codecamp
+      - educational-chatbot
 
   postgres:
     image: postgres:17.0-alpine

@@ -1,0 +1,60 @@
+{
+    "topic": [
+        {
+            "name": "Cơ bản mô hình Perceptron",
+            "description": "Chủ đề này bao gồm định nghĩa cơ bản của mô hình Perceptron, việc sử dụng nó trong phân loại tuyến tính, và khái niệm về việc xác định siêu phẳng phân tách. Học sinh cần xác định các thành phần chính như vector trọng số, bias, và cách mô hình xác định các lớp dương và âm cho dữ liệu phân tách tuyến tính.",
+            "difficulty_level": "Easy",
+            "estimated_right_answer_rate": 0.85,
+            "bloom_taxonomy_level": "Remember"
+        },
+        {
+            "name": "Mục tiêu Hard Margin SVM",
+            "description": "Chủ đề này tập trung vào mục tiêu cốt lõi của Hard Margin SVM. Nó kiểm tra hiểu biết về cách SVM tìm siêu phẳng phân tách tối ưu bằng cách tối đa hóa margin và yêu cầu nghiêm ngặt về tập dữ liệu phân tách tuyến tính. Câu hỏi trắc nghiệm có thể bao gồm việc xác định mục tiêu chính hoặc điều kiện áp dụng.",
+            "difficulty_level": "Easy",
+            "estimated_right_answer_rate": 0.8,
+            "bloom_taxonomy_level": "Understand"
+        },
+        {
+            "name": "Biến slack Soft Margin SVM",
+            "description": "Chủ đề này đánh giá hiểu biết về các biến slack (xi) trong Soft Margin SVM. Nó bao gồm mục đích của chúng trong việc cho phép phân loại sai, làm cho SVM có thể áp dụng cho dữ liệu không phân tách tuyến tính, và vai trò cơ bản của tham số regularization 'C' trong việc cân bằng tối đa hóa margin và phân loại sai.",
+            "difficulty_level": "Easy",
+            "estimated_right_answer_rate": 0.75,
+            "bloom_taxonomy_level": "Remember"
+        },
+        {
+            "name": "Ứng dụng cơ bản hàm kernel",
+            "description": "Chủ đề này phân biệt giữa các hàm kernel tuyến tính và phi tuyến tính, đặc biệt so sánh Linear Kernel và Gaussian/RBF Kernel dựa trên tính phù hợp của chúng cho các kịch bản phân tách dữ liệu khác nhau. Học sinh cần xác định loại kernel nào phù hợp cho dữ liệu phân tách tuyến tính so với dữ liệu phi tuyến tính phức tạp.",
+            "difficulty_level": "Easy",
+            "estimated_right_answer_rate": 0.7,
+            "bloom_taxonomy_level": "Understand"
+        },
+        {
+            "name": "Áp dụng thuật toán cập nhật Perceptron",
+            "description": "Chủ đề liên tuần này kết hợp hiểu biết về thuật toán Perceptron (Tuần 6) với các khái niệm tối ưu hóa lặp (Tuần 3, Gradient Descent). Nó kiểm tra khả năng áp dụng các quy tắc cập nhật Perceptron cho trọng số và bias khi được cho một điểm dữ liệu bị phân loại sai. Câu hỏi trắc nghiệm có thể cung cấp một kịch bản và yêu cầu các tham số được cập nhật, phản ánh quá trình học lặp.",
+            "difficulty_level": "Medium",
+            "estimated_right_answer_rate": 0.6,
+            "bloom_taxonomy_level": "Apply"
+        },
+        {
+            "name": "Cơ chế Kernel Trick và ưu điểm",
+            "description": "Chủ đề này đi sâu vào cơ chế hoạt động của Kernel Trick (Tuần 6). Nó đánh giá hiểu biết về cách nó ngầm ánh xạ dữ liệu đến không gian đặc trưng nhiều chiều để phân tách tuyến tính, thay thế rõ ràng tích vô hướng trong bài toán đối ngẫu, và các lợi ích tính toán mà nó cung cấp bằng cách tránh tính toán đặc trưng nhiều chiều rõ ràng.",
+            "difficulty_level": "Medium",
+            "estimated_right_answer_rate": 0.55,
+            "bloom_taxonomy_level": "Understand"
+        },
+        {
+            "name": "So sánh chiến lược SVM đa lớp",
+            "description": "Chủ đề này yêu cầu học sinh so sánh và đối chiếu các chiến lược One-vs-Rest và One-vs-One cho phân loại đa lớp sử dụng SVMs (Tuần 6). Nó kiểm tra hiểu biết về cách mỗi phương pháp hoạt động, số lượng bộ phân loại nhị phân cần thiết, và các đánh đổi tương đối hoặc đặc điểm tính toán của chúng, có thể tham chiếu các kỹ thuật phân loại chung từ Tuần 4.",
+            "difficulty_level": "Medium",
+            "estimated_right_answer_rate": 0.5,
+            "bloom_taxonomy_level": "Analyze"
+        },
+        {
+            "name": "Tham số regularization và khái quát hóa",
+            "description": "Chủ đề liên tuần này tích hợp tham số C của Soft Margin SVM (Tuần 6) với các khái niệm về lỗi generalization (Tuần 2) và lựa chọn mô hình (Tuần 1, Occam's Razor). Nó đánh giá khả năng phân tích cách các giá trị khác nhau của C tác động đến ranh giới quyết định cuối cùng, số lượng support vectors, và do đó, xu hướng của mô hình hướng tới overfitting hoặc underfitting để đạt được hiệu suất generalization tối ưu.",
+            "difficulty_level": "Hard",
+            "estimated_right_answer_rate": 0.35,
+            "bloom_taxonomy_level": "Analyze"
+        }
+    ]
+}

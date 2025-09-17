@@ -85,8 +85,7 @@ class EntityExtracter(BaseService):
         """
         try:
             embedding_result = await self.litellm_service.embedding_llm_async(
-                model=self.extract_entity_setting.embedding_model,
-                inputs=query,
+                inputs=LiteLLMEmbeddingInput(text=query)
             )
 
             return embedding_result.embedding

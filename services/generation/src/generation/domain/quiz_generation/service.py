@@ -3,13 +3,16 @@ from __future__ import annotations
 import asyncio
 from chromadb.api import ClientAPI
 
+from generation.domain.quiz_generation.modules.correction import QuizCorrectionService
+from generation.domain.quiz_generation.modules.correction import QuizCorrectionInput
+from generation.domain.quiz_generation.modules.validator import QuizValidatorService
+from generation.shared.states import ValidatorState
 from generation.domain.quiz_generation.modules.concept_card_extractor import ConceptCardExtractorService
 from generation.domain.quiz_generation.modules.concept_card_extractor import ConceptCardExtractorInput
 from generation.domain.quiz_generation.modules.concept_card_extractor import ConceptCard
 
 from generation.domain.quiz_generation.modules.topics_generator import TopicGeneratorService
 from generation.domain.quiz_generation.modules.topics_generator import TopicGeneratorInput
-from generation.domain.quiz_generation.modules.topics_generator import Topic
 
 from generation.domain.quiz_generation.modules.question_answer_generator import QuestionAnswerGeneratorService
 from generation.domain.quiz_generation.modules.question_answer_generator import QuestionAnswerGeneratorInput
@@ -19,9 +22,10 @@ from generation.domain.quiz_generation.modules.distractors_generator import Dist
 
 from generation.domain.quiz_generation.modules.explanation_generator import ExplanationGeneratorService
 from generation.domain.quiz_generation.modules.explanation_generator import ExplanationGeneratorInput
-from generation.domain.quiz_generation.modules.explanation_generator import Explanation
 
+from generation.shared.models import Topic
 from generation.shared.settings import QuizGenerationSetting
+from generation.shared.models import QuizQuestion
 
 from base import BaseModel
 from base import BaseService
@@ -31,14 +35,6 @@ from storage.minio import MinioService
 logger = get_logger(__name__)
 
 
-class QuizQuestion(BaseModel):
-    question: str
-    answer: str
-    distractors: list[str]
-    explanation: Explanation
-    topic: Topic
-    week_number: int
-    course_code: str
 
 
 class QuizGenerationInput(BaseModel):
@@ -96,6 +92,20 @@ class QuizGenerationService(BaseService):
         return ExplanationGeneratorService(
             litellm_service=self.litellm_service,
             settings=self.settings.explanation_generator,
+        )
+        
+    @property
+    def quiz_validator_service(self) -> QuizValidatorService:
+        return QuizValidatorService(
+            litellm_service=self.litellm_service,
+            settings=self.settings.validator,
+        )
+        
+    @property
+    def quiz_correction_service(self) -> QuizCorrectionService:
+        return QuizCorrectionService(
+            litellm_service=self.litellm_service,
+            settings=self.settings.correction,
         )
 
     async def process(self, inputs: QuizGenerationInput) -> QuizGenerationOutput:
@@ -187,7 +197,6 @@ class QuizGenerationService(BaseService):
                         "error": str(e),
                     }
                 )
-                generation_errors.append(error_msg)
         else:
             error_msg = "Topic generation skipped: No concept cards available"
             logger.exception(error_msg, extra={
@@ -201,6 +210,10 @@ class QuizGenerationService(BaseService):
         async def generate_with_semaphore(topic: Topic, inputs: QuizGenerationInput):
             async with semaphore:
                 return await self._generate_quiz_for_topic(topic, inputs)
+            
+        async def correct_with_semaphore(quiz_question: QuizQuestion):
+            async with semaphore:
+                return await self._receive_feedback_and_correct(quiz_question)
 
         # Step 3: Generate quiz questions for each topic
         if topics:
@@ -209,6 +222,10 @@ class QuizGenerationService(BaseService):
             )
 
             quiz_questions = [q for q in quiz_questions if q is not None]
+
+            quiz_questions = await asyncio.gather(
+                *[correct_with_semaphore(q) for q in quiz_questions],
+            )
 
         else:
             error_msg = "Quiz question generation skipped: No topics available"
@@ -396,6 +413,88 @@ class QuizGenerationService(BaseService):
         
         return None
 
+    async def _receive_feedback_and_correct(self, quiz_question: QuizQuestion) -> QuizQuestion:
+        for i in range(self.settings.max_feedback_attempts):
+            logger.info(
+                f"Processing feedback and correction attempt {i+1} for quiz question",
+                extra={
+                    "week_number": quiz_question.week_number,
+                    "course_code": quiz_question.course_code,
+                    "topic_name": quiz_question.topic.name,
+                    "question": quiz_question.question,
+                    "answer": quiz_question.answer,
+                }
+            )
+            try:
+                feedback = await self.quiz_validator_service.process(
+                    inputs=ValidatorState(
+                        quiz_question=quiz_question,
+                        factual_message="",
+                        factual_score=0,
+                        psychometric_message="",
+                        psychometric_score=0,
+                        pedagogical_message="",
+                        pedagogical_score=0,
+                        score=0,
+                        feedback="",
+                    )
+                )
+
+                if feedback['score'] >= self.settings.acceptance_score_threshold:
+                    logger.info(
+                        "Quiz question accepted based on feedback",
+                        extra={
+                            "topic_name": quiz_question.topic.name,
+                            "question": quiz_question.question,
+                            "answer": quiz_question.answer,
+                            "score": feedback['score'],
+                            "feedback": feedback['feedback'],
+                        }
+                    )
+                    return quiz_question
+                
+                logger.info(
+                    "Quiz question requires correction based on feedback",
+                    extra={
+                        "topic_name": quiz_question.topic.name,
+                        "question": quiz_question.question,
+                        "answer": quiz_question.answer,
+                        "score": feedback['score'],
+                        "feedback": feedback['feedback'],
+                    }
+                )
+                
+                quiz_correction_output = await self.quiz_correction_service.process(
+                    inputs=QuizCorrectionInput(
+                        validator_feedback=feedback['feedback'],
+                        question_metadata=quiz_question
+                    )
+                )
+                
+                quiz_question = quiz_correction_output.corrected_question
+
+            except Exception as e:
+                logger.exception(
+                    "Error in feedback processing for quiz question",
+                    extra={
+                        "topic_name": quiz_question.topic.name,
+                        "question": quiz_question.question,
+                        "answer": quiz_question.answer,
+                        "attempt": i+1,
+                        "error": str(e),
+                    }
+                )
+
+        logger.info(
+            "Feedback processing completed for quiz question",
+            extra={
+                "topic_name": quiz_question.topic.name,
+                "question": quiz_question.question,
+                "answer": quiz_question.answer,
+            }
+        )
+
+        return quiz_question
 
 if __name__ == "__main__":
     import asyncio
@@ -409,7 +508,12 @@ if __name__ == "__main__":
         TopicGeneratorSetting,
         QuestionAnswerGeneratorSetting,
         DistractorsGeneratorSetting,
-        ExplanationGeneratorSetting
+        ExplanationGeneratorSetting,
+        QuizCorrectionSetting,
+        QuizValidatorSetting,
+        FactualSetting,
+        PedagogicalSetting,
+        PsychometricSetting,
     )
 
     async def test():
@@ -453,7 +557,7 @@ if __name__ == "__main__":
         
         topic_generator_setting = TopicGeneratorSetting(
             model="gemini-2.5-flash",
-            temperature=0.7,
+            temperature=1.0,
             top_p=1.0,
             n=1,
             frequency_penalty=0.0,
@@ -463,7 +567,7 @@ if __name__ == "__main__":
         
         qa_generator_setting = QuestionAnswerGeneratorSetting(
             model="gemini-2.5-flash",
-            temperature=0.5,
+            temperature=1.0,
             top_p=1.0,
             n=1,
             frequency_penalty=0.0,
@@ -479,7 +583,7 @@ if __name__ == "__main__":
             n=1,
             frequency_penalty=0.0,
             max_completion_tokens=10000,
-            reasoning_effort="medium"
+            # reasoning_effort="medium"
         )
         
         explanation_setting = ExplanationGeneratorSetting(
@@ -492,6 +596,43 @@ if __name__ == "__main__":
             # reasoning_effort="medium"
         )
         
+        validator_setting = QuizValidatorSetting(
+            factual=FactualSetting(
+                model="gpt-4o-mini",
+                temperature=0.0,
+                top_p=1.0,
+                n=1,
+                frequency_penalty=0.0,
+                max_completion_tokens=10000,
+            ),
+            pedagogical=PedagogicalSetting(
+                model="gpt-4o-mini",
+                temperature=0.0,
+                top_p=1.0,
+                n=1,
+                frequency_penalty=0.0,
+                max_completion_tokens=10000,
+            ),
+            psychometric=PsychometricSetting(
+                model="gpt-4o-mini",
+                temperature=0.0,
+                top_p=1.0,
+                n=1,
+                frequency_penalty=0.0,
+                max_completion_tokens=10000,
+            )
+        )
+        
+        correction = QuizCorrectionSetting(
+            model="gemini-2.5-flash",
+            temperature=1.0,
+            top_p=1.0,
+            n=1,
+            frequency_penalty=0.0,
+            max_completion_tokens=10000,
+            reasoning_effort="medium"
+        )       
+        
         quiz_settings = QuizGenerationSetting(
             vector_db_path="/home/vuiem/KLTN/chroma_database",
             max_concurrent_tasks=5,
@@ -499,7 +640,11 @@ if __name__ == "__main__":
             topic_generator=topic_generator_setting,
             question_answer_generator=qa_generator_setting,
             distractors_generator=distractors_setting,
-            explanation_generator=explanation_setting
+            explanation_generator=explanation_setting,
+            validator=validator_setting,
+            correction=correction,
+            max_feedback_attempts=3,
+            acceptance_score_threshold=85,
         )
         
         chromadb_client = PersistentClient(path=quiz_settings.vector_db_path)
@@ -511,10 +656,9 @@ if __name__ == "__main__":
             chromadb_client=chromadb_client
         )
         
-        
         # Test input
         test_input = QuizGenerationInput(
-            number_of_topics=7,
+            number_of_topics=1,
             common_mistakes=[],
             week_number=6,
             course_code="int3405"
@@ -539,7 +683,6 @@ if __name__ == "__main__":
                 print(f"Question: {question.question}")
                 print(f"Answer: {question.answer}")
                 print(f"Distractors: {len(question.distractors)} items")
-                print(f"Has Explanation: {question.explanation.correct_answer_explanation != 'Explanation generation failed'}")
                 
             # Save output to file
             output_file = "quiz_generation_test_output.json"

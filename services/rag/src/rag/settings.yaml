@@ -3,7 +3,6 @@ local_search_settings:
     index_name: 'description_index'
     top_k: 5
     query_nodes: 50
-    embedding_model: 'gemini-embedding'
     dimensions: 1536
   extract_chunk_settings:
     threshold: 0.35
@@ -19,3 +18,4 @@ litellm:
   frequency_penalty: 0.0
   max_completion_tokens: 10000
   dimension: 1536
+  embedding_model: "gemini-embedding"

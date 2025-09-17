@@ -7,3 +7,9 @@ from .topic_generator import TopicGeneratorSetting
 from .question_answer_generator import QuestionAnswerGeneratorSetting
 from .distractors import DistractorsGeneratorSetting
 from .explanation import ExplanationGeneratorSetting
+from .factual import FactualSetting
+from .pedagogical import PedagogicalSetting
+from .psychometric import PsychometricSetting
+from .quiz_validator import QuizValidatorSetting
+from .quiz_correction import QuizCorrectionSetting
+from .quiz_evaluator import QuizEvaluatorSetting

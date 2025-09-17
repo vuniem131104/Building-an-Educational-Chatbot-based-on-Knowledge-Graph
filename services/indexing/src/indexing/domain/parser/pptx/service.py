@@ -6,10 +6,10 @@ from base import BaseModel
 from base import BaseService
 from logger import get_logger
 
-from generation.shared.settings import ParserSetting
-from generation.domain.parser.pptx.utils import convert_pptx_to_pdf
-from generation.domain.parser.pdf import PDFInput
-from generation.domain.parser.pdf import PDFService
+from indexing.shared.settings.parser import ParserSetting
+from indexing.domain.parser.pptx.utils import convert_pptx_to_pdf
+from indexing.domain.parser.pdf import PDFInput
+from indexing.domain.parser.pdf import PDFService
 
 
 logger = get_logger(__name__)

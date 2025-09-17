@@ -11,7 +11,7 @@ from lite_llm import CompletionMessage
 from lite_llm import Role
 from generation.domain.quiz_generation.prompts import QUESTION_ANSWER_SYSTEM_PROMPT
 from generation.domain.quiz_generation.prompts import QUESTION_ANSWER_USER_PROMPT
-from generation.domain.quiz_generation.modules.topics_generator import Topic
+from generation.shared.models import Topic
 from generation.shared.settings import QuestionAnswerGeneratorSetting
 from logger import get_logger
 

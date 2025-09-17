@@ -1,0 +1,84 @@
+{
+    "questions": [
+        {
+            "question": "What is the primary intuition behind Support Vector Machines (SVM) for finding the optimal decision boundary?",
+            "answer": "Maximize the margin between the separating hyperplane and the closest data points from both classes",
+            "distractors": [
+                "Minimize the total number of misclassified training examples",
+                "Maximize the likelihood of the training data given the model parameters",
+                "Minimize the entropy of the class distributions at the decision boundary"
+            ],
+            "explanation": "SVM's core intuition is to find the separating hyperplane that maximizes the margin - the width that the boundary could be increased by before hitting a data point. This approach aims to find the decision boundary that is as far as possible from the nearest training examples of both classes, which typically leads to better generalization."
+        },
+        {
+            "question": "In the soft margin SVM formulation, what role does the regularization parameter C play?",
+            "answer": "It controls the trade-off between maximizing the margin and minimizing misclassification errors",
+            "distractors": [
+                "It determines the degree of the polynomial kernel function",
+                "It sets the bandwidth parameter for the Gaussian RBF kernel",
+                "It controls the learning rate for the gradient descent optimization"
+            ],
+            "explanation": "The parameter C in soft margin SVM controls the balance between two competing objectives: maximizing the margin (which favors simpler models) and minimizing classification errors (which favors fitting the training data). Large C values lead to lower bias but higher variance (focusing more on fitting training data), while small C values lead to higher bias but lower variance (focusing more on maximizing margin)."
+        },
+        {
+            "question": "What is the key advantage of using kernel functions in SVM instead of explicit feature mapping?",
+            "answer": "Kernels allow computing inner products in high-dimensional feature spaces without explicitly representing the transformed features",
+            "distractors": [
+                "Kernels always guarantee that the optimization problem will be convex",
+                "Kernels eliminate the need for regularization in the SVM formulation",
+                "Kernels automatically select the most relevant features from the input data"
+            ],
+            "explanation": "The kernel trick allows SVM to implicitly work in high-dimensional (even infinite-dimensional) feature spaces by computing inner products directly through kernel functions, without having to explicitly compute and store the transformed feature vectors \u03c6(x). This makes the computation much more efficient than explicit feature mapping, which could result in very high-dimensional representations that are computationally expensive to handle."
+        },
+        {
+            "question": "Which of the following conditions must a function k(x,z) satisfy to be a valid kernel function?",
+            "answer": "It must be symmetric and the corresponding Gram matrix must be positive semi-definite",
+            "distractors": [
+                "It must be differentiable and have a bounded range between 0 and 1",
+                "It must be a linear combination of polynomial and exponential functions",
+                "It must satisfy the triangle inequality and be translation invariant"
+            ],
+            "explanation": "For a function to be a valid kernel, it must satisfy Mercer's conditions: (1) it must be symmetric, i.e., k(x,z) = k(z,x), and (2) the Gram matrix K defined by K_ij = k(x_i, x_j) must be positive semi-definite. These conditions ensure that the kernel corresponds to an inner product in some feature space, which is essential for the mathematical foundations of kernel methods."
+        },
+        {
+            "question": "Comparing SVM with the previously studied Na\u00efve Bayes classifier, what is a fundamental difference in their approach to classification?",
+            "answer": "SVM is a discriminative model that directly learns the decision boundary, while Na\u00efve Bayes is a generative model that learns class probability distributions",
+            "distractors": [
+                "SVM can only handle binary classification while Na\u00efve Bayes naturally handles multi-class problems",
+                "SVM requires continuous features while Na\u00efve Bayes only works with discrete categorical features",
+                "SVM uses maximum likelihood estimation while Na\u00efve Bayes uses gradient descent optimization"
+            ],
+            "explanation": "SVM is a discriminative model that directly learns the decision boundary (hyperplane) separating different classes, focusing on the boundary region. In contrast, Na\u00efve Bayes (from previous lectures) is a generative model that learns the probability distributions P(X|Y) for each class and uses Bayes' theorem to make predictions. This fundamental difference affects how they handle data and make predictions."
+        },
+        {
+            "question": "In the dual formulation of SVM, what are support vectors?",
+            "answer": "Training examples with non-zero Lagrange multipliers that lie on or within the margin boundaries",
+            "distractors": [
+                "All training examples that are correctly classified by the learned hyperplane",
+                "The eigenvectors of the kernel matrix used in the optimization problem",
+                "Training examples that have the highest prediction confidence scores"
+            ],
+            "explanation": "Support vectors are the training examples that have non-zero Lagrange multipliers (\u03b1_i > 0) in the dual formulation. These are the critical training points that lie either exactly on the margin boundary or within the margin (for soft margin SVM). Only these points influence the final decision boundary, making SVM a sparse method where many training examples (those with \u03b1_i = 0) don't affect the final model."
+        },
+        {
+            "question": "For multi-class SVM classification, what is the main advantage of the one-against-one approach compared to one-against-rest?",
+            "answer": "One-against-one is typically faster to train because each binary classifier uses fewer training examples",
+            "distractors": [
+                "One-against-one always produces higher classification accuracy than one-against-rest",
+                "One-against-one requires fewer binary classifiers to be trained overall",
+                "One-against-one can handle imbalanced datasets better than one-against-rest"
+            ],
+            "explanation": "The one-against-one approach trains k(k-1)/2 binary classifiers, each using only 2N/k training examples on average (where N is total training size and k is number of classes). Although this creates more classifiers, each individual classifier is trained on a much smaller dataset, making the overall training process faster. The lecture notes that while accuracy is similar between approaches, one-against-one is fastest for training."
+        },
+        {
+            "question": "What is the main computational challenge of kernel SVM compared to linear classifiers like logistic regression?",
+            "answer": "Kernel SVM training has at least O(N\u00b2) time complexity while linear classifiers can be trained in O(N) time",
+            "distractors": [
+                "Kernel SVM requires storing the entire training dataset in memory during prediction",
+                "Kernel SVM cannot be parallelized across multiple processors or cores",
+                "Kernel SVM optimization is non-convex and may get stuck in local minima"
+            ],
+            "explanation": "The lecture highlights the 'curse of kernalization' - while kernel SVM provides powerful nonlinear classification capabilities, it comes with significant computational cost. Training kernel SVM typically requires at least O(N\u00b2) time complexity (even with efficient solvers like SMO), whereas linear classifiers can often be trained in linear time O(N). This makes kernel SVM challenging to scale to very large datasets, which is why kernel approximation methods are sometimes used."
+        }
+    ]
+}

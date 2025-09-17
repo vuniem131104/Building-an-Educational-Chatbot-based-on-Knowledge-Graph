@@ -11,7 +11,6 @@ from graph_db import Neo4jSetting
 from storage.minio import MinioSetting
 from .parser import ParserSetting
 from .chunker import ChunkerSetting
-from .redis import RedisSetting
 
 load_dotenv()
 
@@ -23,7 +22,6 @@ class Settings(BaseSettings):
     minio: MinioSetting
     chunker: ChunkerSetting
     neo4j: Neo4jSetting
-    redis: RedisSetting
 
     class Config:
         env_nested_delimiter = '__'

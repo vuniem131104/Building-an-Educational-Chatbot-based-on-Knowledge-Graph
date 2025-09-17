@@ -101,40 +101,12 @@ def convert_quiz_json_to_markdown(json_file_path, output_file_path):
             if question.get('explanation'):
                 explanation = question['explanation']
                 
-                markdown_content.append("**Detailed Explanation:**")
+                markdown_content.append("**Explanation:**")
                 markdown_content.append("")
-                
-                # Correct answer explanation
-                if 'correct_answer_explanation' in explanation:
-                    markdown_content.append("**Why This Answer Is Correct:**")
-                    markdown_content.append(explanation['correct_answer_explanation'])
-                    markdown_content.append("")
-                
-                # Distractors explanation
-                if 'distractors_explanation' in explanation:
-                    markdown_content.append("**Why Other Options Are Wrong:**")
-                    for distractor_exp in explanation['distractors_explanation']:
-                        markdown_content.append(f"- **\"{distractor_exp['distractor']}\"**")
-                        markdown_content.append(f"  - {distractor_exp['explanation']}")
-                        markdown_content.append("")
-                
-                # Conceptual summary
-                if 'conceptual_summary' in explanation:
-                    markdown_content.append("**Conceptual Summary:**")
-                    markdown_content.append(explanation['conceptual_summary'])
-                    markdown_content.append("")
-                
-                # Learning tips
-                if 'learning_tips' in explanation:
-                    markdown_content.append("**Learning Tips:**")
-                    markdown_content.append(explanation['learning_tips'])
-                    markdown_content.append("")
-                
-                # Fallback for older format
-                elif 'main_explanation' in explanation:
-                    markdown_content.append(explanation['main_explanation'])
-                    markdown_content.append("")
-            
+
+                markdown_content.append(explanation)
+                markdown_content.append("")
+
             # Additional metadata
             markdown_content.append("**Question Metadata:**")
             markdown_content.append(f"- **Topic Description:** {topic_info.get('description', 'N/A')}")
@@ -144,12 +116,6 @@ def convert_quiz_json_to_markdown(json_file_path, output_file_path):
             markdown_content.append("---")
             markdown_content.append("")
     
-    # Generation Errors
-    if 'generation_errors' in data and data['generation_errors']:
-        markdown_content.append("## Generation Errors")
-        markdown_content.append("")
-        for error in data['generation_errors']:
-            markdown_content.append(f"- **Error:** {error}")
         markdown_content.append("")
         markdown_content.append("---")
         markdown_content.append("")
@@ -168,7 +134,7 @@ def convert_quiz_json_to_markdown(json_file_path, output_file_path):
 if __name__ == "__main__":
     # Chuyển đổi file quiz_generation_test_output.json thành markdown
     convert_quiz_json_to_markdown(
-        json_file_path="quiz_generation_test_output.json",
+        json_file_path="quiz_generation_test_output_gemini_gpt4omini.json",
         output_file_path="quiz_generation_detailed_output.md"
     )
     

@@ -9,6 +9,8 @@ litellm:
   frequency_penalty: 0.0
   max_completion_tokens: 10000
   dimension: 1536
+  reasoning_effort: "medium"
+  embedding_model: "gemini-embedding"
 
 chunker:
   max_token_per_chunk: 1000
